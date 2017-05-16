@@ -41,7 +41,7 @@
 	body.animated {left: -258px;}
 	body.animated #header .headerWrap {left: -258px!important;}
 	.wrapper, .ourContact .wrapper, .singleProductWrap .wrapper {width: 758px;}
-	
+
 	/* Home */
 	#header .headerWrap {height: 60px;border-bottom-color: rgba(0,0,0,0);}
 	.logo {margin: 14px 0 0 20px;}
@@ -72,12 +72,12 @@
 	.showMobileMenu.open span:nth-child(2) {-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);}
 	.showMobileMenu.open span:nth-child(3) {-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-o-transform: rotate(-45deg);transform: rotate(-45deg);}
 	.showMobileMenu.open span:nth-child(4) {top: 7px;width: 0%;left: 50%;}
-	
+
 	.is-sticky .showMobileMenu span {background: #333333!important;}
-	
+
 	.classes .showMobileMenu span, .single-product .showMobileMenu span, .cart .showMobileMenu span, .single-event .showMobileMenu span, .events .showMobileMenu span,
 	.catalog .showMobileMenu span, .contact .showMobileMenu span, .about .showMobileMenu span, .home .showMobileMenu span {background: #fff;}
-	
+
 	body.animated .mobileMenu {right: 0;}
 	.mobileMenu {display: block; position: fixed;top: 0;right: -258px;width: 257px;height: 100%;border-left: 1px solid #e5e5e5;overflow: auto; background: #f4f4f4;z-index: 0;-webkit-transition: right 0.6s ease;-moz-transition: right 0.6s ease;-o-transition: right 0.6s ease;transition: right 0.6s ease;}
 	.mobileMenu ul {list-style: none;max-height: 100vh;}
@@ -107,7 +107,7 @@
 	.footerMenu {
 	top: 54px;
 }
-	
+
 	/* About */
 	.ourStory {padding-top: 100px;padding-bottom: 100px;}
 	.storyImg {width: 570px;margin-left: 94px;margin-bottom: 40px;}
@@ -172,8 +172,8 @@
 	.gridItemDesc {width: 100%;height: 280px; top: auto;bottom: 0;padding-top: 30px; padding-left: 20px;padding-right: 20px;}
 	.gridItemDesc .viewMore {left: 20px; width: calc(100% - 40px);}
 	.classesBox h3 {line-height: 36px;font-size: 26px;}
-	
-	.container {padding-bottom: 358px;}
+
+	.container-adap {padding-bottom: 358px;}
 	#footer {height: 250px;}
 	.footerMenu {width: 100%;margin-left: 0;left: 0;}
 	.footerSocial {margin-right: 30px;margin-left: 30px;}
@@ -184,7 +184,7 @@
 	.page404Wrap {padding: 100px 20px;}
 	.page404Wrap img {width: 100%;height: auto;max-width: 100%;}
 	.page404Wrap p {line-height: 38px;}
-	
+
 	/* About */
 	.pageHeader {height: 400px;}
 	.pageHeader h1 {top: 209px; line-height: 40px;font-size: 30px;}
@@ -229,7 +229,7 @@
 	.subscribeBox h3 {font-size: 26px;padding: 0 20px;}
 	.subscribeBox p {padding: 0 20px;}
 	.subscribeBox form {width: 100%;}
-	.subscribeBox form input[type="text"] {float: none;margin: 0 auto 20px;} 
+	.subscribeBox form input[type="text"] {float: none;margin: 0 auto 20px;}
 	.subscribeSubmit {float: none;margin: 0 auto;}
 
 	/* Single event + post */
@@ -259,7 +259,7 @@
 @media only screen and (max-width: 479px) {
 	body {min-width: 310px;}
 	.wrapper, .ourContact .wrapper, .singleProductWrap .wrapper {width: 310px;}
-	.single-post .container, .blog .container {padding-top: 20px;}
+	.single-post .container-adap, .blog .container-adap {padding-top: 20px;}
 
 	.slideDesc h2 {line-height: 34px;font-size: 26px;}
 	.mainItem {padding-bottom: 320px;}
@@ -274,7 +274,7 @@
 	.shopItem {margin-left: 0;margin-right: 0;}
 	.postItem {width: 300px;height: auto;padding-bottom: 40px; margin-left: 0;margin-right: 0;}
 
-	.container {padding-bottom: 388px;}
+	.container-adap {padding-bottom: 388px;}
 	.footerMenu {padding: 0 10px 0 30px;text-align: left; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing: border-box;}
 	.footerMenu li {margin-bottom: 6px;}
 	#footer {padding-top: 138px;}
@@ -312,7 +312,7 @@
 	.productFilter {width: 78%;margin-left: -15px;}
 	.shopItemsWrap {margin-bottom: 0;}
 	.parallaxBox h3 {line-height: 46px;font-size: 34px;}
-	
+
 	/* Events */
 	.subscribeBox {padding-top: 50px;}
 	.subscribeBox h3 {line-height: 36px;}
@@ -323,7 +323,7 @@
 	.subscribeBox form input[type="text"] {width: 100%;}
 
 	.singlePostWrap img.alignleft {width: 100%;height: auto; margin: 0 0px 22px 0;}
-	.singlePostWrap img.alignright {width: 100%;height: auto; margin: 0 0 22px 0px;} 
+	.singlePostWrap img.alignright {width: 100%;height: auto; margin: 0 0 22px 0px;}
 	.singlePostWrap ul, .singlePostWrap ol {margin-left: 32px;}
 	.singlePostWrap blockquote {margin-left: 10px;padding-left: 20px;}
 	.nextEventBox {padding-top: 80px;}

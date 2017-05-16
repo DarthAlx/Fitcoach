@@ -8,19 +8,19 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, 
+del, dfn, em, img, ins, kbd, q, s,
 samp,small, strike, strong, sub, sup,
 tt, var,b, u, i, center,
-dl, dt, dd, ol, ul, li,fieldset, 
+dl, dt, dd, ol, ul, li,fieldset,
 form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
+article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,time, mark, audio, video 
+menu, nav, output, ruby, section, summary,time, mark, audio, video
 {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;background:transparent;}
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
 {display: block;}
 body {line-height: 1;}
 ol, ul {list-style: none;}
@@ -69,7 +69,7 @@ a:hover {text-decoration:none;}
 -webkit-transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, left 0.6s ease;
 -moz-transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.6s ease;
 -o-transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.6s ease;
-transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.6s ease;}	
+transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.6s ease;}
 .classes #header, .single-product #header, .cart #header, .single-event #header, .events #header, .catalog #header,  .contact #header,
 .about #header, .home #header {position: absolute;left: 0;top: 0;width: 100%; z-index: 9999;}
 .classes #header .headerWrap, .single-product #header .headerWrap, .cart #header .headerWrap, .single-event #header .headerWrap, .events #header .headerWrap, .catalog #header .headerWrap,
@@ -132,7 +132,7 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 #header .is-sticky .mainMenu ul li ul li ul {top: -10px;}
 
 /* Container */
-.container {padding-bottom:262px;width:100%; overflow:hidden;} 
+.container {padding-bottom:262px;width:100%; overflow:hidden;}
 
 /* Home slider */
 .homeBxSliderWrap {width: 100%; overflow: hidden;}
@@ -173,7 +173,7 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 .gridItemDesc {position: absolute;right: 0;top: 0;width: 50%;height: 100%;padding: 50px 30px 0 40px; background: #D58628;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing: border-box;}
 .gridItemDesc h3 {position: relative; line-height: 30px;margin-bottom: 48px; color: #fff;font-size: 22px;font-weight: 300;text-transform: uppercase;}
 .gridItemDesc h3:before {position: absolute;left: 0;bottom: -27px;width: 46px;height: 1px;background: #D58628;content: "";}
-.gridItemDesc p {line-height: 24px;margin-bottom: 20px;  color: #FFFFFF;font-size: 16px;font-weight: 300;} 
+.gridItemDesc p {line-height: 24px;margin-bottom: 20px;  color: #FFFFFF;font-size: 16px;font-weight: 300;}
 .gridItemDesc .viewMore {position: absolute;left: 40px;bottom: 27px; width: calc(100% - 70px); line-height: 14px; color: #FFFFFF;font-size: 12px;font-family: 'Montserrat', sans-serif;text-decoration: none;text-transform: uppercase;-webkit-transition: color 0.3s ease;-moz-transition: color 0.3s ease;-o-transition: color 0.3s ease;transition: color 0.3s ease;}
 .gridItem2:hover .gridItemDesc .viewMore,
 .gridItem:hover .gridItemDesc .viewMore {color: #fff;}
@@ -191,7 +191,7 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 .gridItemWhite:hover .gridItemDesc .viewMore i path {fill:#333333;}
 
 .gridItemWrapLeft {float: left;width: 50%;}
-.gridItemWrapLeft .gridItem {width: 100%;} 
+.gridItemWrapLeft .gridItem {width: 100%;}
 .gridItemVideo {position: relative; display: block; width: 100%; padding-bottom:56.25%;}
 .gridItemVideo .gridItemImg {float: none;width: 100%;}
 
@@ -303,7 +303,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 
 /* Our team */
 .ourTeam {background: #f4f4f4;}
-.ourValues .blockTitle, 
+.ourValues .blockTitle,
 .ourTeam .blockTitle {padding-top: 0;}
 .teamItemWrap {position: relative;}
 .teamItem {position: relative; float: left;width: 25%;cursor: pointer;}
@@ -338,7 +338,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 
 /* Our team 1 */
 .ourTeam1 {background: #fff;}
-.ourValues .blockTitle, 
+.ourValues .blockTitle,
 .ourTeam1 .blockTitle {padding-top: 0;}
 .teamItemWrap {position: relative;}
 .teamItem {position: relative; float: left;width: 25%;cursor: pointer;}
@@ -427,7 +427,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .singlePostWrap ul li, .singlePostWrap ol li {position: relative; line-height: 30px;margin-bottom: 20px; color: #7f7f7f;font-size: 20px;font-family: 'Lato', sans-serif;font-weight: 300;}
 .singlePostWrap ul li:before {position: absolute;left: -24px;top: 14px;width: 6px;height: 6px;background: #D58627;content: "";-webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 100%;}
 .singlePostWrap ol li:before {position: absolute;left: -24px;top: 1px;content: counter(item) ". "; counter-increment: item;color: #D58627; font-size: 20px;font-family: 'Lato', sans-serif;font-weight: 400;}
-.singlePostWrap p a, .singlePostWrap p a:visited, .singlePostWrap ul li a, .singlePostWrap ul li a:visited, 
+.singlePostWrap p a, .singlePostWrap p a:visited, .singlePostWrap ul li a, .singlePostWrap ul li a:visited,
 .singlePostWrap ol li a, .singlePostWrap ol li a:visited {display: inline-block;  color: #D58627;font-size: 20px;font-family: 'Lato', sans-serif;font-weight: 300;text-decoration: none;}
 
 .singlePostWrap blockquote {padding: 10px 0 10px 30px;margin: 32px 0 32px 30px; border-left: 3px solid #D58627;}
@@ -586,7 +586,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .cartProduct h4 a, .cartProduct h4 a:visited {color: #333333;font-size: 16px;font-family: 'Lato', sans-serif;font-weight: 400;text-decoration: none;-webkit-transition: color 0.3s ease;-moz-transition: color 0.3s ease;-o-transition: color 0.3s ease;transition: color 0.3s ease;}
 .cartProduct h4 a:hover {color: #D58627;}
 .quantityBox input[type="number"] {width: 44px;height: 44px;border: 1px solid #e5e5e5;color: #333;font-size: 16px;font-family: 'Lato', sans-serif;font-weight: 400;text-align: center;-moz-appearance: textfield;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing: border-box;}
-.quantityBox input[type="number"]::-webkit-inner-spin-button, 
+.quantityBox input[type="number"]::-webkit-inner-spin-button,
 .quantityBox input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
 .cartTotals {float: right;width: 380px;margin-right: 40px;}
@@ -607,7 +607,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .updateCartBtn:hover {background: #D58627;color: #fff;}
 
 .checkoutBtn {float: right;width: 180px;height: 46px;padding: 0;box-shadow: none;background: #D58627; border: 2px solid #D58627;color: #fff;font-size: 12px;font-family: 'Montserrat', sans-serif;text-transform: uppercase;text-align: center;-webkit-transition: background 0.3s ease, border 0.3s ease;-moz-transition: background 0.3s ease, border 0.3s ease;-o-transition: background 0.3s ease, border 0.3s ease;transition: background 0.3s ease, border 0.3s ease; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing: border-box;}
-.checkoutBtn:hover {background: #70d3bb;border-color: #70d3bb;} 
+.checkoutBtn:hover {background: #70d3bb;border-color: #70d3bb;}
 
 .calculateShipping {float: right;width: 380px;margin-right: 40px;}
 .calculateShipping label {display: block; line-height: 54px;color: #333333;font-size: 18px;font-family: 'Lato', sans-serif;font-weight: 300;text-transform: uppercase;}
@@ -672,7 +672,7 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .payment_methods {padding-top: 18px;padding-bottom: 20px;}
 .payment_methods li {margin-bottom: 18px;}
 .payment_methods li input[type="radio"] {display: none;}
-.payment_methods li label {position: relative; display: block;line-height: 18px;padding-left: 38px;color: #333333;font-size: 16px;font-family: 'Lato', sans-serif;font-weight: 300;} 
+.payment_methods li label {position: relative; display: block;line-height: 18px;padding-left: 38px;color: #333333;font-size: 16px;font-family: 'Lato', sans-serif;font-weight: 300;}
 .payment_methods li label:before {position: absolute;left: 0;top: 0;width: 16px;height: 16px;border: 1px solid #e5e5e5;-webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 100%;content: "";}
 .payment_methods li label:after {position: absolute;left: 6px;top: 6px;width: 6px;height: 6px;-webkit-transition: background 0.3s ease;-moz-transition: background 0.3s ease;-o-transition: background 0.3s ease;transition: background 0.3s ease; -webkit-border-radius: 100%;-moz-border-radius: 100%;border-radius: 100%;content: "";}
 .payment_methods li input[type="radio"]:checked + label:after {background: #333333;}
@@ -764,4 +764,14 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .page404Wrap a.homePage:hover {background: #D58627;color: #fff;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .page404Wrap a.homePage {line-height: 46px;}
+}
+
+
+
+
+
+/*ALX*/
+
+.topclear{
+	margin-top: 100px;
 }

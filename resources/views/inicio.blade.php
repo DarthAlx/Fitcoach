@@ -6,7 +6,7 @@
 			<div class="homeBxSlider">
 
 
-                <div class="slide" data-slide="0" style="background-image: url(./images/content/BG-CLASES.jpg);">
+                <div class="slide" data-slide="0" style="background-image: url(./images/content/bg-clases.jpg);">
 
                     <div class="slideDesc">
                    <h3 style="color: #">clases a domicilio <br><a class="learnMore" href="#D58628">PROXIMAMENTE</a></h3>

@@ -32,3 +32,23 @@ Route::get('/clasesdeportivas', function () {
 Route::get('/aviso', function () {
     return view('aviso');
 });
+
+
+
+
+// Authentication routes...
+Route::get('entrar', 'Auth\AuthController@getLogin');
+Route::post('entrar', 'Auth\AuthController@postLogin');
+Route::get('salir', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('registro', 'Auth\AuthController@getRegister');
+Route::post('registro', 'Auth\AuthController@postRegister');
+
+// Password reset link request routes...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');

@@ -19,10 +19,15 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/adaptive.css" media="screen" />
 
+
+
+
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.selectric.min.js"></script>
 		<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+
+
 
 
 
