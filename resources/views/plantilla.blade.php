@@ -18,11 +18,14 @@
 		<link rel="stylesheet" type="text/css" href="css/selectric.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/adaptive.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
 
 
 
 
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/vendor/bootstrap.js"></script>
 		<script type="text/javascript" src="js/jquery.selectric.min.js"></script>
 		<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
@@ -46,7 +49,7 @@
 </a>
 			<nav class="mainMenu">
 				<ul id="menu" class="clear">
-          <li class="current-menu-item"><a href="{{ url('/') }}">home</a></li>
+
 					<li>
 						<a href="{{ url('/proximamente') }}">activación</a>
 				  </li>
@@ -67,6 +70,15 @@
 						<a href="{{ url('/contacto') }}">Contacto</a>
 
 					</li>
+					@if (Auth::guest())
+          	<li class="current-menu-item"><a href="{{ url('/entrar') }}">entrar</a></li>
+					@else
+						<li class="current-menu-item"><a href="{{ url('/perfil') }}">{{ Auth::user()->name }} {{ Auth::user()->remember }}</a>
+							<ul>
+								<li><a href="{{ url('/salir') }}">salir</a></li>
+							</ul>
+						</li>
+					@endif
 				</ul>
 		  </nav>
 			<span class="showMobileMenu">

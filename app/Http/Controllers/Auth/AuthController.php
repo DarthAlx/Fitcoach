@@ -65,11 +65,11 @@ class AuthController extends Controller
 
     public function loginPath()
     {
-        return route('login');
+        return url('/entrar');
     }
 
     public function redirectPath()
     {
-        return route('/');
+        return url('/');
     }
 }
