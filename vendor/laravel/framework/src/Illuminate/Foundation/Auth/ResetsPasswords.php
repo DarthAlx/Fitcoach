@@ -51,7 +51,7 @@ trait ResetsPasswords
      */
     protected function getEmailSubject()
     {
-        return property_exists($this, 'subject') ? $this->subject : 'Your Password Reset Link';
+        return property_exists($this, 'subject') ? $this->subject : 'Recuperación de contraseña Fitcoach';
     }
 
     /**
@@ -60,13 +60,13 @@ trait ResetsPasswords
      * @param  string  $token
      * @return \Illuminate\Http\Response
      */
-    public function getReset($token = null)
+    public function getReset($token = null,$email=null)
     {
-        if (is_null($token)) {
+        if (is_null($token)||is_null($email)) {
             throw new NotFoundHttpException;
         }
 
-        return view('auth.reset')->with('token', $token);
+        return view('auth.reset')->with('token', $token)->with('email',$email);
     }
 
     /**
@@ -114,6 +114,7 @@ trait ResetsPasswords
 
         $user->save();
 
-        Auth::login($user);
+       Auth::login($user);
+        
     }
 }

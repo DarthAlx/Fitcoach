@@ -13,22 +13,22 @@
 			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
 		<![endif]-->
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" type="text/css" href="css/bxslider.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/selectric.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/adaptive.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="{{ url('css/bxslider.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/font-awesome.min.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/selectric.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/adaptive.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
 
 
 
 
 
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="js/vendor/bootstrap.js"></script>
-		<script type="text/javascript" src="js/jquery.selectric.min.js"></script>
-		<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="{{ url('js/jquery-1.9.1.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/vendor/bootstrap.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.selectric.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.bxslider.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
 
 
 
@@ -44,8 +44,8 @@
 
    <header id="header"><div class="headerWrap clear">
 <a class="logo" id="logo" href="{{ url('/') }}">
-        <img src="images/logo-black.png" alt="" width="161" height="46" class="logo-white">
-        <img class="logo-black" src="images/logo-black.png" width="117" height="34" alt="">
+        <img src="{{ url('images/logo-black.png') }}" alt="" width="161" height="46" class="logo-white">
+        <img class="logo-black" src="{{ url('images/logo-black.png') }}" width="117" height="34" alt="">
 </a>
 			<nav class="mainMenu">
 				<ul id="menu" class="clear">

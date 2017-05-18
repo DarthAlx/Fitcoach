@@ -16,5 +16,6 @@
 				</div>
 
 			</div>
+			@include('content_holders.notificaciones')
 		</div>
 @endsection
