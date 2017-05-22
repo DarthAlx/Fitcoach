@@ -16,9 +16,9 @@
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bxslider.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/font-awesome.min.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/selectric.css') }}" media="screen" />
-		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/adaptive.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}" media="screen" />
 
 
 
