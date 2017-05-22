@@ -21,5 +21,8 @@ class Detalles_instructor extends Model
      */
     protected $fillable = ['rfc','dob', 'tel','foto','vehiculo', 'rating'];
 
-    return $this->belongsTo(User::class);
+    public function user()
+       {
+         return $this->belongsTo('App\User');
+       }
 }

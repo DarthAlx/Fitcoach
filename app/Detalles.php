@@ -19,7 +19,11 @@ class Detalles extends Model
      *
      * @var array
      */
-    protected $fillable = ['dob', 'accept', 'tel', 'rating'];
+    protected $fillable = ['dob', 'accept', 'tel', 'rating','user_id'];
 
-    return $this->belongsTo(User::class);
+    public function user()
+       {
+         return $this->belongsTo('App\User');
+       }
+
 }

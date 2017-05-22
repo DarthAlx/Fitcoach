@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('inicio');
+
+$usuario = App\User::find(1);
+
+    return view('inicio', ['usuario'=>$usuario]) ;
 });
 
 Route::get('/nosotros', function () {

@@ -17,5 +17,6 @@
 
 			</div>
 			@include('content_holders.notificaciones')
+			{{ $usuario->detalles->rating}}
 		</div>
 @endsection

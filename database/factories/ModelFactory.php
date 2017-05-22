@@ -20,3 +20,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'role' => $faker->randomElement(['cliente', 'entrenador', 'admin', 'superadmin'])
     ];
 });
+
+
+$factory->define(App\Detalles::class, function (Faker\Generator $faker) {
+    return [
+        'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'accept' => $faker->boolean,
+        'tel' => $faker->phoneNumber,
+        'rating' => $faker->randomElement(['1', '3', '5', '7', '9']),
+        'user_id' => $faker->randomElement(['1', '3', '5', '7', '9'])
+    ];
+});
