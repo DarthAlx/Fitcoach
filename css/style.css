@@ -775,3 +775,6 @@ span.price span {position: relative;top: -11px;left: -2px; font-size: 14px;}
 .topclear{
 	margin-top: 100px;
 }
+.datepicker {
+    z-index: 99999;
+}

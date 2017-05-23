@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Detalles;
+use App\User;
 
 class DetallesController extends Controller
 {
@@ -30,7 +32,14 @@ class DetallesController extends Controller
             return redirect()->intended(url('/entrar'));
           }
           else {
-            return view('detalles') ;
+            $usuario = User::find(Auth::user()->id);
+            if ($usuario->detalles) {
+              dd('tengo detalles'.$usuario->detalles);
+            }
+            else {
+              return view('detalles');
+            }
+
           }
     }
 
@@ -42,7 +51,9 @@ class DetallesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $detalle = new Detalles($request->all());
+      $detalle->save();
+      dd('Detalles del usuario actualizados');
     }
 
     /**

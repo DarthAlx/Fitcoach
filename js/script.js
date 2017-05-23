@@ -1,5 +1,13 @@
 (function($) {
 $(document).ready(function(){
+	$('.datepicker').datepicker({
+    format: "dd-mm-yyyy",
+    clearBtn: true,
+		orientation: "bottom auto",
+    language: "es",
+    autoclose: true,
+    todayHighlight: true
+});
 
 	//// ---> Check issue element
 	jQuery.fn.exists = function() {

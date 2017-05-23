@@ -16,19 +16,20 @@
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bxslider.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/font-awesome.min.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/selectric.css') }}" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/adaptive.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}" media="screen" />
-
-
-
-
-
 		<script type="text/javascript" src="{{ url('js/jquery-1.9.1.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/vendor/bootstrap.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.selectric.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.bxslider.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
+		<!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('js/datepicker/css/bootstrap-datepicker3.css')}}">
+    <link rel="stylesheet" href="{{asset('js/datepicker/css/bootstrap-standalone.css')}}">
+    <script src="{{asset('js/datepicker/js/bootstrap-datepicker.js')}}"></script>
+    <!-- Languaje -->
+    <script src="{{asset('js/datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
 
 
 
