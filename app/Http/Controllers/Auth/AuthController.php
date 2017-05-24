@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -70,6 +71,12 @@ class AuthController extends Controller
 
     public function redirectPath()
     {
+      $usuario = User::find(Auth::user()->id);
+      if ($usuario->detalles) {
         return url('/');
+      }
+      else {
+        return url('/completar-registro');
+      }
     }
 }

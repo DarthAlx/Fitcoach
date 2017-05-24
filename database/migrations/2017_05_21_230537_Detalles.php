@@ -14,11 +14,11 @@ class Detalles extends Migration
     {
       Schema::create('detalles', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('foto');
+          $table->string('photo');
           $table->string('dob');
           $table->string('accept')->default('Sí');
           $table->string('tel');
-          $table->string('rating')->default(0);
+          $table->string('intereses');
           $table->integer('user_id');
           $table->timestamps();
       });

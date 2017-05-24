@@ -19,7 +19,7 @@ class Detalles extends Model
      *
      * @var array
      */
-    protected $fillable = ['foto', 'dob', 'accept', 'tel', 'rating','user_id'];
+    protected $fillable = ['photo', 'dob', 'accept', 'tel', 'intereses','user_id'];
 
     public function user()
        {

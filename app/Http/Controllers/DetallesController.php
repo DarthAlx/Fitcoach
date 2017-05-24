@@ -34,7 +34,7 @@ class DetallesController extends Controller
           else {
             $usuario = User::find(Auth::user()->id);
             if ($usuario->detalles) {
-              dd('tengo detalles'.$usuario->detalles);
+              return view('detalles');
             }
             else {
               return view('detalles');
