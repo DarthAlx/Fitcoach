@@ -34,10 +34,10 @@ class DetallesController extends Controller
           else {
             $usuario = User::find(Auth::user()->id);
             if ($usuario->detalles) {
-              return view('detalles');
+              return view('detalles', ['tienedetalles'=>true]);
             }
             else {
-              return view('detalles');
+              return view('detalles', ['tienedetalles'=>false]);
             }
 
           }

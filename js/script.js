@@ -230,7 +230,7 @@ $(window).load(function() {
 
 $(document).ready(function () {
 
-    var navListItems = $('div.setup-panel div a'),
+    /*var navListItems = $('div.setup-panel div a'),
             allWells = $('.setup-content'),
             allNextBtn = $('.nextBtn');
 
@@ -273,5 +273,5 @@ $(document).ready(function () {
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
 
-    $('div.setup-panel div a.btn-primary').trigger('click');
+    $('div.setup-panel div a.btn-primary').trigger('click');*/
 });

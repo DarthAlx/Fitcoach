@@ -19,64 +19,123 @@
             <p>Detalles personales</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#ProfileSetup-step" type="button" class="btn btn-primary btn-circle" id="ProfileSetup-step-2">
+            <a href="#ProfileSetup-step" type="button" class="btn btn-default btn-circle" disabled="disabled" id="step2">
                 <span class="fa fa-address-book"></span>
             </a>
             <p>Direcciones</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#Security-Setup-step" type="button"  class="btn btn-success-2 btn-circle"  disabled="disabled" id="Security-Setup-step-3">
+            <a href="#Security-Setup-step" type="button"  class="btn btn-default btn-circle"  disabled="disabled" id="step3">
                 <span class="fa fa-credit-card-alt"></span>
             </a>
             <p>Metódos de pago</p>
         </div>
     </div>
 </div>
+<div class="row setup-content" id="step1-content">
+		<div class="col-xs-12">
+				<div class="col-md-12">
+						 <br/>
+						<div class="form-horizontal">
+							<form action="{{ url('/completar-registro') }}" method="post">
 
-    <div class="row setup-content" id="VerifyEmail-step">
-        <div class="col-xs-12">
-            <div class="col-md-12">
-                 <br/>
-                <div class="form-horizontal">
+										<legend>Ingresa tus detalles personales</legend>
+										<br/>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="card-holder-name">Foto de perfil</label>
+											<div class="col-sm-9">
+												<input class="form-control" type="text" value="{{ old('photo') }}" name="photo" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="card-number">Fecha de naciemiento</label>
+											<div class="col-sm-9">
+												<div class="input-group">
+												<input class="form-control datepicker" type="text" value="{{ old('dob') }}" name="dob" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+											</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="card-number">Teléfono</label>
+											<div class="col-sm-9">
+											 <input class="form-control" type="tel" value="{{ old('tel')}}" placeholder="5555555555" name="tel" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label" for="card-number">Intereses</label>
+											<div class="col-sm-9">
+											 <input class="form-control" type="text" value="{{ old('intereses')}}" placeholder="Yoga, spinning, zumba..." name="intereses">
+											</div>
+										</div>
+										{!! csrf_field() !!}
+										<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+										<div class="form-group">
+											<div class="col-sm-12">
+												<input class="btn btnCheckout pull-right" type="submit" value="Guardar">
+											</div>
+										</div>
 
-                </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Setup Profile</button>
-            </div>
-        </div>
-    </div>
-    <div class="row setup-content" id="ProfileSetup-step">
+
+							</form>
+						</div>
+
+				</div>
+		</div>
+</div>
+    <div class="row setup-content" id="step2-content">
         <div class="col-xs-12">
             <div class="col-md-12">
                  <br/>
                 <div class="form-horizontal">
 									<form action="{{ url('/completar-registro') }}" method="post">
 
-												<legend>Ingresa tus detalles personales</legend>
+												<legend>Guarda tus direcciones, asi podras llevar tus clases a donde estés.</legend>
 												<br/>
 												<div class="form-group">
-													<label class="col-sm-3 control-label" for="card-holder-name">Foto de perfil</label>
+													<label class="col-sm-3 control-label" for="card-number">Identificador</label>
 													<div class="col-sm-9">
-														<input class="form-control" type="text" value="{{ old('photo') }}" name="photo" required>
+														<input class="form-control datepicker" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Casa, Condominio, Oficina ..." required>
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-3 control-label" for="card-number">Fecha de naciemiento</label>
-													<div class="col-sm-9">
-														<div class="input-group">
-														<input class="form-control datepicker" type="text" value="{{ old('dob') }}" name="dob" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+													<label class="col-sm-3 control-label" for="card-holder-name">Calle</label>
+													<div class="col-sm-5">
+														<input class="form-control" type="text" value="{{ old('calle') }}" name="calle" required>
 													</div>
+													<div class="col-sm-2">
+														<input class="form-control" type="text" value="{{ old('numero_ext') }}" name="numero_ext" placeholder="No. Ext" required>
 													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label" for="card-number">Teléfono</label>
-													<div class="col-sm-9">
-													 <input class="form-control" type="tel" value="{{ old('tel')}}" placeholder="5555555555" name="tel" required>
+													<div class="col-sm-2">
+														<input class="form-control" type="text" value="{{ old('numero_int') }}" name="numero_int" placeholder="No. Int">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-3 control-label" for="card-number">Intereses</label>
+													<label class="col-sm-3 control-label" for="card-number">Colonia</label>
 													<div class="col-sm-9">
-													 <input class="form-control" type="text" value="{{ old('intereses')}}" placeholder="Yoga, spinning, zumba..." name="intereses">
+														<input class="form-control" type="text" value="{{ old('colonia') }}" name="colonia" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-number">Municipio / Delegación</label>
+													<div class="col-sm-9">
+													 <input class="form-control" type="text" value="{{ old('municipio_del')}}" name="municipio_del" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-number">Código postal</label>
+													<div class="col-sm-9">
+													 <input class="form-control" type="text" value="{{ old('cp')}}" name="cp" required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-number">Estado</label>
+													<div class="col-sm-9">
+														<select class="form-control" value="{{ old('estado')}}" name="estado" required>
+															<option value="">Selecciona una opción</option>
+															<option value="CDMX">CDMX</option>
+															<option value="Edo. Méx">Edo. Méx</option>
+														</select>
+
 													</div>
 												</div>
 												{!! csrf_field() !!}
@@ -90,91 +149,84 @@
 
 									</form>
                 </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Setup Profile</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Continuar</button>
             </div>
         </div>
     </div>
-    <div class="row setup-content" id="Security-Setup-step">
+
+    <div class="row setup-content" id="step3-content">
         <div class="col-xs-12">
             <div class="col-md-12">
-                <b>Thanks you  <stong>Muneeb Ashraf</stong></b>
-                <p>We are almost done, please enter the following information so we can recover your account in case you ever forget your password.</p>
-
                 <div class="form-horizontal">
-                    <form  role="form">
-                        <fieldset>
-                          <br/>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-holder-name">Security Question 1:</label>
-                            <div class="col-sm-9">
-                              <select required="required" class="form-control" >
-                                  <option value="0">Select Country</option>
-                                 <option value="pakistan">Pakistan</option>
-                                 <option value="usa">USA</option>
-                             </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-number">Your Answer:</label>
-                            <div class="col-sm-9">
-                             <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name" />
-                            </div>
-                          </div>
-                          <br/>
-                          <hr>
-                          <br/>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-holder-name">Security Question 2:</label>
-                            <div class="col-sm-9">
-                              <select required="required" class="form-control" >
-                                  <option value="0">Select Country</option>
-                                 <option value="pakistan">Pakistan</option>
-                                 <option value="usa">USA</option>
-                             </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-number">Your Answer:</label>
-                            <div class="col-sm-9">
-                             <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name" />
-                            </div>
-                          </div>
-                           <br/>
-                          <hr>
-                          <br/>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-holder-name">Security Question 3:</label>
-                            <div class="col-sm-9">
-                              <select required="required" class="form-control" >
-                                  <option value="0">Select Country</option>
-                                 <option value="pakistan">Pakistan</option>
-                                 <option value="usa">USA</option>
-                             </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-number">Your Answer:</label>
-                            <div class="col-sm-9">
-                             <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name" />
-                            </div>
-                          </div>
-                           <br/>
-                          <hr>
-                          <br/>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label" for="card-number">Recover cellphone Number:</label>
-                            <div class="col-sm-9">
-                             <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Cellphone Number" />
-                             <p>Optional: We may send you a recovery code on this phone number if you are ever unable to lgoin to your account.</p>
-                            </div>
+									<form action="{{ url('/completar-registro') }}" method="post">
 
-                          </div>
-                        </fieldset>
-                    </form>
+												<legend>Guarda tus tarjetas, es completamente seguro, no guardamos tu código de seguridad.</legend>
+												<br/>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-number">Identificador</label>
+													<div class="col-sm-9">
+														<input class="form-control datepicker" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Crédito, Mi tarjeta, Banco ..." required>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-holder-name">Tarjeta</label>
+													<div class="col-sm-5">
+														<input class="form-control" type="num" value="{{ old('num') }}" name="num" placeholder="No. de tarjeta" required>
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="mes" required>
+															<option value="">Mes de exp.</option>
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
+
+													</div>
+													<div class="col-sm-2">
+														<select class="form-control" name="año" required>
+															<option value="">Año de exp.</option>
+															<option value="2017">2017</option>
+															<option value="2018">2018</option>
+															<option value="2019">2019</option>
+															<option value="2020">2020</option>
+															<option value="2021">2021</option>
+															<option value="2022">2022</option>
+															<option value="2023">2023</option>
+															<option value="2024">2024</option>
+															<option value="2025">2025</option>
+															<option value="2026">2026</option>
+															<option value="2027">2027</option>
+															<option value="2028">2028</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label" for="card-number">Nombre del titular</label>
+													<div class="col-sm-9">
+														<input class="form-control" type="text" value="{{ old('nombre') }}" name="nombre" required>
+													</div>
+												</div>
+												{!! csrf_field() !!}
+												<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+												<div class="form-group">
+													<div class="col-sm-12">
+														<input class="btn btnCheckout pull-right" type="submit" value="Guardar">
+													</div>
+												</div>
+
+
+									</form>
                 </div>
-                <!--h3> You are all set!</h3>
-                <p>Welcome to MetroPago. We are glade to have you here.</p-->
-                <button class="btn btn-primary btn-lg pull-right nextBtn" type="submit">Complete Registration</button>
+                <button class="btn btn-primary btn-lg pull-right nextBtn" type="submit">Continuar</button>
             </div>
         </div>
     </div>
@@ -188,4 +240,31 @@
 <div class="topclear">
 	&nbsp;
 </div>
+
+<script type="text/javascript">
+function hasDetails(){
+	$('#step1').removeClass('btn-primary').addClass('btn-success');
+	$('#step2').removeClass('btn-default').addClass('btn-primary');
+	$('.setup-content').hide();
+	$('#step2-content').show();
+	$('#step2-content').find('input:eq(0)').focus();
+}
+function noDetails(){
+	$('#step1').removeClass('btn-default').addClass('btn-primary');
+	$('.setup-content').hide();
+	$('#step1-content').show();
+	$('#step1-content').find('input:eq(0)').focus();
+}
+
+</script>
+
+@if ($tienedetalles)
+	<script type="text/javascript">
+		hasDetails();
+	</script>
+@else
+	<script type="text/javascript">
+		noDetails();
+	</script>
+@endif
   @endsection
