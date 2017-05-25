@@ -89,12 +89,12 @@
                 <div class="form-horizontal">
 									<form action="{{ url('/completar-registro') }}" method="post">
 
-												<legend>Guarda tus direcciones, asi podras llevar tus clases a donde estés.</legend>
+												<legend>Guarda tus direcciones, puedes agregar más desde tu perfil, asi podras llevar tus clases a donde estés.</legend>
 												<br/>
 												<div class="form-group">
 													<label class="col-sm-3 control-label" for="card-number">Identificador</label>
 													<div class="col-sm-9">
-														<input class="form-control datepicker" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Casa, Condominio, Oficina ..." required>
+														<input class="form-control" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Casa, Condominio, Oficina ..." required>
 													</div>
 												</div>
 												<div class="form-group">
@@ -149,7 +149,7 @@
 
 									</form>
                 </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Continuar</button>
+
             </div>
         </div>
     </div>
@@ -165,7 +165,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label" for="card-number">Identificador</label>
 													<div class="col-sm-9">
-														<input class="form-control datepicker" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Crédito, Mi tarjeta, Banco ..." required>
+														<input class="form-control" type="text" value="{{ old('identificador') }}" name="identificador" placeholder="Ej: Crédito, Mi tarjeta, Banco ..." required>
 													</div>
 												</div>
 												<div class="form-group">
@@ -218,15 +218,16 @@
 												{!! csrf_field() !!}
 												<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
 												<div class="form-group">
-													<div class="col-sm-12">
-														<input class="btn btnCheckout pull-right" type="submit" value="Guardar">
+													<div class="col-sm-12 text-right">
+
+														<input class="btn btnCheckout" type="submit" value="Guardar"> &nbsp; <a href="{{ url('/perfil') }}" class="btn btn-primary">OMITIR</a>
 													</div>
 												</div>
 
 
 									</form>
                 </div>
-                <button class="btn btn-primary btn-lg pull-right nextBtn" type="submit">Continuar</button>
+                
             </div>
         </div>
     </div>
@@ -256,15 +257,39 @@ function noDetails(){
 	$('#step1-content').find('input:eq(0)').focus();
 }
 
+function hasAddress(){
+	$('#step1').removeClass('btn-primary').addClass('btn-success');
+	$('#step2').removeClass('btn-primary').addClass('btn-success');
+	$('#step3').removeClass('btn-default').addClass('btn-primary');
+	$('.setup-content').hide();
+	$('#step3-content').show();
+	$('#step3-content').find('input:eq(0)').focus();
+}
+function noAddress(){
+	$('#step2').removeClass('btn-default').addClass('btn-primary');
+	$('.setup-content').hide();
+	$('#step2-content').show();
+	$('#step2-content').find('input:eq(0)').focus();
+}
+
 </script>
 
 @if ($tienedetalles)
+	@if ($tienedirecciones)
+		<script type="text/javascript">
+			hasAddress();
+		</script>
+	@else
 	<script type="text/javascript">
 		hasDetails();
 	</script>
+	@endif
 @else
 	<script type="text/javascript">
 		noDetails();
 	</script>
 @endif
+
+
+
   @endsection

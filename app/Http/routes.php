@@ -17,6 +17,9 @@ $usuario = App\User::find(1);
 
     return view('inicio', ['usuario'=>$usuario]) ;
 });
+Route::get('/perfil', function () {
+dd('Perfil del usuario');
+});
 
 Route::get('/nosotros', function () {
     return view('nosotros');

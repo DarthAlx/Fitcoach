@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Detalles;
+use App\Direcciones;
+use App\Tarjetas;
 use App\User;
 
 class DetallesController extends Controller
@@ -34,10 +36,16 @@ class DetallesController extends Controller
           else {
             $usuario = User::find(Auth::user()->id);
             if ($usuario->detalles) {
-              return view('detalles', ['tienedetalles'=>true]);
+              if ($usuario->direcciones) {
+                return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>true]);
+              }
+              else {
+                return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>false]);
+              }
+
             }
             else {
-              return view('detalles', ['tienedetalles'=>false]);
+              return view('detalles', ['tienedetalles'=>false,'tienedirecciones'=>false]);
             }
 
           }
@@ -51,9 +59,22 @@ class DetallesController extends Controller
      */
     public function store(Request $request)
     {
-      $detalle = new Detalles($request->all());
-      $detalle->save();
-      dd('Detalles del usuario actualizados');
+      $bool=false;
+      if ($request->dob) {
+        $guardar = new Detalles($request->all());
+        $guardar->save();
+        return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>false]);
+      }
+      elseif ($request->calle) {
+        $guardar = new Direcciones($request->all());
+        $guardar->save();
+        return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>true]);
+      }
+      elseif ($request->num) {
+        $guardar = new Tarjetas($request->all());
+        $guardar->save();
+        return redirect()->intended(url('/perfil'));
+      }
     }
 
     /**
