@@ -75,7 +75,7 @@
 					@if (Auth::guest())
           	<li class="current-menu-item"><a href="{{ url('/entrar') }}">entrar</a></li>
 					@else
-						<li class="current-menu-item"><a href="{{ url('/perfil') }}">{{ Auth::user()->name }} {{ Auth::user()->remember }}</a>
+						<li class="current-menu-item"><a href="{{ url('/perfil') }}">{{ strtok(Auth::user()->name, " ") }}</a>
 							<ul>
 								<li><a href="{{ url('/salir') }}">salir</a></li>
 							</ul>

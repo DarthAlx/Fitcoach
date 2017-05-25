@@ -111,6 +111,21 @@ class DetallesController extends Controller
         //
     }
 
+    public function updateAddress(Request $request, $id)
+    {
+        $direccion = Direcciones::find($id);
+        $direccion->identificador = $request->identificador;
+        $direccion->calle = $request->calle;
+        $direccion->numero_ext = $request->numero_ext;
+        $direccion->numero_int = $request->numero_int;
+        $direccion->colonia = $request->colonia;
+        $direccion->municipio_del = $request->municipio_del;
+        $direccion->cp = $request->cp;
+        $direccion->estado = $request->estado;
+        $direccion->save();
+        dd("actualizado");
+    }
+
     /**
      * Remove the specified resource from storage.
      *

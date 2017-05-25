@@ -1,5 +1,4 @@
 @extends('plantilla')
-
 @section('pagecontent')
 	<section class="container">
 		<div class="homeBxSliderWrap">
@@ -17,6 +16,6 @@
 
 			</div>
 			@include('content_holders.notificaciones')
-			
+
 		</div>
 @endsection

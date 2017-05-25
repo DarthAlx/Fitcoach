@@ -18,7 +18,8 @@ $usuario = App\User::find(1);
     return view('inicio', ['usuario'=>$usuario]) ;
 });
 Route::get('/perfil', function () {
-dd('Perfil del usuario');
+  $user = App\User::find(Auth::user()->id);
+  return view('perfil', ['user'=>$user]) ;
 });
 
 Route::get('/nosotros', function () {
@@ -40,7 +41,7 @@ Route::get('/aviso', function () {
 });
 
 
-
+Route::any('actualizar-direccion/{id}', 'DetallesController@updateAddress');
 
 // Authentication routes...
 Route::get('entrar', 'Auth\AuthController@getLogin');
