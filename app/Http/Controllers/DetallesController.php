@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Detalles;
 use App\Direcciones;
 use App\Tarjetas;
 use App\User;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class DetallesController extends Controller
 {
@@ -61,9 +64,33 @@ class DetallesController extends Controller
     {
       $bool=false;
       if ($request->dob) {
-        $guardar = new Detalles($request->all());
-        $guardar->save();
-        return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>false]);
+        $file = $request->file('photo');
+        if ($request->hasFile('photo')) {
+          if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+
+
+            $name = Auth::user()->id . "." . $file->getClientOriginalExtension();
+            $path = base_path('uploads/avatars/');
+
+            $file-> move($path, $name);
+
+            $guardar = new Detalles($request->all());
+            $guardar->photo = $name;
+
+            $guardar->save();
+            return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>false]);
+          }
+          else{
+            return view('detalles', ['tienedetalles'=>false,'tienedirecciones'=>false]);
+          }
+
+        }
+        else{
+          return view('detalles', ['tienedetalles'=>false,'tienedirecciones'=>false]);
+        }
+
+
+
       }
       elseif ($request->calle) {
         $guardar = new Direcciones($request->all());

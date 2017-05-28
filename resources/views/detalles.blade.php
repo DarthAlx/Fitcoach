@@ -37,14 +37,14 @@
 				<div class="col-md-12">
 						 <br/>
 						<div class="form-horizontal">
-							<form action="{{ url('/completar-registro') }}" method="post">
+							<form action="{{ url('/completar-registro') }}" method="post"  enctype="multipart/form-data">
 
 										<legend>Ingresa tus detalles personales</legend>
 										<br/>
 										<div class="form-group">
 											<label class="col-sm-3 control-label" for="card-holder-name">Foto de perfil</label>
 											<div class="col-sm-9">
-												<input class="form-control" type="text" value="{{ old('photo') }}" name="photo" required>
+												<input class="form-control" type="file" name="photo" required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -227,7 +227,7 @@
 
 									</form>
                 </div>
-                
+
             </div>
         </div>
     </div>
