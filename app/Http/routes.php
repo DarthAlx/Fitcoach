@@ -63,3 +63,8 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 //DetallesController
 Route::get('completar-registro', 'DetallesController@create');
 Route::post('completar-registro', 'DetallesController@store');
+
+Route::post('cambiar-foto', 'DetallesController@updatePhoto');
+
+
+Route::any('eliminar-direccion/{id}', 'DetallesController@destroyAddress');

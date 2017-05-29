@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('pagecontent')
 <div class="container-bootstrap">
+  @include('content_holders.notificaciones')
   <div class="topclear">
     &nbsp;
   </div>
@@ -25,8 +26,14 @@
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-warning btn-sm">Cambiar foto</button>
 
+          <form style="display:none;" action="{{ url('/cambiar-foto') }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ $user->detalles->id }}">
+            <input type="file" name="photo" id="cambiarfoto" onchange="javascript: document.getElementById('botoncambiarfoto').click();" required>
+            {!! csrf_field() !!}
+            <input type="submit" id="botoncambiarfoto">
+          </form>
+					<button type="button" onclick="javascript: document.getElementById('cambiarfoto').click();" class="btn btn-warning btn-sm" id="botoncambiar">Cambiar foto</button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
@@ -129,7 +136,7 @@
                															<option value="Edo. Méx">Edo. Méx</option>
                														</select>
                                           <script type="text/javascript">
-                                            if (document.getElementById('estado{{ $direccion->id }}') != null) document.getElementById('estado{{ $direccion->id }}').value = '{{ $direccion->estado }}';
+                                            if (document.getElementById('estado{{ $direccion->id }}') != null) document.getElementById('estado{{ $direccion->id }}').value = '{!! $direccion->estado !!}';
                                           </script>
 
                													</div>
@@ -138,10 +145,16 @@
                												<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                												<div class="form-group">
                													<div class="col-sm-12 text-right">
-               														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $direccion->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $direccion->id }}" onclick="habilitar({{ $direccion->id }})">Editar</a> &nbsp; <a href="#" class="btn btn-danger">Borrar</a>
+               														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $direccion->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $direccion->id }}" onclick="habilitar({{ $direccion->id }})">Editar</a> &nbsp;
+
+                                          <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar').click();">Borrar</a>
                													</div>
                												</div>
                									</form>
+                                <form style="display: none;" action="{{ url('/eliminar-direccion') }}/{{ $direccion->id }}" method="post">
+                                  {!! csrf_field() !!}
+                                  <input type="submit" id="botoneliminar">
+                                </form>
 
                               </div>
 

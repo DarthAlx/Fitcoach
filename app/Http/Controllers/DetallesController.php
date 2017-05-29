@@ -104,6 +104,37 @@ class DetallesController extends Controller
       }
     }
 
+    public function updatePhoto(Request $request){
+
+
+        if ($request->hasFile('photo')) {
+          $file = $request->file('photo');
+          if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+
+
+            $name = Auth::user()->id . "." . $file->getClientOriginalExtension();
+            $path = base_path('uploads/avatars/');
+
+            $file-> move($path, $name);
+            $detalles = Detalles::find($request->id);
+            $detalles->photo = $name;
+            $detalles->save();
+            return redirect()->intended(url('/perfil'));
+          }
+          else{
+            return redirect()->intended(url('/perfil'))->with('errors', 'El archivo no es una imagen valida.');
+          }
+
+        }
+        else{
+          return redirect()->intended(url('/perfil'))->with('errors', 'El archivo no es una imagen valida.');
+        }
+
+
+
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -150,7 +181,13 @@ class DetallesController extends Controller
         $direccion->cp = $request->cp;
         $direccion->estado = $request->estado;
         $direccion->save();
-        dd("actualizado");
+        return redirect()->intended(url('/perfil'));
+    }
+    public function destroyAddress(Request $request, $id)
+    {
+        $direccion = Direcciones::find($id);
+        $direccion->delete();
+        return redirect()->intended(url('/perfil'))->with('mensaje', 'Dirección eliminada correctamente');
     }
 
     /**
