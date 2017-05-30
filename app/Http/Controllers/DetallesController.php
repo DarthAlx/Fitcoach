@@ -54,6 +54,29 @@ class DetallesController extends Controller
           }
     }
 
+    public function updateProfile(Request $request){
+      $detalles = Detalles::find($request->detalles_id);
+      $detalles->dob = $request->dob;
+      $detalles->tel = $request->tel;
+      $detalles->intereses = $request->intereses;
+      $detalles->save();
+      return redirect()->intended(url('/perfil'));
+    }
+
+    public function updatePassword(Request $request){
+      if ($request->password==$request->password_confirmation && Auth::user()->id == $request->user_id) {
+        $user = User::find($request->user_id);
+        $user->password=bcrypt($request->password);
+        $user->save();
+        return redirect()->intended(url('/perfil'))->with('mensaje', 'Contraseña actualizada');
+      }
+      else {
+        return redirect()->intended(url('/perfil'))->with('mensaje', 'Las contraseñas deben coincidir');
+      }
+
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,7 +92,7 @@ class DetallesController extends Controller
           if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
 
 
-            $name = Auth::user()->id . "." . $file->getClientOriginalExtension();
+            $name = Auth::user()->id ."-". time(). "." . $file->getClientOriginalExtension();
             $path = base_path('uploads/avatars/');
 
             $file-> move($path, $name);
@@ -104,6 +127,12 @@ class DetallesController extends Controller
       }
     }
 
+    public function addAddress(Request $request){
+      $guardar = new Direcciones($request->all());
+      $guardar->save();
+      return redirect()->intended(url('/perfil'));
+    }
+
     public function updatePhoto(Request $request){
 
 
@@ -112,7 +141,7 @@ class DetallesController extends Controller
           if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
 
 
-            $name = Auth::user()->id . "." . $file->getClientOriginalExtension();
+            $name = Auth::user()->id . "-". time()."." . $file->getClientOriginalExtension();
             $path = base_path('uploads/avatars/');
 
             $file-> move($path, $name);

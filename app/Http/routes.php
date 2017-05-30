@@ -18,9 +18,27 @@ $usuario = App\User::find(1);
     return view('inicio', ['usuario'=>$usuario]) ;
 });
 Route::get('/perfil', function () {
-  $user = App\User::find(Auth::user()->id);
-  return view('perfil', ['user'=>$user]) ;
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $user = App\User::find(Auth::user()->id);
+    return view('perfil', ['user'=>$user,'mensaje'=>null]) ;
+  }
 });
+
+Route::get('/direcciones', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $user = App\User::find(Auth::user()->id);
+    return view('direcciones', ['user'=>$user,'mensaje'=>null]) ;
+  }
+});
+
+Route::any('actualizar-perfil', 'DetallesController@updateProfile');
+Route::any('actualizar-contraseña', 'DetallesController@updatePassword');
 
 Route::get('/nosotros', function () {
     return view('nosotros');
@@ -65,6 +83,6 @@ Route::get('completar-registro', 'DetallesController@create');
 Route::post('completar-registro', 'DetallesController@store');
 
 Route::post('cambiar-foto', 'DetallesController@updatePhoto');
-
+Route::post('agregar-direccion', 'DetallesController@addAddress');
 
 Route::any('eliminar-direccion/{id}', 'DetallesController@destroyAddress');

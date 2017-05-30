@@ -73,7 +73,7 @@ class AuthController extends Controller
     {
       $usuario = User::find(Auth::user()->id);
       if ($usuario->detalles) {
-        return url('/');
+        return url('/perfil');
       }
       else {
         return url('/completar-registro');
