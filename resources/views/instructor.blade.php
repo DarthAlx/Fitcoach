@@ -32,29 +32,39 @@
                         <div class="col-md-12">
                              <br/>
                             <div class="form-horizontal">
-                        <form action="{{ url('/actualizar-perfil') }}" method="post">
+                        @if ($user->detalles_instructor)
+                        <form action="{{ url('/actualizar-perfil-instructor') }}" method="post">
+                        @else
+                          <form action="{{ url('/llenar-perfil-instructor') }}" method="post">
+                        @endif
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">RFC</label>
+                            <div class="col-sm-9">
+                             <input class="form-control" type="text" value="{{ $user->detalles_instructor->rfc }}"  name="rfc">
+                            </div>
+                          </div>
                          <div class="form-group">
-                           <label class="col-sm-3 control-label" for="card-number">Fecha de naciemiento</label>
+                           <label class="col-sm-3 control-label">Fecha de naciemiento</label>
                            <div class="col-sm-9">
                              <div class="input-group">
-                             <input class="form-control datepicker" type="text" value="{{ $user->detalles->dob }}" name="dob" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                             <input class="form-control datepicker" type="text" value="{{ $user->detalles_instructor->dob }}" name="dob" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                            </div>
                            </div>
                          </div>
                          <div class="form-group">
-                           <label class="col-sm-3 control-label" for="card-number">Teléfono</label>
+                           <label class="col-sm-3 control-label">Teléfono</label>
                            <div class="col-sm-9">
-                            <input class="form-control" type="tel" value="{{ $user->detalles->tel }}" placeholder="5555555555" name="tel" required>
+                            <input class="form-control" type="tel" value="{{ $user->detalles_instructor->tel }}" placeholder="5555555555" name="tel" required>
                            </div>
                          </div>
-                         <div class="form-group">
-                           <label class="col-sm-3 control-label" for="card-number">Intereses</label>
-                           <div class="col-sm-9">
-                            <input class="form-control" type="text" value="{{ $user->detalles->intereses }}" placeholder="Yoga, spinning, zumba..." name="intereses">
-                           </div>
-                         </div>
+
                          {!! csrf_field() !!}
-                         <input type="hidden" value="{{ $user->detalles->id }}" name="detalles_id">
+                         @if ($user->detalles_instructor)
+                           <input type="hidden" value="{{ $user->detalles_instructor->id }}" name="detalles_id">
+                         @else
+                           <input type="hidden" value="{{ $user->id }}" name="user_id">
+                         @endif
+
                          <div class="form-group">
                            <div class="col-sm-12">
                              <input class="btn btnCheckout pull-right" type="submit" value="Guardar">

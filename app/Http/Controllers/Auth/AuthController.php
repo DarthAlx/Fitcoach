@@ -78,5 +78,10 @@ class AuthController extends Controller
       else {
         return url('/completar-registro');
       }
+
+      if ($usuario->detalles_instructor||$usuario->role=="instructor") {
+        return url('/perfilinstructor');
+      }
+
     }
 }

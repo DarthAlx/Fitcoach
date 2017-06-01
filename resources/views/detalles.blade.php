@@ -42,9 +42,9 @@
 										<legend>Ingresa tus detalles personales</legend>
 										<br/>
 										<div class="form-group">
-											<label class="col-sm-3 control-label" for="card-holder-name">Foto de perfil</label>
+											<label class="col-sm-3 control-label" for="card-holder-name">Foto de perfil (opcional)</label>
 											<div class="col-sm-9">
-												<input class="form-control" type="file" name="photo" required>
+												<input class="form-control" type="file" name="photo" >
 											</div>
 										</div>
 										<div class="form-group">
@@ -159,7 +159,6 @@
             <div class="col-md-12">
                 <div class="form-horizontal">
 									<form action="{{ url('/completar-registro') }}" method="post">
-
 												<legend>Guarda tus tarjetas, es completamente seguro, no guardamos tu código de seguridad.</legend>
 												<br/>
 												<div class="form-group">

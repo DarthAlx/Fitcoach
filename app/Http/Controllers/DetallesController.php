@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,8 +13,6 @@ use App\Detalles;
 use App\Direcciones;
 use App\Tarjetas;
 use App\User;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class DetallesController extends Controller
 {
@@ -60,6 +60,8 @@ class DetallesController extends Controller
       $detalles->tel = $request->tel;
       $detalles->intereses = $request->intereses;
       $detalles->save();
+      Session::flash('mensaje', 'Perfil actualizado!');
+      Session::flash('class', 'success');
       return redirect()->intended(url('/perfil'));
     }
 
@@ -68,10 +70,14 @@ class DetallesController extends Controller
         $user = User::find($request->user_id);
         $user->password=bcrypt($request->password);
         $user->save();
-        return redirect()->intended(url('/perfil'))->with('mensaje', 'Contraseña actualizada');
+        Session::flash('mensaje', 'Contraseña actualizada!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/perfil'));
       }
       else {
-        return redirect()->intended(url('/perfil'))->with('mensaje', 'Las contraseñas deben coincidir');
+        Session::flash('mensaje', 'Las contraseñas deben coincidir!');
+        Session::flash('class', 'danger');
+        return redirect()->intended(url('/perfil'));
       }
 
 
@@ -87,8 +93,9 @@ class DetallesController extends Controller
     {
       $bool=false;
       if ($request->dob) {
-        $file = $request->file('photo');
+
         if ($request->hasFile('photo')) {
+          $file = $request->file('photo');
           if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
 
 
@@ -109,7 +116,11 @@ class DetallesController extends Controller
 
         }
         else{
-          return view('detalles', ['tienedetalles'=>false,'tienedirecciones'=>false]);
+          $guardar = new Detalles($request->all());
+          $guardar->photo = 'dummy.png';
+
+          $guardar->save();
+          return view('detalles', ['tienedetalles'=>true,'tienedirecciones'=>false]);
         }
 
 
@@ -130,7 +141,9 @@ class DetallesController extends Controller
     public function addAddress(Request $request){
       $guardar = new Direcciones($request->all());
       $guardar->save();
-      return redirect()->intended(url('/perfil'));
+      Session::flash('mensaje', 'Dirección guardada!');
+      Session::flash('class', 'success');
+      return redirect()->intended(url('/direcciones'));
     }
 
     public function updatePhoto(Request $request){
@@ -146,16 +159,25 @@ class DetallesController extends Controller
 
             $file-> move($path, $name);
             $detalles = Detalles::find($request->id);
+            if ($detalles->photo !='dummy.png') {
+              File::delete($path . $detalles->photo);
+            }
             $detalles->photo = $name;
             $detalles->save();
+            Session::flash('mensaje', 'Foto de perfil actualizada!');
+            Session::flash('class', 'success');
             return redirect()->intended(url('/perfil'));
           }
           else{
+            Session::flash('mensaje', 'El archivo no es una imagen valida.');
+            Session::flash('class', 'danger');
             return redirect()->intended(url('/perfil'))->with('errors', 'El archivo no es una imagen valida.');
           }
 
         }
         else{
+          Session::flash('mensaje', 'El archivo no es una imagen valida.');
+          Session::flash('class', 'danger');
           return redirect()->intended(url('/perfil'))->with('errors', 'El archivo no es una imagen valida.');
         }
 
@@ -210,13 +232,47 @@ class DetallesController extends Controller
         $direccion->cp = $request->cp;
         $direccion->estado = $request->estado;
         $direccion->save();
-        return redirect()->intended(url('/perfil'));
+        Session::flash('mensaje', 'Dirección actualizada!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/direcciones'));
     }
     public function destroyAddress(Request $request, $id)
     {
         $direccion = Direcciones::find($id);
         $direccion->delete();
-        return redirect()->intended(url('/perfil'))->with('mensaje', 'Dirección eliminada correctamente');
+        Session::flash('mensaje', 'Dirección eliminada correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/direcciones'))->with('mensaje', 'Dirección eliminada correctamente');
+    }
+
+
+    public function addCard(Request $request){
+      $guardar = new Tarjetas($request->all());
+      $guardar->save();
+      Session::flash('mensaje', 'Tarjeta guardada!');
+      Session::flash('class', 'success');
+      return redirect()->intended(url('/tarjetas'));
+    }
+    public function updateCard(Request $request, $id)
+    {
+        $tarjeta = Tarjetas::find($id);
+        $tarjeta->identificador = $request->identificador;
+        $tarjeta->num = $request->num;
+        $tarjeta->mes = $request->mes;
+        $tarjeta->año = $request->año;
+        $tarjeta->nombre = $request->nombre;
+        $tarjeta->save();
+        Session::flash('mensaje', 'Tarjeta actualizada!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/tarjetas'));
+    }
+    public function destroyCard(Request $request, $id)
+    {
+        $tarjeta = Tarjetas::find($id);
+        $tarjeta->delete();
+        Session::flash('mensaje', 'Tarjeta eliminada correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/tarjetas'));
     }
 
     /**
