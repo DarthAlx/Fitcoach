@@ -280,6 +280,7 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'Detalles' => __DIR__ . '/../..' . '/database/migrations/2017_05_21_230537_Detalles.php',
+        'DetallesInstructor' => __DIR__ . '/../..' . '/database/migrations/2017_06_02_165451_Detalles_instructor.php',
         'DetallesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DetallesTableSeeder.php',
         'Direcciones' => __DIR__ . '/../..' . '/database/migrations/2017_05_24_234741_Direcciones.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',

@@ -63,9 +63,13 @@ Route::get('/perfil', function () {
   if (Auth::guest()){
     return redirect()->intended(url('/entrar'));
   }
-  else {
+  if (Auth::user()->role=="usuario"||Auth::user()->role=="superadmin") {
     $user = App\User::find(Auth::user()->id);
     return view('perfil', ['user'=>$user]) ;
+  }
+  if (Auth::user()->role=="instructor") {
+    $user = App\User::find(Auth::user()->id);
+    return view('instructor', ['user'=>$user]) ;
   }
 });
 
@@ -111,12 +115,6 @@ Route::any('eliminar-tarjeta/{id}', 'DetallesController@destroyCard');
 
 
 //InstructorController
-Route::get('/perfilinstructor', function () {
-  if (Auth::guest()){
-    return redirect()->intended(url('/entrar'));
-  }
-  else {
-    $user = App\User::find(Auth::user()->id);
-    return view('instructor', ['user'=>$user]) ;
-  }
-});
+Route::post('cambiar-foto-instructor', 'InstructorController@updatePhoto');
+Route::post('llenar-perfil-instructor', 'InstructorController@addDetalles');
+Route::post('actualizar-perfil-instructor', 'InstructorController@updateProfile');

@@ -1,7 +1,12 @@
 <div class="profile-sidebar">
   <!-- SIDEBAR USERPIC -->
   <div class="profile-userpic">
-    <img src="{{ url('uploads/avatars') }}/{{ $user->detalles->photo }}" class="img-responsive" alt="">
+    @if ($user->detalles_instructor)
+      <img src="{{ url('uploads/avatars') }}/{{ $user->detalles_instructor->photo }}" class="img-responsive" alt="">
+    @else
+      <img src="{{ url('uploads/avatars') }}/dummy.png" class="img-responsive" alt="">
+    @endif
+
   </div>
   <!-- END SIDEBAR USERPIC -->
   <!-- SIDEBAR USER TITLE -->
@@ -17,8 +22,12 @@
   <!-- SIDEBAR BUTTONS -->
   <div class="profile-userbuttons">
 
-    <form style="display:none;" action="{{ url('/cambiar-foto') }}" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="id" value="{{ $user->detalles->id }}">
+    <form style="display:none;" action="{{ url('/cambiar-foto-instructor') }}" method="post" enctype="multipart/form-data">
+      @if ($user->detalles_instructor)
+        <input type="hidden" name="id" value="{{ $user->detalles_instructor->id }}">
+      @else
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
+      @endif
       <input type="file" name="photo" id="cambiarfoto" onchange="javascript: document.getElementById('botoncambiarfoto').click();" required>
       {!! csrf_field() !!}
       <input type="submit" id="botoncambiarfoto">
@@ -30,32 +39,32 @@
     <div class="profile-usermenu">
       <ul class="nav">
         <li id="detallesmenu">
-          <a href="{{ url('/perfil') }}">
+          <a href="{{ url('/perfilinstructor') }}">
           <i class="fa fa-id-card-o" aria-hidden="true"></i></i>
           Detalles </a>
+        </li>
+        <li id="horariosmenu">
+          <a href="{{ url('/tarjetas') }}">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          Horarios </a>
         </li>
         <li id="clasesmenu">
           <a href="#">
           <i class="fa fa-calendar" aria-hidden="true"></i></i>
           Clases </a>
         </li>
-        <li id="direccionesmenu">
-          <a href="{{ url('/direcciones') }}">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
-          Direcciones </a>
+        <li id="vehiculosmenu">
+          <a href="{{ url('/vehiculos') }}">
+          <i class="fa fa-car" aria-hidden="true"></i>
+          Vehiculos </a>
         </li>
-        <li id="tarjetasmenu">
-          <a href="{{ url('/tarjetas') }}">
-          <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-          Tarjetas </a>
-        </li>
+
 
       </ul>
     </div>
 
   <!-- END MENU -->
 </div>
-
 <script type="text/javascript">
   $('#{{ $menu }}').addClass("active");
 </script>

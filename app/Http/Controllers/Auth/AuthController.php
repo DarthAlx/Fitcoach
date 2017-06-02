@@ -72,16 +72,18 @@ class AuthController extends Controller
     public function redirectPath()
     {
       $usuario = User::find(Auth::user()->id);
-      if ($usuario->detalles) {
+
+      if (Auth::user()->role=="instructor") {
+        return url('/perfil');
+      }
+      if ($usuario->detalles&&$usuario->role=="cliente") {
         return url('/perfil');
       }
       else {
         return url('/completar-registro');
       }
 
-      if ($usuario->detalles_instructor||$usuario->role=="instructor") {
-        return url('/perfilinstructor');
-      }
+
 
     }
 }

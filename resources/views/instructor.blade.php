@@ -1,7 +1,6 @@
 @extends('plantilla')
 @section('pagecontent')
 <div class="container-bootstrap">
-  @include('content_holders.notificaciones')
   <div class="topclear">
     &nbsp;
   </div>
@@ -11,7 +10,7 @@
         @include('content_holders.notificaciones')
       </div>
 		<div class="col-md-3">
-			@include('content_holders.sidebar')
+			@include('content_holders.sidebar2', ['menu'=>'detallesmenu'])
 		</div>
 		<div class="col-md-9">
             <div class="profile-content">
@@ -19,7 +18,7 @@
               <h2>Tu perfil</h2>
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingPerfil">
-                  <h4 class="panel-title" data-toggle="collapse" data-parent="#direcciones" href="#collapsePerfil" aria-expanded="false" aria-controls="collapsePerfil">
+                  <h4 class="panel-title" data-toggle="collapse" data-parent="#detalles" href="#collapsePerfil" aria-expanded="false" aria-controls="collapsePerfil">
                     <a role="button">
                       Editar detalles
                     </a>
@@ -34,9 +33,6 @@
                             <div class="form-horizontal">
                         @if ($user->detalles_instructor)
                         <form action="{{ url('/actualizar-perfil-instructor') }}" method="post">
-                        @else
-                          <form action="{{ url('/llenar-perfil-instructor') }}" method="post">
-                        @endif
                           <div class="form-group">
                             <label class="col-sm-3 control-label">RFC</label>
                             <div class="col-sm-9">
@@ -57,6 +53,30 @@
                             <input class="form-control" type="tel" value="{{ $user->detalles_instructor->tel }}" placeholder="5555555555" name="tel" required>
                            </div>
                          </div>
+                        @else
+                          <form action="{{ url('/llenar-perfil-instructor') }}" method="post">
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">RFC</label>
+                              <div class="col-sm-9">
+                               <input class="form-control" type="text" value="{{ old('rfc') }}"  name="rfc">
+                              </div>
+                            </div>
+                           <div class="form-group">
+                             <label class="col-sm-3 control-label">Fecha de naciemiento</label>
+                             <div class="col-sm-9">
+                               <div class="input-group">
+                               <input class="form-control datepicker" type="text" value="{{ old('dob') }}" name="dob" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                             </div>
+                             </div>
+                           </div>
+                           <div class="form-group">
+                             <label class="col-sm-3 control-label">Teléfono</label>
+                             <div class="col-sm-9">
+                              <input class="form-control" type="tel" value="{{ old('tel') }}" placeholder="5555555555" name="tel" required>
+                             </div>
+                           </div>
+                        @endif
+
 
                          {!! csrf_field() !!}
                          @if ($user->detalles_instructor)
@@ -123,18 +143,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-  function habilitar(valor){
-    document.getElementById('identificador'+valor).disabled=false;
-    document.getElementById('calle'+valor).disabled=false;
-    document.getElementById('numero_ext'+valor).disabled=false;
-    document.getElementById('numero_int'+valor).disabled=false;
-    document.getElementById('colonia'+valor).disabled=false;
-    document.getElementById('municipio_del'+valor).disabled=false;
-    document.getElementById('cp'+valor).disabled=false;
-    document.getElementById('estado'+valor).disabled=false;
-    document.getElementById('botonguardar'+valor).style.display="inline-block";
-    document.getElementById('botoneditar'+valor).style.display="none";
-  }
-</script>
 @endsection

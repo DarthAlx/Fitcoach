@@ -9,6 +9,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Detalles' => $baseDir . '/database/migrations/2017_05_21_230537_Detalles.php',
+    'DetallesInstructor' => $baseDir . '/database/migrations/2017_06_02_165451_Detalles_instructor.php',
     'DetallesTableSeeder' => $baseDir . '/database/seeds/DetallesTableSeeder.php',
     'Direcciones' => $baseDir . '/database/migrations/2017_05_24_234741_Direcciones.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

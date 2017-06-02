@@ -11,7 +11,7 @@
         @include('content_holders.notificaciones')
       </div>
 		<div class="col-md-3">
-			@include('content_holders.sidebar')
+			@include('content_holders.sidebar', ['menu'=>'detallesmenu'])
 		</div>
 		<div class="col-md-9">
             <div class="profile-content">
