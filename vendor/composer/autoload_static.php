@@ -277,6 +277,8 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
     );
 
     public static $classMap = array (
+        'Clases' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_163305_Clases.php',
+        'ClasesSeeder' => __DIR__ . '/../..' . '/database/seeds/ClasesSeeder.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'Detalles' => __DIR__ . '/../..' . '/database/migrations/2017_05_21_230537_Detalles.php',
@@ -354,6 +356,7 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Horarios' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_163315_Horarios.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
@@ -799,6 +802,7 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'User' => __DIR__ . '/../..' . '/database/migrations/2017_05_16_195648_User.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
+        'Vehiculos' => __DIR__ . '/../..' . '/database/migrations/2017_06_05_181057_Vehiculos.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

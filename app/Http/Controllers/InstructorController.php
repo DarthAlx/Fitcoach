@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Detalles_instructor;
-use App\Direcciones;
+use App\Vehiculo;
 use App\Tarjetas;
 use App\User;
 
@@ -159,5 +159,35 @@ class InstructorController extends Controller
 
 
 
+    }
+
+    public function addVehiculo(Request $request){
+      $guardar = new Vehiculo($request->all());
+      $guardar->save();
+      Session::flash('mensaje', 'Vehiculo guardado!');
+      Session::flash('class', 'success');
+      return redirect()->intended(url('/vehiculos'));
+    }
+    public function updateVehiculo(Request $request, $id)
+    {
+        $vehiculo = Vehiculo::find($id);
+        $vehiculo->identificador = $request->identificador;
+        $vehiculo->tipo = $request->tipo;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->color = $request->color;
+        $vehiculo->placa = $request->placa;
+        $vehiculo->save();
+        Session::flash('mensaje', 'Vehiculo actualizado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/vehiculos'));
+    }
+
+    public function destroyVehiculo(Request $request, $id)
+    {
+        $vehiculo = Vehiculo::find($id);
+        $vehiculo->delete();
+        Session::flash('mensaje', 'Vehiculo eliminado correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/vehiculos'));
     }
 }

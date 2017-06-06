@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Clases' => $baseDir . '/database/migrations/2017_06_06_163305_Clases.php',
+    'ClasesSeeder' => $baseDir . '/database/seeds/ClasesSeeder.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Detalles' => $baseDir . '/database/migrations/2017_05_21_230537_Detalles.php',
@@ -83,6 +85,7 @@ return array(
     'Hamcrest\\Type\\IsString' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+    'Horarios' => $baseDir . '/database/migrations/2017_06_06_163315_Horarios.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
@@ -528,4 +531,5 @@ return array(
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'User' => $baseDir . '/database/migrations/2017_05_16_195648_User.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
+    'Vehiculos' => $baseDir . '/database/migrations/2017_06_05_181057_Vehiculos.php',
 );

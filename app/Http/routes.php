@@ -118,3 +118,18 @@ Route::any('eliminar-tarjeta/{id}', 'DetallesController@destroyCard');
 Route::post('cambiar-foto-instructor', 'InstructorController@updatePhoto');
 Route::post('llenar-perfil-instructor', 'InstructorController@addDetalles');
 Route::post('actualizar-perfil-instructor', 'InstructorController@updateProfile');
+
+Route::get('/vehiculos', function () {
+
+  if (Auth::user()->role=="instructor"){
+    $user = App\User::find(Auth::user()->id);
+    return view('vehiculos', ['user'=>$user]) ;
+  }
+  else {
+    return redirect()->intended(url('/entrar'));
+  }
+});
+
+Route::post('agregar-vehiculo', 'InstructorController@addVehiculo');
+Route::any('actualizar-vehiculo/{id}', 'InstructorController@updateVehiculo');
+Route::any('eliminar-vehiculo/{id}', 'InstructorController@destroyVehiculo');

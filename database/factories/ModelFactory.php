@@ -31,3 +31,13 @@ $factory->define(App\Detalles::class, function (Faker\Generator $faker) {
         'user_id' => $faker->randomElement(['1', '3', '5', '7', '9'])
     ];
 });
+
+$factory->define(App\Clases::class, function (Faker\Generator $faker) {
+    return [
+      'nombre'=>$faker->name,
+      'tipo'=>$faker->name,
+      'descripcion'=>$faker->name,
+      'imagen' =>$faker->name,
+      'precio' =>$faker->name
+    ];
+});

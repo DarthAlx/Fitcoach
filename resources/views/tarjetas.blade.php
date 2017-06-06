@@ -1,5 +1,6 @@
 @extends('plantilla')
 @section('pagecontent')
+  @include('content_holders.auth', ['role'=>'usuario'])
 <div class="container-bootstrap">
   @include('content_holders.notificaciones')
   <div class="topclear">
@@ -102,13 +103,13 @@
                													<div class="col-sm-12 text-right">
                														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $tarjeta->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $tarjeta->id }}" onclick="habilitar({{ $tarjeta->id }})">Editar</a> &nbsp;
 
-                                          <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar').click();">Borrar</a>
+                                          <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $tarjeta->id }}').click();">Borrar</a>
                													</div>
                												</div>
                									</form>
                                 <form style="display: none;" action="{{ url('/eliminar-tarjeta') }}/{{ $tarjeta->id }}" method="post">
                                   {!! csrf_field() !!}
-                                  <input type="submit" id="botoneliminar">
+                                  <input type="submit" id="botoneliminar{{ $tarjeta->id }}">
                                 </form>
 
                               </div>
