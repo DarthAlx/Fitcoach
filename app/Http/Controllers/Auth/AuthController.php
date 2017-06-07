@@ -72,7 +72,9 @@ class AuthController extends Controller
     public function redirectPath()
     {
       $usuario = User::find(Auth::user()->id);
-
+      if (Auth::user()->role=="superadmin") {
+        return url('/admin');
+      }
       if (Auth::user()->role=="instructor") {
         return url('/perfil');
       }
@@ -82,8 +84,5 @@ class AuthController extends Controller
       else {
         return url('/completar-registro');
       }
-
-
-
     }
 }

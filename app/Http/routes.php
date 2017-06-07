@@ -147,3 +147,18 @@ Route::get('/horarios', function () {
 Route::post('agregar-horario', 'InstructorController@addHorario');
 Route::any('actualizar-horario/{id}', 'InstructorController@updateHorario');
 Route::any('eliminar-horario/{id}', 'InstructorController@destroyHorario');
+
+
+//Admin controller
+Route::get('/clases', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $clases = App\Clases::all();
+    return view('clases', ['clases'=>$clases]) ;
+  }
+});
+Route::post('agregar-clase', 'AdminController@addClase');
+Route::any('actualizar-clase/{id}', 'AdminController@updateClase');
+Route::any('eliminar-clase/{id}', 'AdminController@destroyClase');
