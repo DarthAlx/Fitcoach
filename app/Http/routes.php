@@ -133,3 +133,17 @@ Route::get('/vehiculos', function () {
 Route::post('agregar-vehiculo', 'InstructorController@addVehiculo');
 Route::any('actualizar-vehiculo/{id}', 'InstructorController@updateVehiculo');
 Route::any('eliminar-vehiculo/{id}', 'InstructorController@destroyVehiculo');
+
+Route::get('/horarios', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $user = App\User::find(Auth::user()->id);
+    $clases = App\Clases::all();
+    return view('horarios', ['user'=>$user,'clases'=>$clases]) ;
+  }
+});
+Route::post('agregar-horario', 'InstructorController@addHorario');
+Route::any('actualizar-horario/{id}', 'InstructorController@updateHorario');
+Route::any('eliminar-horario/{id}', 'InstructorController@destroyHorario');

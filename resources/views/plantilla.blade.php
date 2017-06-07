@@ -29,8 +29,11 @@
     <link rel="stylesheet" href="{{asset('js/datepicker/css/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" href="{{asset('js/datepicker/css/bootstrap-datepicker.standalone.css')}}">
     <script src="{{asset('js/datepicker/js/bootstrap-datepicker.js')}}"></script>
+		<link rel="stylesheet/less" type="text/css" href="{{asset('css/timepicker/timepicker.less')}}" />
     <!-- Languaje -->
     <script src="{{asset('js/datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+
+		<script type="text/javascript" src="{{asset('js/timepicker/bootstrap-timepicker.js')}}"></script>
 
 
 

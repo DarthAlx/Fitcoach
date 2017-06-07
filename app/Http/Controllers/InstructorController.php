@@ -13,7 +13,7 @@ use App\Detalles_instructor;
 use App\Vehiculo;
 use App\Tarjetas;
 use App\User;
-
+use App\Horarios;
 class InstructorController extends Controller
 {
     /**
@@ -189,5 +189,34 @@ class InstructorController extends Controller
         Session::flash('mensaje', 'Vehiculo eliminado correctamente!');
         Session::flash('class', 'success');
         return redirect()->intended(url('/vehiculos'));
+    }
+
+
+    public function addHorario(Request $request){
+      $guardar = new Horarios($request->all());
+      $guardar->save();
+      Session::flash('mensaje', 'Horario guardado!');
+      Session::flash('class', 'success');
+      return redirect()->intended(url('/horarios'));
+    }
+    public function updateHorario(Request $request, $id)
+    {
+        $horario = Horarios::find($id);
+        $horario->clases_id = $request->clases_id;
+        $horario->fecha = $request->fecha;
+        $horario->hora = $request->hora;
+        $horario->save();
+        Session::flash('mensaje', 'Horario actualizado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/horarios'));
+    }
+
+    public function destroyHorario(Request $request, $id)
+    {
+        $horario = Horarios::find($id);
+        $horario->delete();
+        Session::flash('mensaje', 'Horario eliminado correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/horarios'));
     }
 }

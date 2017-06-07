@@ -44,7 +44,7 @@
           Detalles </a>
         </li>
         <li id="horariosmenu">
-          <a href="{{ url('/tarjetas') }}">
+          <a href="{{ url('/horarios') }}">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
           Horarios </a>
         </li>
