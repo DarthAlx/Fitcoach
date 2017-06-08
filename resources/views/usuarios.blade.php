@@ -1,0 +1,219 @@
+@extends('plantilla')
+@section('pagecontent')
+  @include('content_holders.auth', ['role'=>'superadmin'])
+<div class="container-bootstrap">
+  @include('content_holders.notificaciones')
+  <div class="topclear">
+    &nbsp;
+  </div>
+
+    <div class="row profile">
+      <div class="col-sm-12">
+        @include('content_holders.notificaciones')
+      </div>
+		<div class="col-md-3">
+			@include('content_holders.sidebar3', ['menu'=>'usuariosmenu'])
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+              <!-- usuarios -->
+              <h2>Usuarios</h2>
+              @if (!$usuarios->isEmpty())
+                   <div class="panel-group" id="usuarios" role="tablist" aria-multiselectable="true">
+                     <form role="form" action="{{ url('/buscar-usuario') }}" method="post">
+                       <div class="row">
+                         <div class="col-sm-6 col-sm-offset-6">
+                           {!! csrf_field() !!}
+                         <div class="input-group">
+                            <input type="text" class="form-control" name="buscar" placeholder="Palabras clave...">
+                            <span class="input-group-btn">
+                              <button class="btn btn-default" type="submit">Buscar</button>
+                            </span>
+                          </div>
+                          </div>
+                       </div>
+
+                     </form>
+                     <p>&nbsp;</p>
+                     @foreach ($usuarios as $usuario)
+                       <div class="panel panel-default">
+                         <div class="panel-heading" role="tab" id="heading{{ $usuario->id }}">
+                           <h4 class="panel-title" data-toggle="collapse" data-parent="#usuarios" href="#collapse{{ $usuario->id }}" aria-expanded="false" aria-controls="collapse{{ $usuario->id }}">
+                             <a role="button">
+                                   {{ Ucfirst($usuario->id) }} - {{ Ucfirst($usuario->name) }} - {{ $usuario->email }}
+                             </a>
+                           </h4>
+                         </div>
+                         <div id="collapse{{ $usuario->id }}" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading{{ $usuario->id }}">
+                           <div class="panel-body">
+                             <div class="usuario">
+                               <div class="editar">
+                                 <div class="col-md-12">
+
+                                    <form id="signupform" class="form-horizontal" role="form" action="{{ url('/actualizar-usuario') }}/{{ $usuario->id }}" method="post">
+                                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                      <div class="form-group">
+                                          <label for="name" class="col-sm-3 control-label">Nombre</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="name" value="{{ $usuario->name }}" id="name{{ $usuario->id }}" disabled placeholder="Nombre" required>
+                                          </div>
+                                      </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-sm-3 control-label">Correo electrónico</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" name="email" value="{{ $usuario->email }}" id="email{{ $usuario->id }}" disabled placeholder="tu@email.com" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                 													<label class="col-sm-3 control-label">Rol</label>
+                 													<div class="col-sm-9">
+                 														<select class="form-control" disabled name="role" id="role{{ $usuario->id }}" required>
+                 															<option value="">Selecciona una opción</option>
+                 															<option value="usuario">Usuario</option>
+                 															<option value="instructor">Instructor</option>
+                                              <option value="admin">Admin</option>
+                 															<option value="superadmin">Superadmin</option>
+                 														</select>
+                                            <script type="text/javascript">
+                                              if (document.getElementById('role{{ $usuario->id }}') != null) document.getElementById('role{{ $usuario->id }}').value = '{!! $usuario->role !!}';
+                                            </script>
+                 													</div>
+                 												</div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="col-sm-3 control-label">Contraseña</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" name="password" id="password{{ $usuario->id }}" disabled placeholder="Contraseña">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="col-sm-3 control-label">Repetir contraseña</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation{{ $usuario->id }}" disabled placeholder="Repetir contraseña" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                 													<div class="col-sm-12 text-right">
+                 														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $usuario->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $usuario->id }}" onclick="habilitar({{ $usuario->id }})">Editar</a> &nbsp;
+
+                                            <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $usuario->id }}').click();">Borrar</a>
+                 													</div>
+                 												</div>
+
+
+
+                                    </form>
+                                    <form style="display: none;" action="{{ url('/eliminar-usuario') }}/{{ $usuario->id }}" method="post">
+                                      {!! csrf_field() !!}
+                                      <input type="submit" id="botoneliminar{{ $usuario->id }}">
+                                    </form>
+
+                          </div>
+                               </div>
+
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                     @endforeach
+                     <div class="text-left">
+                       {!! $usuarios->render() !!}
+                     </div>
+
+                   </div>
+
+           @else
+             <p>No hay usuarios</p>
+           @endif
+           <div class="panel panel-default">
+             <div class="panel-heading" role="tab" id="headingNuevo">
+               <h4 class="panel-title" data-toggle="collapse" data-parent="#usuarios" href="#collapseNuevo" aria-expanded="false" aria-controls="collapseNuevo">
+                 <a role="button">
+                   Agregar usuario
+                 </a>
+               </h4>
+             </div>
+             <div id="collapseNuevo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNuevo">
+               <div class="panel-body">
+                 <div class="usuario">
+                   <div class="editar">
+                     <div class="col-md-12">
+                          <br/>
+                         <div class="form-horizontal">
+                     <form action="{{ url('/agregar-usuario') }}" method="post"  enctype="multipart/form-data">
+
+                       <div class="form-group">
+                           <label for="name" class="col-sm-3 control-label">Nombre</label>
+                           <div class="col-sm-9">
+                               <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre" required>
+                           </div>
+                       </div>
+                         <div class="form-group">
+                             <label for="email" class="col-sm-3 control-label">Correo electrónico</label>
+                             <div class="col-sm-9">
+                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="tu@email.com" required>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                           <label class="col-sm-3 control-label">Rol</label>
+                           <div class="col-sm-9">
+                             <select class="form-control" name="role" id="roleNuevo" required>
+                               <option value="">Selecciona una opción</option>
+                               <option value="usuario">Usuario</option>
+                               <option value="instructor">Instructor</option>
+                               <option value="admin">Admin</option>
+                               <option value="superadmin">Superadmin</option>
+                             </select>
+                           </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label for="password" class="col-sm-3 control-label">Contraseña</label>
+                             <div class="col-sm-9">
+                                 <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label for="password" class="col-sm-3 control-label">Repetir contraseña</label>
+                             <div class="col-sm-9">
+                                 <input type="password" class="form-control" name="password_confirmation" placeholder="Repetir contraseña" required>
+                             </div>
+                         </div>
+                          {!! csrf_field() !!}
+                          <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                              <input class="btn btn-success" type="submit" value="Guardar" id="botonguardarNuevo">
+                            </div>
+                          </div>
+                    </form>
+                  </div>
+              </div>
+                   </div>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!--termina usuarios -->
+
+
+            </div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  function habilitar(valor){
+    document.getElementById('name'+valor).disabled=false;
+    document.getElementById('email'+valor).disabled=false;
+    document.getElementById('role'+valor).disabled=false;
+    document.getElementById('password'+valor).disabled=false;
+    document.getElementById('password_confirmation'+valor).disabled=false;
+    document.getElementById('botonguardar'+valor).style.display="inline-block";
+    document.getElementById('botoneditar'+valor).style.display="none";
+  }
+</script>
+
+@endsection

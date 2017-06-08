@@ -162,3 +162,21 @@ Route::get('/clases', function () {
 Route::post('agregar-clase', 'AdminController@addClase');
 Route::any('actualizar-clase/{id}', 'AdminController@updateClase');
 Route::any('eliminar-clase/{id}', 'AdminController@destroyClase');
+
+
+//Admin controller
+Route::get('/usuarios', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $usuarios = App\User::paginate(10);
+    return view('usuarios', ['usuarios'=>$usuarios]) ;
+  }
+});
+
+Route::post('agregar-usuario', 'AdminController@addUser');
+Route::any('actualizar-usuario/{id}', 'AdminController@updateUser');
+Route::any('eliminar-usuario/{id}', 'AdminController@destroyUser');
+
+Route::any('buscar-usuario', 'AdminController@buscar');

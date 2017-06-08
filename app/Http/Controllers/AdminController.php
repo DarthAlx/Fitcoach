@@ -14,6 +14,7 @@ use App\Vehiculo;
 use App\Tarjetas;
 use App\User;
 use App\Clases;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -190,5 +191,77 @@ class AdminController extends Controller
         Session::flash('mensaje', 'Clase eliminada correctamente!');
         Session::flash('class', 'success');
         return redirect()->intended(url('/clases'));
+    }
+
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
+    }
+    protected function validatorUpdate(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'password' => 'confirmed|min:6'
+        ]);
+    }
+    public function addUser(Request $request){
+
+
+      $validator = $this->validator($request->all());
+
+      if ($validator->fails()) {
+          $this->throwValidationException(
+              $request, $validator
+          );
+      }
+      else {
+        $guardar = new User($request->all());
+        $guardar->save();
+        Session::flash('mensaje', 'Usuario guardado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/usuarios'));
+      }
+    }
+    public function updateUser(Request $request, $id)
+    {
+      $validator = $this->validatorUpdate($request->all());
+
+      if ($validator->fails()) {
+          $this->throwValidationException(
+              $request, $validator
+          );
+      }
+      else {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->password = bcrypt($request->password);
+
+        $user->save();
+        Session::flash('mensaje', 'Usuario actualizado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/usuarios'));
+      }
+
+    }
+
+    public function destroyUser(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        Session::flash('mensaje', 'Usuario eliminado correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/usuarios'));
+    }
+
+    public function buscar(Request $request){
+      $usuarios = User::where('name', 'like', '%' . $request->buscar . '%')->orWhere('email', 'like', '%' . $request->buscar . '%')->orWhere('role', 'like', '%' . $request->buscar . '%')->paginate(10);
+      return view('usuarios', ['usuarios'=>$usuarios]) ;
     }
 }
