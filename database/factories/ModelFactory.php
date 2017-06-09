@@ -41,3 +41,11 @@ $factory->define(App\Clases::class, function (Faker\Generator $faker) {
       'precio' =>$faker->name
     ];
 });
+
+$factory->define(App\Slide::class, function (Faker\Generator $faker) {
+    return [
+      'description'=>$faker->name,
+      'image'=>$faker->name,
+      'order'=>$faker->name
+    ];
+});

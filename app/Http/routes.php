@@ -14,8 +14,8 @@
 Route::get('/', function () {
 
 $usuario = App\User::find(1);
-
-    return view('inicio', ['usuario'=>$usuario]) ;
+$sliders = App\Slide::all();
+    return view('inicio', ['sliders'=>$sliders]) ;
 });
 Route::get('/nosotros', function () {
     return view('nosotros');

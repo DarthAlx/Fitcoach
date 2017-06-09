@@ -797,6 +797,8 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
+        'Slider' => __DIR__ . '/../..' . '/database/migrations/2017_06_09_193449_Slider.php',
+        'SliderSeeder' => __DIR__ . '/../..' . '/database/seeds/SliderSeeder.php',
         'Tarjetas' => __DIR__ . '/../..' . '/database/migrations/2017_05_25_000936_Tarjetas.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',

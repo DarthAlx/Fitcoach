@@ -526,6 +526,8 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
+    'Slider' => $baseDir . '/database/migrations/2017_06_09_193449_Slider.php',
+    'SliderSeeder' => $baseDir . '/database/seeds/SliderSeeder.php',
     'Tarjetas' => $baseDir . '/database/migrations/2017_05_25_000936_Tarjetas.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
