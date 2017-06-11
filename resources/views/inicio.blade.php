@@ -4,14 +4,13 @@
 		<div class="homeBxSliderWrap">
 			<div class="homeBxSlider">
 				@foreach ($sliders as $slider)
-					<div class="slide{{ $slider->id	}}" data-slide="{{ $slider->id-1	}}" style="background-image: url(./images/content/{{ $slider->image	}});">
+					<div class="slide" data-slide="{{ $slider->id-1	}}" style="background-image: url({{ url('images/content/')}}/{{ $slider->image	}});">
 
 							<div class="slideDesc">
-						 		{{ $slider->description}}
+						 		{!! $slider->description !!}
 					 		</div>
 					</div>
 				@endforeach
-
 
 
 				</div>

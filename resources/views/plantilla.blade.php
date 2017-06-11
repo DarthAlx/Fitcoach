@@ -35,6 +35,7 @@
 
 		<script type="text/javascript" src="{{asset('js/timepicker/bootstrap-timepicker.js')}}"></script>
 
+		<script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
 
 
 

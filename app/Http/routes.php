@@ -14,7 +14,7 @@
 Route::get('/', function () {
 
 $usuario = App\User::find(1);
-$sliders = App\Slide::all();
+$sliders = App\Slide::orderBy('order', 'asc')->get();
     return view('inicio', ['sliders'=>$sliders]) ;
 });
 Route::get('/nosotros', function () {
@@ -180,3 +180,19 @@ Route::any('actualizar-usuario/{id}', 'AdminController@updateUser');
 Route::any('eliminar-usuario/{id}', 'AdminController@destroyUser');
 
 Route::any('buscar-usuario', 'AdminController@buscar');
+
+
+
+Route::get('/slides', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $slides = App\Slide::orderBy('order', 'asc')->get();
+    return view('slides', ['slides'=>$slides]) ;
+  }
+});
+
+Route::post('agregar-slide', 'AdminController@addSlide');
+Route::any('actualizar-slide/{id}', 'AdminController@updateSlide');
+Route::any('eliminar-slide/{id}', 'AdminController@destroySlide');

@@ -148,10 +148,9 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 .bx-wrapper .bx-pager {bottom: 33px;}
 .bx-wrapper .bx-pager.bx-default-pager a {width: 10px;height: 10px;margin: 0 5px; border: 1px solid rgba(0,0,0,0);background: rgba(0,0,0,0);-webkit-transition: all 0.3s ease;-moz-transition: all 0.3s ease;-o-transition: all 0.3s ease;transition: all 0.3s ease;background-clip: padding-box; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing: border-box;}
 .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:hover {background: rgba(0,0,0,0);border-color: rgba(0,0,0,0);}
-.bx-wrapper .bx-controls-direction a {/*width: 18px;height: 42px;margin-top: -21px; background-color: #D58628*/}
+
 .bx-wrapper .bx-controls-direction a:hover {opacity: 1;}
-.bx-wrapper .bx-controls-direction a.bx-prev {left: 40px; background-position: 0 0;}
-.bx-wrapper .bx-controls-direction a.bx-next {right: 40px;/* background-position: -20px 0; color: #D58628; */border-color: #D58628;}
+
 
 /* Home grid */
 .mainItem {position: relative;}

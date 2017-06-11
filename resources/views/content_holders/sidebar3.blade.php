@@ -23,6 +23,11 @@
           <i class="fa fa-users" aria-hidden="true"></i>
           Usuarios </a>
         </li>
+        <li id="slidesmenu">
+          <a href="{{ url('/slides') }}">
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+          Slides </a>
+        </li>
       </ul>
     </div>
 

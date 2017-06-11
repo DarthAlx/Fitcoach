@@ -14,6 +14,7 @@ use App\Vehiculo;
 use App\Tarjetas;
 use App\User;
 use App\Clases;
+use App\Slide;
 use Validator;
 
 class AdminController extends Controller
@@ -263,5 +264,99 @@ class AdminController extends Controller
     public function buscar(Request $request){
       $usuarios = User::where('name', 'like', '%' . $request->buscar . '%')->orWhere('email', 'like', '%' . $request->buscar . '%')->orWhere('role', 'like', '%' . $request->buscar . '%')->paginate(10);
       return view('usuarios', ['usuarios'=>$usuarios]) ;
+    }
+
+
+
+
+    public function addSlide(Request $request){
+
+
+      if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+
+
+          $name = "Slide" . $request->order . "." . $file->getClientOriginalExtension();
+          $path = base_path('images/content/');
+
+          $file-> move($path, $name);
+
+          $guardar = new Slide($request->all());
+          $guardar->image = $name;
+
+          $guardar->save();
+          Session::flash('mensaje', 'Slide guardado correctamente!');
+          Session::flash('class', 'success');
+          return redirect()->intended(url('/slides'));
+        }
+        else{
+          Session::flash('mensaje', 'El archivo no es una imagen valida.');
+          Session::flash('class', 'danger');
+          return redirect()->intended(url('/slides'));
+        }
+
+      }
+      else{
+        Session::flash('mensaje', 'El archivo no es una imagen valida.');
+        Session::flash('class', 'danger');
+        return redirect()->intended(url('/slides'));
+      }
+    }
+    public function updateSlide(Request $request, $id)
+    {
+
+
+      if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+          $name = "Slide" . $request->order . "." . $file->getClientOriginalExtension();
+          $path = base_path('images/content/');
+          $file-> move($path, $name);
+          $slide = Slide::find($id);
+          File::delete($path . $slide->image);
+          $slide->image = $name;
+          $slide->description = $request->description;
+          $slide->order = $request->order;
+          $slide->save();
+
+
+          Session::flash('mensaje', 'Slide actualizado!');
+          Session::flash('class', 'success');
+          return redirect()->intended(url('/slides'));
+        }
+        else{
+          Session::flash('mensaje', 'El archivo no es una imagen valida.');
+          Session::flash('class', 'danger');
+          return redirect()->intended(url('/slides'));
+        }
+
+      }
+      else{
+        $slide = Slide::find($id);
+        $slide->description = $request->description;
+        $slide->order = $request->order;
+        $slide->save();
+        Session::flash('mensaje', 'Slide actualizado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/slides'));
+      }
+
+
+
+
+
+
+
+
+    }
+
+    public function destroySlide(Request $request, $id)
+    {
+        $slide =Slide::find($id);
+        $slide->delete();
+        Session::flash('mensaje', 'Slide eliminado correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/slides'));
     }
 }
