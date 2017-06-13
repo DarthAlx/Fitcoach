@@ -170,8 +170,26 @@ Route::get('/usuarios', function () {
     return redirect()->intended(url('/entrar'));
   }
   else {
-    $usuarios = App\User::paginate(10);
-    return view('usuarios', ['usuarios'=>$usuarios]) ;
+    $usuarios = App\User::where('role', 'usuario')->paginate(10);
+    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'usuariosmenu']) ;
+  }
+});
+Route::get('/instructores', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $usuarios = App\User::where('role', 'instructor')->paginate(10);
+    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'instructoresmenu']) ;
+  }
+});
+Route::get('/administradores', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $usuarios = App\User::where('role', 'superadmin')->orWhere('role', 'admin')->paginate(10);
+    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'administradoresmenu']) ;
   }
 });
 

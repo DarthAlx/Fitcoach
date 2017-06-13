@@ -23,6 +23,16 @@
           <i class="fa fa-users" aria-hidden="true"></i>
           Usuarios </a>
         </li>
+        <li id="instructoresmenu">
+          <a href="{{ url('/instructores') }}">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          Instructores </a>
+        </li>
+        <li id="administradoresmenu">
+          <a href="{{ url('/administradores') }}">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          Administradores </a>
+        </li>
         <li id="slidesmenu">
           <a href="{{ url('/slides') }}">
           <i class="fa fa-picture-o" aria-hidden="true"></i>
@@ -34,5 +44,6 @@
   <!-- END MENU -->
 </div>
 <script type="text/javascript">
+
   $('#{{ $menu }}').addClass("active");
 </script>

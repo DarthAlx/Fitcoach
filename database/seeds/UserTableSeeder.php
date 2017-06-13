@@ -23,10 +23,18 @@ class UserTableSeeder extends Seeder
 
         factory(App\User::class)->create(
           [
-            'name'=>'Alexis 2',
-            'email'=>'alexis@outlook.com',
+            'name'=>'Nombre del instructor',
+            'email'=>'coach@fitcoach.mx',
             'password'=>bcrypt('admin123'),
             'role' =>'instructor'
+          ]
+        );
+        factory(App\User::class)->create(
+          [
+            'name'=>'Admin',
+            'email'=>'admin@fitcoach.mx',
+            'password'=>bcrypt('admin123'),
+            'role' =>'superadmin'
           ]
         );
 
