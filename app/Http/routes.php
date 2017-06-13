@@ -63,6 +63,10 @@ Route::get('/perfil', function () {
   if (Auth::guest()){
     return redirect()->intended(url('/entrar'));
   }
+  if (Auth::user()->role=="admin"||Auth::user()->role=="superadmin") {
+    $user = App\User::find(Auth::user()->id);
+    return redirect()->intended(url('/clases'));
+  }
   if (Auth::user()->role=="usuario"||Auth::user()->role=="superadmin") {
     $user = App\User::find(Auth::user()->id);
     return view('perfil', ['user'=>$user]) ;
