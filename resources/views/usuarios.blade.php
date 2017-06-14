@@ -112,6 +112,50 @@
                                </div>
 
                              </div>
+                             @if ($usuario->role=="usuario")
+                               @if ($usuario->detalles)
+                                 <a  role="button" data-toggle="collapse" href="#detalles{{ $usuario->id }}" aria-expanded="false" aria-controls="detalles{{ $usuario->id }}">
+                                   Detalles <span class="caret"></span>
+                                 </a>
+                                 <div class="collapse" id="detalles{{ $usuario->id }}">
+                                   <?php
+                                   $tz  = new DateTimeZone('America/Mexico_City');
+                                  $age = DateTime::createFromFormat('d-m-Y', $usuario->detalles->dob, $tz)->diff(new DateTime('now', $tz))->y;
+                                  ?>
+                                  <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                      <tr>
+                                        <th>Edad</th>
+                                        <th>Teléfono</th>
+                                        <th>Intereses</th>
+                                      </tr>
+                                      <tr>
+                                        <td>{{ $age }}</td>
+                                        <td>{{ $usuario->detalles->tel }}</td>
+                                        <td>{{ $usuario->detalles->intereses }}</td>
+                                      </tr>
+
+                                    </table>
+                                  </div>
+                                  @if (!$usuario->direcciones->isEmpty())
+                                    <ul class="list-group">
+                                      @foreach ($usuario->direcciones as $direccion)
+                                        <li class="list-group-item">
+                                          <strong>{{ $direccion->calle }}</strong><br>
+                                          {{ $direccion->calle }} {{ $direccion->numero_ext }} {{ $direccion->numero_int }}<br>
+                                          {{ $direccion->colonia }},  {{ $direccion->municipio_del }}<br>
+                                           {{ $direccion->cp }},  {{ $direccion->estado }}, Méx.
+                                        </li>
+                                      @endforeach
+                                    </ul>
+
+                                  @endif
+                             @endif
+
+                               </div>
+                             @endif
+
+
                            </div>
                          </div>
                        </div>

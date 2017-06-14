@@ -263,7 +263,7 @@ class AdminController extends Controller
 
     public function buscar(Request $request){
       $usuarios = User::where('name', 'like', '%' . $request->buscar . '%')->orWhere('email', 'like', '%' . $request->buscar . '%')->orWhere('role', 'like', '%' . $request->buscar . '%')->paginate(10);
-      return view('usuarios', ['usuarios'=>$usuarios]) ;
+      return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'buscarmenu']) ;
     }
 
 
