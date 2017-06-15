@@ -169,7 +169,7 @@
                        <div class="form-group">
                          <label class="col-sm-3 control-label">Precio especial</label>
                          <div class="col-sm-9">
-                           <input id="precio_especialNuevo" class="form-control" type="text" value="{{ old('precio_especial') }}" name="precio_especial" required>
+                           <input id="precio_especialNuevo" class="form-control" type="text" value="{{ old('precio_especial') }}" name="precio_especial">
                          </div>
                        </div>
                           {!! csrf_field() !!}

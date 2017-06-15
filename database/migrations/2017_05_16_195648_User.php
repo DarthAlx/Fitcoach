@@ -18,6 +18,7 @@ class User extends Migration
           $table->string('email')->unique();
           $table->string('password', 60);
           $table->enum('role',['usuario', 'instructor', 'admin', 'superadmin'])->default('usuario');
+          $table->string('clases')->default(null);
           $table->rememberToken();
           $table->timestamps();
       });

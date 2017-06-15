@@ -67,7 +67,7 @@
                                         <div class="form-group">
                  													<label class="col-sm-3 control-label">Rol</label>
                  													<div class="col-sm-9">
-                 														<select class="form-control" disabled name="role" id="role{{ $usuario->id }}" required>
+                 														<select class="form-control rol{{ $usuario->id }}" disabled name="role" id="role{{ $usuario->id }}" required>
                  															<option value="">Selecciona una opción</option>
                  															<option value="usuario">Usuario</option>
                  															<option value="instructor">Instructor</option>
@@ -79,6 +79,60 @@
                                             </script>
                  													</div>
                  												</div>
+                                        <script type="text/javascript">
+                                           $(function() {
+                                               $('.rol{{ $usuario->id }}').on('change', function() {
+                                                   var valor = $('.rol{{ $usuario->id }}').val();
+                                                   if (valor=="instructor") {
+                                                     $('.permitidascont{{ $usuario->id }}').show();
+
+                                                   }
+                                                   else {
+                                                     $('.permitidascont{{ $usuario->id }}').hide();
+
+                                                   }
+                                               });
+                                           });
+                                       </script>
+                                       @if ($usuario->clases)
+                                        <div class="form-group permitidascont{{ $usuario->id }}" style="">
+                                          <label class="col-sm-3 control-label">Clases permitidas</label>
+                                          <div class="col-sm-9">
+
+                                            <?php
+                                              $clasespermitidas = explode(',',$usuario->clases);
+                                             ?>
+
+
+
+                                             @foreach ($clasespermitidas as $clasepermitida)
+                                               @foreach ($clases as $clase)
+                                                 <?php
+
+                                                   $clasee= App\Clases::find($clasepermitida);
+
+                                                 ?>
+                                                 @if ($clasee->id==$clase->id)
+                                                   <div class="checkbox">
+                                                    <label>
+                                                      <input type='checkbox' name="clases[]" checked="true"  value="{{$clasee->id}}">{{ $clasee->nombre }}
+                                                    </label>
+                                                   </div>
+                                                 @else
+                                                   <div class="checkbox">
+                                                    <label>
+                                                      <input type='checkbox' class="permitidas" name="clases[]"  value="{{$clase->id}}">{{ $clase->nombre }}
+                                                    </label>
+                                                   </div>
+                                                 @endif
+                                               @endforeach
+                                             @endforeach
+
+
+                                          </div>
+                                        </div>
+                                        @endif
+
 
                                         <div class="form-group">
                                             <label for="password" class="col-sm-3 control-label">Contraseña</label>
@@ -151,9 +205,10 @@
                                     </ul>
 
                                   @endif
+                                  </div>
                              @endif
 
-                               </div>
+
                              @endif
                              <!-- termina detalles usuario-->
 
@@ -196,9 +251,10 @@
                                     </ul>
 
                                   @endif
+                                  </div>
                              @endif
 
-                               </div>
+
                              @endif
                              <!-- termina detalles instructor-->
 
@@ -249,13 +305,42 @@
                          <div class="form-group">
                            <label class="col-sm-3 control-label">Rol</label>
                            <div class="col-sm-9">
-                             <select class="form-control" name="role" id="roleNuevo" required>
+                             <select class="form-control rol" name="role" id="roleNuevo" required>
                                <option value="">Selecciona una opción</option>
                                <option value="usuario">Usuario</option>
                                <option value="instructor">Instructor</option>
                                <option value="admin">Admin</option>
                                <option value="superadmin">Superadmin</option>
                              </select>
+                           </div>
+                         </div>
+                         <script type="text/javascript">
+                            $(function() {
+                                $('.rol').on('change', function() {
+                                    var valor = $('.rol').val();
+                                    if (valor=="instructor") {
+                                      $('.permitidascont').show();
+
+                                    }
+                                    else {
+                                      $('.permitidascont').hide();
+
+                                    }
+                                });
+                            });
+                        </script>
+
+                         <div class="form-group permitidascont" style="display:none">
+                           <label class="col-sm-3 control-label">Clases permitidas</label>
+                           <div class="col-sm-9">
+                             @foreach ($clases as $clase)
+                               <div class="checkbox">
+                                <label>
+                                  <input type='checkbox' class="permitidas" name="clases[]"  value="{{$clase->id}}">{{ $clase->nombre }}
+                                </label>
+                               </div>
+
+                             @endforeach
                            </div>
                          </div>
 

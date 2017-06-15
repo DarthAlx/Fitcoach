@@ -175,7 +175,8 @@ Route::get('/usuarios', function () {
   }
   else {
     $usuarios = App\User::where('role', 'usuario')->paginate(10);
-    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'usuariosmenu']) ;
+    $clases = App\Clases::all();
+    return view('usuarios', ['usuarios'=>$usuarios,'clases'=>$clases],['menu'=>'usuariosmenu']) ;
   }
 });
 Route::get('/instructores', function () {
@@ -184,7 +185,8 @@ Route::get('/instructores', function () {
   }
   else {
     $usuarios = App\User::where('role', 'instructor')->paginate(10);
-    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'instructoresmenu']) ;
+    $clases = App\Clases::all();
+    return view('usuarios', ['usuarios'=>$usuarios,'clases'=>$clases],['menu'=>'instructoresmenu']) ;
   }
 });
 Route::get('/administradores', function () {
@@ -193,7 +195,8 @@ Route::get('/administradores', function () {
   }
   else {
     $usuarios = App\User::where('role', 'superadmin')->orWhere('role', 'admin')->paginate(10);
-    return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'administradoresmenu']) ;
+    $clases = App\Clases::all();
+    return view('usuarios', ['usuarios'=>$usuarios,'clases'=>$clases],['menu'=>'administradoresmenu']) ;
   }
 });
 

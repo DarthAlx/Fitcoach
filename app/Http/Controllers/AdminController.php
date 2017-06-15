@@ -212,7 +212,6 @@ class AdminController extends Controller
     }
     public function addUser(Request $request){
 
-
       $validator = $this->validator($request->all());
 
       if ($validator->fails()) {
@@ -222,6 +221,9 @@ class AdminController extends Controller
       }
       else {
         $guardar = new User($request->all());
+        if ($request->clases) {
+          $guardar->clases=implode(",", $request->clases);
+        }
         $guardar->save();
         Session::flash('mensaje', 'Usuario guardado!');
         Session::flash('class', 'success');
