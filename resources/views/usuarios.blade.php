@@ -112,6 +112,7 @@
                                </div>
 
                              </div>
+                             <!-- detalles usuario-->
                              @if ($usuario->role=="usuario")
                                @if ($usuario->detalles)
                                  <a  role="button" data-toggle="collapse" href="#detalles{{ $usuario->id }}" aria-expanded="false" aria-controls="detalles{{ $usuario->id }}">
@@ -141,7 +142,7 @@
                                     <ul class="list-group">
                                       @foreach ($usuario->direcciones as $direccion)
                                         <li class="list-group-item">
-                                          <strong>{{ $direccion->calle }}</strong><br>
+                                          <strong>{{ $direccion->identificador }}</strong><br>
                                           {{ $direccion->calle }} {{ $direccion->numero_ext }} {{ $direccion->numero_int }}<br>
                                           {{ $direccion->colonia }},  {{ $direccion->municipio_del }}<br>
                                            {{ $direccion->cp }},  {{ $direccion->estado }}, Méx.
@@ -154,6 +155,52 @@
 
                                </div>
                              @endif
+                             <!-- termina detalles usuario-->
+
+                              <!-- detalles instructor-->
+                             @if ($usuario->role=="instructor")
+                               @if ($usuario->detalles_instructor)
+                                 <a  role="button" data-toggle="collapse" href="#detalles{{ $usuario->id }}" aria-expanded="false" aria-controls="detalles{{ $usuario->id }}">
+                                   Detalles <span class="caret"></span>
+                                 </a>
+                                 <div class="collapse" id="detalles{{ $usuario->id }}">
+                                   <?php
+                                   $tz  = new DateTimeZone('America/Mexico_City');
+                                  $age = DateTime::createFromFormat('d-m-Y', $usuario->detalles_instructor->dob, $tz)->diff(new DateTime('now', $tz))->y;
+                                  ?>
+                                  <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                      <tr>
+                                        <th>RFC</th>
+                                        <th>Edad</th>
+                                        <th>Teléfono</th>
+
+                                      </tr>
+                                      <tr>
+                                        <td>{{ $usuario->detalles_instructor->rfc }}</td>
+                                        <td>{{ $age }}</td>
+                                        <td>{{ $usuario->detalles_instructor->tel }}</td>
+
+                                      </tr>
+
+                                    </table>
+                                  </div>
+                                  @if (!$usuario->vehiculos->isEmpty())
+                                    <ul class="list-group">
+                                      @foreach ($usuario->vehiculos as $vehiculo)
+                                        <li class="list-group-item">
+                                          <strong>{{ $vehiculo->identificador}} - {{ $vehiculo->placa}}</strong><br>
+                                          {{ $vehiculo->tipo }}, {{ $vehiculo->modelo }}, {{ $vehiculo->color }}
+                                        </li>
+                                      @endforeach
+                                    </ul>
+
+                                  @endif
+                             @endif
+
+                               </div>
+                             @endif
+                             <!-- termina detalles instructor-->
 
 
                            </div>

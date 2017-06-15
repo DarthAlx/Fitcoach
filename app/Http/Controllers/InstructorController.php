@@ -100,6 +100,7 @@ class InstructorController extends Controller
     public function addDetalles(Request $request)
     {
       $guardar = new Detalles_instructor($request->all());
+      $guardar->rfc =strtoupper($request->rfc);
       $guardar->photo = 'dummy.png';
       $guardar->save();
       Session::flash('mensaje', 'Perfil actualizado!');
@@ -111,7 +112,7 @@ class InstructorController extends Controller
       $detalles = Detalles_instructor::find($request->detalles_id);
       $detalles->dob = $request->dob;
       $detalles->tel = $request->tel;
-      $detalles->rfc = $request->rfc;
+      $detalles->rfc = strtoupper($request->rfc);
       $detalles->save();
       Session::flash('mensaje', 'Perfil actualizado!');
       Session::flash('class', 'success');
