@@ -227,7 +227,16 @@ class AdminController extends Controller
         $guardar->save();
         Session::flash('mensaje', 'Usuario guardado!');
         Session::flash('class', 'success');
-        return redirect()->intended(url('/usuarios'));
+        if ($request->role=="instructor") {
+          return redirect()->intended(url('/instructores'));
+        }
+        if ($request->role=="usuario") {
+          return redirect()->intended(url('/usuarios'));
+        }
+        if ($request->role=="admin"||$request->role=="superadmin") {
+          return redirect()->intended(url('/administradores'));
+        }
+
       }
     }
     public function updateUser(Request $request, $id)
@@ -244,12 +253,23 @@ class AdminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role = $request->role;
+        if ($request->role=="instructor"&&$request->clases) {
+          $user->clases=implode(",", $request->clases);
+        }
         $user->password = bcrypt($request->password);
 
         $user->save();
         Session::flash('mensaje', 'Usuario actualizado!');
         Session::flash('class', 'success');
-        return redirect()->intended(url('/usuarios'));
+        if ($request->role=="instructor") {
+          return redirect()->intended(url('/instructores'));
+        }
+        if ($request->role=="usuario") {
+          return redirect()->intended(url('/usuarios'));
+        }
+        if ($request->role=="admin"||$request->role=="superadmin") {
+          return redirect()->intended(url('/administradores'));
+        }
       }
 
     }
@@ -265,7 +285,8 @@ class AdminController extends Controller
 
     public function buscar(Request $request){
       $usuarios = User::where('name', 'like', '%' . $request->buscar . '%')->orWhere('email', 'like', '%' . $request->buscar . '%')->orWhere('role', 'like', '%' . $request->buscar . '%')->paginate(10);
-      return view('usuarios', ['usuarios'=>$usuarios],['menu'=>'buscarmenu']) ;
+      $clases = Clases::all();
+      return view('usuarios', ['usuarios'=>$usuarios,'clases'=>$clases],['menu'=>'buscarmenu']) ;
     }
 
 

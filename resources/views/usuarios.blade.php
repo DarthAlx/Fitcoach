@@ -81,20 +81,14 @@
                  												</div>
                                         <script type="text/javascript">
                                            $(function() {
-                                               $('.rol{{ $usuario->id }}').on('change', function() {
-                                                   var valor = $('.rol{{ $usuario->id }}').val();
-                                                   if (valor=="instructor") {
+                                               @if ($usuario->role=="instructor")
                                                      $('.permitidascont{{ $usuario->id }}').show();
-
-                                                   }
-                                                   else {
+                                               @else
                                                      $('.permitidascont{{ $usuario->id }}').hide();
-
-                                                   }
-                                               });
+                                               @endif
                                            });
                                        </script>
-                                       @if ($usuario->clases)
+                                       @if ($usuario->role=="instructor")
                                         <div class="form-group permitidascont{{ $usuario->id }}" style="">
                                           <label class="col-sm-3 control-label">Clases permitidas</label>
                                           <div class="col-sm-9">
@@ -102,36 +96,24 @@
                                             <?php
                                               $clasespermitidas = explode(',',$usuario->clases);
                                              ?>
-
-
-
-                                             @foreach ($clasespermitidas as $clasepermitida)
                                                @foreach ($clases as $clase)
-                                                 <?php
-
-                                                   $clasee= App\Clases::find($clasepermitida);
-
-                                                 ?>
-                                                 @if ($clasee->id==$clase->id)
                                                    <div class="checkbox">
                                                     <label>
-                                                      <input type='checkbox' name="clases[]" checked="true"  value="{{$clasee->id}}">{{ $clasee->nombre }}
+                                                      <input type='checkbox' name="clases[]" id="check{{$usuario->id}}{{$clase->id}}" value="{{$clase->id}}">{{ $clase->nombre }}
                                                     </label>
                                                    </div>
-                                                 @else
-                                                   <div class="checkbox">
-                                                    <label>
-                                                      <input type='checkbox' class="permitidas" name="clases[]"  value="{{$clase->id}}">{{ $clase->nombre }}
-                                                    </label>
-                                                   </div>
-                                                 @endif
                                                @endforeach
-                                             @endforeach
-
-
                                           </div>
                                         </div>
+                                        <script type="text/javascript">
+                                          @foreach ($clasespermitidas as $clasepermitida)
+                                          alert({{$clasepermitida}});
+                                            document.getElementById('check{{$usuario->id}}{{$clasepermitida}}').checked = true;
+                                          @endforeach
+                                        </script>
+
                                         @endif
+
 
 
                                         <div class="form-group">
