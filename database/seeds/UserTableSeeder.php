@@ -26,6 +26,7 @@ class UserTableSeeder extends Seeder
             'name'=>'Nombre del instructor',
             'email'=>'coach@fitcoach.mx',
             'password'=>bcrypt('admin123'),
+            'clases'=>'1',
             'role' =>'instructor'
           ]
         );

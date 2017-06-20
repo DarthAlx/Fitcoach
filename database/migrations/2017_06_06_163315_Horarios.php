@@ -18,6 +18,7 @@ class Horarios extends Migration
           $table->string('clases_id');
           $table->string('hora');
           $table->string('fecha');
+          $table->string('recurrencia');
           $table->timestamps();
       });
     }

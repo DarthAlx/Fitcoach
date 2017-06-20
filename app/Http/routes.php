@@ -144,7 +144,9 @@ Route::get('/horarios', function () {
   }
   else {
     $user = App\User::find(Auth::user()->id);
-    $clases = App\Clases::all();
+    $permitidas = explode(",",$user->clases);
+
+    $clases = App\Clases::whereIn('id', $permitidas)->get();;
     return view('horarios', ['user'=>$user,'clases'=>$clases]) ;
   }
 });

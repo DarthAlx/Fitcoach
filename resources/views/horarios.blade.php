@@ -73,6 +73,32 @@
 
                                       </div>
                                     </div>
+                                    <div class="form-group recurrente" >
+                                       <label class="col-sm-3 control-label">Recurrencia</label>
+                                       <div class="col-sm-9">
+                                           <div class="checkbox">
+
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}1" name="recurrencia[]"  value="1">L &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}2" name="recurrencia[]"  value="2">M &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}3" name="recurrencia[]"  value="3">M &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}4" name="recurrencia[]"  value="4">J &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}5" name="recurrencia[]"  value="5">V &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}6" name="recurrencia[]"  value="6">S &nbsp;  &nbsp;  </label>
+                                              <label><input type='checkbox' class="recurrentes" id="check{{$user->id}}7" name="recurrencia[]"  value="7">D &nbsp;  &nbsp;  </label>
+
+                                           </div>
+                                       </div>
+                                     </div>
+                                     <?php
+                                          $recurrencias = explode(",",$horario->recurrencia);
+                                      ?>
+                                     <script type="text/javascript">
+                                       @foreach ($recurrencias as $recurrencia)
+                                         document.getElementById('check{{$user->id}}{{$recurrencia}}').checked = true;
+                                       @endforeach
+                                     </script>
+
+
                												{!! csrf_field() !!}
                												<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                												<div class="form-group">
@@ -152,6 +178,23 @@
 
                             </div>
                           </div>
+
+                          <div class="form-group recurrente" >
+                             <label class="col-sm-3 control-label">Recurrencia</label>
+                             <div class="col-sm-9">
+                                 <div class="checkbox">
+
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="1">L &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="2">M &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="3">M &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="4">J &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="5">V &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="6">S &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="7">D &nbsp;  &nbsp;  </label>
+
+                                 </div>
+                             </div>
+                           </div>
                           {!! csrf_field() !!}
                           <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                           <div class="form-group">

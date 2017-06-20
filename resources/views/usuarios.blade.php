@@ -107,7 +107,7 @@
                                         </div>
                                         <script type="text/javascript">
                                           @foreach ($clasespermitidas as $clasepermitida)
-                                          alert({{$clasepermitida}});
+
                                             document.getElementById('check{{$usuario->id}}{{$clasepermitida}}').checked = true;
                                           @endforeach
                                         </script>
@@ -302,11 +302,12 @@
                                     var valor = $('.rol').val();
                                     if (valor=="instructor") {
                                       $('.permitidascont').show();
+                                      
 
                                     }
                                     else {
                                       $('.permitidascont').hide();
-
+                                      
                                     }
                                 });
                             });
@@ -325,6 +326,9 @@
                              @endforeach
                            </div>
                          </div>
+
+
+                         
 
                          <div class="form-group">
                              <label for="password" class="col-sm-3 control-label">Contraseña</label>

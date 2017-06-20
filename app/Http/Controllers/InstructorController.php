@@ -195,6 +195,9 @@ class InstructorController extends Controller
 
     public function addHorario(Request $request){
       $guardar = new Horarios($request->all());
+      if ($request->recurrencia) {
+        $guardar->recurrencia=implode(",", $request->recurrencia);
+      }
       $guardar->save();
       Session::flash('mensaje', 'Horario guardado!');
       Session::flash('class', 'success');
@@ -206,6 +209,9 @@ class InstructorController extends Controller
         $horario->clases_id = $request->clases_id;
         $horario->fecha = $request->fecha;
         $horario->hora = $request->hora;
+        if ($request->recurrencia) {
+          $horario->recurrencia=implode(",", $request->recurrencia);
+        }
         $horario->save();
         Session::flash('mensaje', 'Horario actualizado!');
         Session::flash('class', 'success');

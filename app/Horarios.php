@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Horarios extends Model
 {
   protected $table = 'horarios';
-  protected $fillable = ['user_id', 'clases_id','hora','fecha'];
+  protected $fillable = ['user_id', 'clases_id','hora','fecha','recurrencia'];
   public function clases()
      {
        return $this->belongsTo('App\Clases');
