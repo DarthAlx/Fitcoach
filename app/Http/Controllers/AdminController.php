@@ -15,6 +15,7 @@ use App\Tarjetas;
 use App\User;
 use App\Clases;
 use App\Slide;
+use App\Zona;
 use Validator;
 
 class AdminController extends Controller
@@ -381,5 +382,39 @@ class AdminController extends Controller
         Session::flash('mensaje', 'Slide eliminado correctamente!');
         Session::flash('class', 'success');
         return redirect()->intended(url('/slides'));
+    }
+
+
+
+
+
+    public function addZona(Request $request){
+      $guardar = new Zona($request->all());
+      $guardar->save();
+      Session::flash('mensaje', 'Zona guardada!');
+      Session::flash('class', 'success');
+      return redirect()->intended(url('/zonas'));
+    }
+    public function updateZona(Request $request, $id)
+    {
+        $zona = Zona::find($id);
+        $zona->identificador = $request->identificador;
+        $zona->direccion = $request->direccion;
+        $zona->latitud = $request->latitud;
+        $zona->longitud = $request->longitud;
+        $zona->clases_id = $request->clases_id;
+        $zona->save();
+        Session::flash('mensaje', 'Zona actualizada!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/zonas'));
+    }
+
+    public function destroyZona(Request $request, $id)
+    {
+        $zona = Zona::find($id);
+        $zona->delete();
+        Session::flash('mensaje', 'Zona eliminada correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/zonas'));
     }
 }

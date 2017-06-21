@@ -534,4 +534,5 @@ return array(
     'User' => $baseDir . '/database/migrations/2017_05_16_195648_User.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
     'Vehiculos' => $baseDir . '/database/migrations/2017_06_05_181057_Vehiculos.php',
+    'Zonas' => $baseDir . '/database/migrations/2017_06_21_192347_Zonas.php',
 );

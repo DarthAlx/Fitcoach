@@ -12,4 +12,8 @@ class Clases extends Model
      {
        return $this->hasMany('App\Horarios');
      }
+     public function zonas()
+      {
+        return $this->hasMany('App\Zona');
+      }
 }

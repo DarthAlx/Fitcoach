@@ -223,3 +223,19 @@ Route::get('/slides', function () {
 Route::post('agregar-slide', 'AdminController@addSlide');
 Route::any('actualizar-slide/{id}', 'AdminController@updateSlide');
 Route::any('eliminar-slide/{id}', 'AdminController@destroySlide');
+
+
+Route::get('/zonas', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $user = App\User::find(Auth::user()->id);
+    $clases = App\Clases::all();
+    $zonas = App\Zona::all();
+    return view('zonas', ['user'=>$user,'zonas'=>$zonas,'clases'=>$clases]) ;
+  }
+});
+Route::post('agregar-zona', 'AdminController@addZona');
+Route::any('actualizar-zona/{id}', 'AdminController@updateZona');
+Route::any('eliminar-zona/{id}', 'AdminController@destroyZona');

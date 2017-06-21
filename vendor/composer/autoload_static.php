@@ -805,6 +805,7 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'User' => __DIR__ . '/../..' . '/database/migrations/2017_05_16_195648_User.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'Vehiculos' => __DIR__ . '/../..' . '/database/migrations/2017_06_05_181057_Vehiculos.php',
+        'Zonas' => __DIR__ . '/../..' . '/database/migrations/2017_06_21_192347_Zonas.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
