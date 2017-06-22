@@ -239,3 +239,12 @@ Route::get('/zonas', function () {
 Route::post('agregar-zona', 'AdminController@addZona');
 Route::any('actualizar-zona/{id}', 'AdminController@updateZona');
 Route::any('eliminar-zona/{id}', 'AdminController@destroyZona');
+
+
+
+Route::get('/producto', function () {
+    return view('producto') ;
+});
+
+Route::get('carrito', 'CartController@shoppingCart');
+Route::get('añadir/{id}', 'CartController@addToCart');

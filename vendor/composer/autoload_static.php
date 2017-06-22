@@ -72,6 +72,10 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         array (
             'Illuminate\\' => 11,
         ),
+        'G' => 
+        array (
+            'Gloudemans\\Shoppingcart\\' => 24,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -203,6 +207,10 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Gloudemans\\Shoppingcart\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gloudemans/shoppingcart/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
@@ -279,7 +287,46 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
     public static $classMap = array (
         'Clases' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_163305_Clases.php',
         'ClasesSeeder' => __DIR__ . '/../..' . '/database/seeds/ClasesSeeder.php',
+        'Conekta\\Address' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Address.php',
+        'Conekta\\ApiError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ApiError.php',
+        'Conekta\\AuthenticationError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/AuthenticationError.php',
+        'Conekta\\Card' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Card.php',
+        'Conekta\\Charge' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Charge.php',
+        'Conekta\\Conekta' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Conekta.php',
+        'Conekta\\ConektaList' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ConektaList.php',
+        'Conekta\\Customer' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Customer.php',
+        'Conekta\\DiscountLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/DiscountLine.php',
+        'Conekta\\Event' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Event.php',
+        'Conekta\\Handler' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/Handler.php',
+        'Conekta\\Lang' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Lang.php',
+        'Conekta\\LineItem' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/LineItem.php',
+        'Conekta\\Log' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Log.php',
+        'Conekta\\MalformedRequestError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/MalformedRequestError.php',
+        'Conekta\\Method' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Method.php',
+        'Conekta\\NoConnectionError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/NoConnectionError.php',
+        'Conekta\\Object' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Object.php',
+        'Conekta\\Order' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Order.php',
+        'Conekta\\ParameterValidationError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ParameterValidationError.php',
+        'Conekta\\Payee' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Payee.php',
+        'Conekta\\PaymentMethod' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PaymentMethod.php',
+        'Conekta\\PaymentSource' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PaymentSource.php',
+        'Conekta\\Payout' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Payout.php',
+        'Conekta\\PayoutMethod' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PayoutMethod.php',
+        'Conekta\\Plan' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Plan.php',
+        'Conekta\\ProcessingError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ProcessingError.php',
+        'Conekta\\Requestor' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Requestor.php',
+        'Conekta\\Resource' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Resource.php',
+        'Conekta\\ResourceNotFoundError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ResourceNotFoundError.php',
+        'Conekta\\ShippingContact' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ShippingContact.php',
+        'Conekta\\ShippingLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ShippingLine.php',
+        'Conekta\\Subscription' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Subscription.php',
+        'Conekta\\TaxLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/TaxLine.php',
+        'Conekta\\Token' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Token.php',
+        'Conekta\\Util' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Util.php',
+        'Conekta\\Webhook' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Webhook.php',
+        'Conekta\\WebhookLog' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/WebhookLog.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateShoppingcartTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_22_174533_create_shoppingcart_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'Detalles' => __DIR__ . '/../..' . '/database/migrations/2017_05_21_230537_Detalles.php',
         'DetallesInstructor' => __DIR__ . '/../..' . '/database/migrations/2017_06_02_165451_Detalles_instructor.php',

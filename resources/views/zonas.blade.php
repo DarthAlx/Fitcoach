@@ -191,7 +191,6 @@
     document.getElementById('latitud'+valor).disabled=false;
     document.getElementById('longitud'+valor).disabled=false;
     document.getElementById('clases_id'+valor).disabled=false;
-
     document.getElementById('botonguardar'+valor).style.display="inline-block";
     document.getElementById('botoneditar'+valor).style.display="none";
   }
