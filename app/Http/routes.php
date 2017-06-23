@@ -247,4 +247,6 @@ Route::get('/producto', function () {
 });
 
 Route::get('carrito', 'CartController@shoppingCart');
-Route::get('añadir/{id}', 'CartController@addToCart');
+Route::get('addtocart', 'CartController@addToCart');
+Route::get('removefromcart/{id}', 'CartController@removeToCart');
+Route::get('updatecart/{id}/{qty}', 'CartController@updateCart');

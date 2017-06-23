@@ -6,22 +6,39 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Cart;
+use Input;
 
 class CartController extends Controller
 {
 
-    public function addToCart($id)
-    {
-        Cart::add($id,"nombre",1,499.99);
-
-
-    }
     public function shoppingCart()
     {
+
       $items=Cart::content();
       return view('cart.index',['items'=>$items]);
     }
+    public function addToCart()
+    {
+        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'));
+    }
+    public function removeToCart($rowId)
+    {
+        Cart::remove($rowId);
+        Session::flash('mensaje', 'La clase se eliminó del carrito.');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/carrito'));
+
+    }
+    public function updateCart($rowId,$qty)
+    {
+        Cart::update($rowId, $qty);
+
+        return redirect()->intended(url('/carrito'));
+
+    }
+
     /**
      * Display a listing of the resource.
      *
