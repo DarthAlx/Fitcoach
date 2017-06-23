@@ -400,8 +400,8 @@ class AdminController extends Controller
         $zona = Zona::find($id);
         $zona->identificador = $request->identificador;
         $zona->direccion = $request->direccion;
-        $zona->latitud = $request->latitud;
-        $zona->longitud = $request->longitud;
+        $zona->horario = $request->horario;
+        $zona->coach = $request->coach;
         $zona->clases_id = $request->clases_id;
         $zona->save();
         Session::flash('mensaje', 'Zona actualizada!');

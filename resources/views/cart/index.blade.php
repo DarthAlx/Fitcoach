@@ -46,7 +46,29 @@
 								<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 								</div>
 								<div class="col-xs-4">
-									<h4 class="product-name"><strong>{{ $product->name }}</strong></h4><h4><small>{{ $product->name }}</small></h4>
+									<h4 class="product-name"><strong>{{ $product->name }}</strong></h4>
+
+									@if ($product->options->tipo=="particular")
+										<h4><small>
+											Fecha: {{ $product->options->fecha }}<br>
+											Horario: {{ $product->options->horario }}<br>
+											<?php $direccion=App\Direcciones::find($product->options->direccion); ?>
+											Dirección: {{ $direccion->identificador }}<br>
+										</small></h4>
+									@endif
+									@if ($product->options->tipo=="fitcoach")
+										<h4><small>
+											<?php $zona=App\Zona::find($product->options->zona); ?>
+											<?php $clase=App\Clases::find($zona->clase); ?>
+											<?php $coach=App\User::find($zona->coach); ?>
+											Fecha: {{ $product->options->fecha }}<br>
+											Clase: {{ $clase->nombre }}<br>
+											Coach: {{ $coach->name }}<br>
+											Dirección: {{ $zona->direccion }}<br>
+											Horario: {{ $zona->horario }}<br>
+										</small></h4>
+									@endif
+
 								</div>
 								<div class="col-xs-6">
 									<div class="col-xs-6 text-right">

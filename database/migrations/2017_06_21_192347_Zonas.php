@@ -16,8 +16,8 @@ class Zonas extends Migration
           $table->increments('id');
           $table->string('identificador');
           $table->string('direccion');
-          $table->string('latitud');
-          $table->string('longitud');
+          $table->string('horario');
+          $table->string('coach');
           $table->string('clases_id');
           $table->timestamps();
       });

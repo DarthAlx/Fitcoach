@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Cart;
 use Input;
+use App\Direcciones;
 
 class CartController extends Controller
 {
@@ -21,7 +22,13 @@ class CartController extends Controller
     }
     public function addToCart()
     {
-        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'));
+      if (Input::get('tipo')=="particular") {
+        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'fecha'=>Input::get('fecha'),'horario' => Input::get('horario'),'direccion'=>Input::get('direccion')]);
+      }
+
+      if (Input::get('tipo')=="fitcoach") {
+        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'fecha'=>Input::get('fecha'),'zona' => Input::get('zona')]);
+      }
     }
     public function removeToCart($rowId)
     {

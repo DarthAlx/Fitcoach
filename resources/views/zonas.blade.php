@@ -50,15 +50,17 @@
                                      </div>
                                    </div>
                                    <div class="form-group">
-                                     <label class="col-sm-3 control-label">Latitud</label>
+                                     <label class="col-sm-3 control-label" for="card-number">Horario</label>
                                      <div class="col-sm-9">
-                                       <input id="latitud{{ $zona->id }}" class="form-control" type="text" value="{{ $zona->latitud }}" name="latitud" disabled required>
+                                       <div class="input-group bootstrap-timepicker timepicker">
+                                         <input id="horario{{ $zona->id }}" value="{{ $zona->horario }}" class="form-control mitimepicker" type="text" name="horario" disabled required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                       </div>
                                      </div>
                                    </div>
                                    <div class="form-group">
-                                     <label class="col-sm-3 control-label">Longitud</label>
+                                     <label class="col-sm-3 control-label">Instructor</label>
                                      <div class="col-sm-9">
-                                       <input id="longitud{{ $zona->id }}" class="form-control" type="text" value="{{ $zona->longitud }}" name="longitud" disabled required>
+                                       <textarea id="coach{{ $zona->id }}" class="form-control" name="coach" disabled required>{{ $zona->coach }}</textarea>
                                      </div>
                                    </div>
                                    <div class="form-group">
@@ -138,17 +140,20 @@
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="col-sm-3 control-label">Latitud</label>
+                         <label class="col-sm-3 control-label" for="card-number">Horario</label>
                          <div class="col-sm-9">
-                           <input id="latitudNuevo" class="form-control" type="text" value="{{ old('latitud') }}" name="latitud" required>
+                           <div class="input-group bootstrap-timepicker timepicker">
+                             <input id="horarioNuevo" value="{{ old('horario') }}" class="form-control mitimepicker" type="text" name="horario" disabled required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                           </div>
                          </div>
                        </div>
                        <div class="form-group">
-                         <label class="col-sm-3 control-label">Longitud</label>
+                         <label class="col-sm-3 control-label">Instructor</label>
                          <div class="col-sm-9">
-                           <input id="longitudNuevo" class="form-control" type="text" value="{{ old('longitud') }}" name="longitud" required>
+                           <textarea id="coachNuevo" class="form-control" name="coach" required>{{ old('coach') }}</textarea>
                          </div>
                        </div>
+
                        <div class="form-group">
                          <label class="col-sm-3 control-label">Clase</label>
                          <div class="col-sm-9">
@@ -188,8 +193,7 @@
   function habilitar(valor){
     document.getElementById('identificador'+valor).disabled=false;
     document.getElementById('direccion'+valor).disabled=false;
-    document.getElementById('latitud'+valor).disabled=false;
-    document.getElementById('longitud'+valor).disabled=false;
+    document.getElementById('coach'+valor).disabled=false;
     document.getElementById('clases_id'+valor).disabled=false;
     document.getElementById('botonguardar'+valor).style.display="inline-block";
     document.getElementById('botoneditar'+valor).style.display="none";
