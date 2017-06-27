@@ -250,3 +250,6 @@ Route::get('carrito', 'CartController@shoppingCart');
 Route::get('addtocart', 'CartController@addToCart');
 Route::get('removefromcart/{id}', 'CartController@removeToCart');
 Route::get('updatecart/{id}/{qty}', 'CartController@updateCart');
+
+
+Route::post('cargo', 'CartController@cargo');

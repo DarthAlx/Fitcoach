@@ -47,7 +47,6 @@
 								</div>
 								<div class="col-xs-4">
 									<h4 class="product-name"><strong>{{ $product->name }}</strong></h4>
-
 									@if ($product->options->tipo=="particular")
 										<h4><small>
 											Fecha: {{ $product->options->fecha }}<br>
@@ -68,7 +67,6 @@
 											Horario: {{ $zona->horario }}<br>
 										</small></h4>
 									@endif
-
 								</div>
 								<div class="col-xs-6">
 									<div class="col-xs-6 text-right">
@@ -125,6 +123,67 @@
 				</div>
 			</div>
 		</div>
+
+		<form action="{{url('cargo')}}" method="POST" id="card-form">
+			{{ csrf_field()}}
+		  <span class="card-errors"></span>
+		  <div>
+		    <label>
+		      <span>Nombre del tarjetahabiente</span>
+		      <input type="text" size="20" data-conekta="card[name]">
+		    </label>
+		  </div>
+		  <div>
+		    <label>
+		      <span>Número de tarjeta de crédito</span>
+		      <input type="text" size="20" data-conekta="card[number]">
+		    </label>
+		  </div>
+		  <div>
+		    <label>
+		      <span>CVC</span>
+		      <input type="text" size="4" data-conekta="card[cvc]">
+		    </label>
+		  </div>
+		  <div>
+		    <label>
+		      <span>Fecha de expiración (MM/AAAA)</span>
+		      <input type="text" size="2" data-conekta="card[exp_month]">
+		    </label>
+		    <span>/</span>
+		    <input type="text" size="4" data-conekta="card[exp_year]">
+		  </div>
+		  <button type="submit">Crear token</button>
+		</form>
+
+
+
+		<script type="text/javascript" >
+		  Conekta.setPublishableKey('key_ExsfYxwMz4KMdE5PTfN6B6g');
+
+		  var conektaSuccessResponseHandler = function(token) {
+		    var $form = $("#card-form");
+		    //Inserta el token_id en la forma para que se envíe al servidor
+		    $form.append($('<input type="hidden" name="tokencard" id="conektaTokenId">').val(token.id));
+		    $form.get(0).submit(); //Hace submit
+		  };
+		  var conektaErrorResponseHandler = function(response) {
+		    var $form = $("#card-form");
+		    $form.find(".card-errors").text(response.message_to_purchaser);
+		    $form.find("button").prop("disabled", false);
+		  };
+
+		  //jQuery para que genere el token después de dar click en submit
+		  $(function () {
+		    $("#card-form").submit(function(event) {
+		      var $form = $(this);
+		      // Previene hacer submit más de una vez
+		      $form.find("button").prop("disabled", true);
+		      Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+		      return false;
+		    });
+		  });
+		</script>
 
 
 @endsection
