@@ -251,7 +251,5 @@ Route::get('addtocart', 'CartController@addToCart');
 Route::get('removefromcart/{id}', 'CartController@removeToCart');
 Route::get('updatecart/{id}/{qty}', 'CartController@updateCart');
 
-Route::get('/checkout', function () {
-    return view('cart.checkout') ;
-});
+Route::get('clase/{id}', 'CartController@product');
 Route::post('cargo', 'CartController@cargo');

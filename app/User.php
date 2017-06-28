@@ -60,6 +60,10 @@ class User extends Model implements AuthenticatableContract,
      {
        return $this->hasMany('App\Horarios');
      }
+     public function ordenes()
+      {
+        return $this->hasMany('App\Orden');
+      }
 /*
     public function calificaciones()
     {
