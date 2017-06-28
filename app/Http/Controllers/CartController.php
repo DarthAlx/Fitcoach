@@ -52,27 +52,39 @@ class CartController extends Controller
     {
       \Conekta\Conekta::setApiKey("key_fr9YE9Y98jxYQ9NJrJTZXw");
 
-      try {
-        $cliente= \Conekta\Customer::create(
-          array(
-            "name" => "Fulanito Pérez",
-            "email" => "fulanito@conekta.com",
-            "payment_sources" => array(
-              array(
-                  "type" => "card",
-                  "token_id" => $request->tokencard
-              )
-            )//payment_sources
-          )//customer
-        );
-
-      } catch (\Conekta\ProccessingError $error){
-        echo $error->getMesage();
-      } catch (\Conekta\ParameterValidationError $error){
-        echo $error->getMessage();
-      } catch (\Conekta\Handler $error){
-        echo $error->getMessage();
+      if ($request->conektaid) {
+        $cliente = \Conekta\Customer::find($request->conektaid);
+        foreach ($cliente->payment_sources as $tarjeta) {
+          $tarjetas[]=$tarjeta;
+        }
+        dd($tarjetas);
+        $source   = $cliente->payment_sources[0]->delete();
+        dd($source);
       }
+      else {
+        try {
+          $cliente= \Conekta\Customer::create(
+            array(
+              "name" => $request->name,
+              "email" => $request->email,
+              "payment_sources" => array(
+                array(
+                    "type" => "card",
+                    "token_id" => $request->tokencard
+                )
+              )//payment_sources
+            )//customer
+          );
+
+        } catch (\Conekta\ProccessingError $error){
+          echo $error->getMesage();
+        } catch (\Conekta\ParameterValidationError $error){
+          echo $error->getMessage();
+        } catch (\Conekta\Handler $error){
+          echo $error->getMessage();
+        }
+      }
+
       try{
         $order=\Conekta\Order::create(array(
           'currency' => 'MXN',
@@ -96,10 +108,11 @@ class CartController extends Controller
               'quantity' => 1
             )
           ),
+          "metadata" => array("reference" => "12987324097", "more_info" => "lalalalala"),
           'charges' => array(
             array(
               'payment_method' => array(
-                'type' => 'default'
+                'type' => 'card'
               )
             )
           )

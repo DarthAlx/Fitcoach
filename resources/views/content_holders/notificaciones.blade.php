@@ -15,6 +15,13 @@
   </div>
 @endif
 
+<div class="alert alert-danger alert-dismissable" id="cart-errors" style="display: none;">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <ul>
+      <li><span class="card-errors"></span></li>
+  </ul>
+</div>
+
 @if (Session::get('mensaje'))
   <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
