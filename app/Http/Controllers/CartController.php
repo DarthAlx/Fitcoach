@@ -51,19 +51,23 @@ class CartController extends Controller
     public function cargo(Request $request)
     {
       \Conekta\Conekta::setApiKey("key_fr9YE9Y98jxYQ9NJrJTZXw");
+      $cliente = \Conekta\Customer::find($request->conektaid);
 
-      if ($request->conektaid) {
-        $cliente = \Conekta\Customer::find($request->conektaid);
+      if ($cliente->payment_sources->total>0) {
+
         foreach ($cliente->payment_sources as $tarjeta) {
           $tarjetas[]=$tarjeta;
         }
-        dd($tarjetas);
-        $source   = $cliente->payment_sources[0]->delete();
-        dd($source);
+
+        $contador=0;
+        foreach ($tarjetas as $tarjeta) {
+          $cliente->payment_sources[$contador]->delete();
+          $contador++;
+        }
       }
       else {
-        try {
-          $cliente= \Conekta\Customer::create(
+
+          /*$cliente= \Conekta\Customer::create(
             array(
               "name" => $request->name,
               "email" => $request->email,
@@ -74,22 +78,16 @@ class CartController extends Controller
                 )
               )//payment_sources
             )//customer
-          );
+          );*/
 
-        } catch (\Conekta\ProccessingError $error){
-          echo $error->getMesage();
-        } catch (\Conekta\ParameterValidationError $error){
-          echo $error->getMessage();
-        } catch (\Conekta\Handler $error){
-          echo $error->getMessage();
-        }
+
       }
 
       try{
         $order=\Conekta\Order::create(array(
           'currency' => 'MXN',
           "customer_info" => array(
-            "customer_id" => $cliente->id
+            "customer_id" => $request->conektaid
           ), //customer_info
           'line_items' => array(
             array(
@@ -112,7 +110,8 @@ class CartController extends Controller
           'charges' => array(
             array(
               'payment_method' => array(
-                'type' => 'card'
+                'type' => 'card',
+                "token_id" => $request->tokencard
               )
             )
           )

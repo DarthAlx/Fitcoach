@@ -46,7 +46,7 @@
 	                                        <input class="form-control" id="cvv" placeholder="CVV" autocomplete="off"  data-conekta="card[cvc]" type="text" required> <span class="input-group-btn"> <button type="button" class="btn btn-default" data-toggle="popover" data-container="body" data-placement="top" data-content="Código de seguridad de 3 dígitos ubicado normalmente en la parte trasera de su tarjeta. Las tarjetas American Express tienen un código de 4 dígitos ubicado en el frente.">?</button> </span>                                        </div>
 	                                </div>
 	                            </div>
-															<input type="text" name="conektaid" value="cus_2gmNZviLrDwnqjjDf">
+															<input type="text" name="conektaid" value="cus_2gmTtP1vxKtNYkNCa">
 															<div class="form-group row">
 	                                <div class="col-xs-12">
 																		<button class="btn btn-primary pull-right" type="submit">Pagar</button>
