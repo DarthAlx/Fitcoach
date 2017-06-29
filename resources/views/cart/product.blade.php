@@ -19,23 +19,14 @@
 					<h3 class="precio">${{$clase->precio}}</h3>
 					<form action="{{ url('/carrito') }}" method="post">
 						{!! csrf_field() !!}
-						<input type="hidden" name="clase" value="1">
-
-						<strong>Elije una fecha</strong>
-						<div class="form-group">
-								<div class="input-group">
-									<input class="form-control datepicker" type="text"  name="fecha" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-								</div>
-						</div>
+						<input type="hidden" name="clase_id" value="{{$clase->id}}">
 						<br>
-						<strong>Elije tu horario y coach</strong>
-
-						<select class="form-control" name="horario">
+						<strong>Buscar horario</strong>
+						<select class="datepicker selector-horario form-control" name="horario" id="horario" required>
 							<option value="">selecciona</option>
 							@foreach ($clase->horarios as $horario)
-								<option value="{{$horario->id}}">{{$horario->hora}} - {{$horario->user->name}} - 4.6 ★ </option>
+								<option value="{{$horario->id}}">{{$horario->fecha}} | {{$horario->hora}} | {{strtok($horario->user->name, " ")}} | 4.6 ★ </option>
 							@endforeach
-
 						</select>
 						<br>
 						<strong>Elije tu dirección</strong>
@@ -61,12 +52,7 @@
 
 
 		</section>
-		<?php $horarios = Horarios::where('fecha', )->get(); ?>
-		<script type="text/javascript">
-			function mostrarhorarios(){
 
-			}
-		</script>
 
 
 @endsection

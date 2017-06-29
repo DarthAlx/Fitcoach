@@ -33,9 +33,8 @@ class CartController extends Controller
     public function addToCart()
     {
       if (Input::get('tipo')=="particular") {
-        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'fecha'=>Input::get('fecha'),'horario' => Input::get('horario'),'direccion'=>Input::get('direccion')]);
+        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'horario' => Input::get('horario'),'direccion'=>Input::get('direccion')]);
       }
-
       if (Input::get('tipo')=="fitcoach") {
         Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'fecha'=>Input::get('fecha'),'zona' => Input::get('zona')]);
       }
@@ -70,7 +69,6 @@ class CartController extends Controller
             'metadata' => array(
               'tipo' => $product->options->tipo,
               'horario' => $product->options->horario,
-              'fecha' => $product->options->fecha,
               'direccion' => $product->options->direccion
             )
           );

@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url('css/adaptive.css') }}" media="screen" />
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}" media="screen" />
+		<link href="{{ url('css/select2.min.css') }}" rel="stylesheet" />
 		<script type="text/javascript" src="{{ url('js/jquery-1.9.1.min.js') }}"></script>
 		<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 		<script type="text/javascript" src="{{ url('js/vendor/bootstrap.js') }}"></script>
@@ -157,6 +158,16 @@
   (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
     t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
   })(window, document, '_gscq','script','//widgets.getsitecontrol.com/12737/script.js');
+</script>
+
+<script src="{{asset('js/select2.min.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".selector-horario").select2({
+		placeholder: "Filtro",
+		allowClear: true
+	});
+});
 </script>
 
 </body>
