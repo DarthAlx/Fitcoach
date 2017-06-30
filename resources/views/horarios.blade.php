@@ -190,7 +190,7 @@
                                     <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="4">J &nbsp;  &nbsp;  </label>
                                     <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="5">V &nbsp;  &nbsp;  </label>
                                     <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="6">S &nbsp;  &nbsp;  </label>
-                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="7">D &nbsp;  &nbsp;  </label>
+                                    <label><input type='checkbox' class="recurrentes" name="recurrencia[]"  value="0">D &nbsp;  &nbsp;  </label>
 
                                  </div>
                              </div>

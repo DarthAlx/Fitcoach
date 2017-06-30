@@ -21,7 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}" media="screen" />
 		<link href="{{ url('css/select2.min.css') }}" rel="stylesheet" />
-		<script type="text/javascript" src="{{ url('js/jquery-1.9.1.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
 		<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 		<script type="text/javascript" src="{{ url('js/vendor/bootstrap.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.selectric.min.js') }}"></script>

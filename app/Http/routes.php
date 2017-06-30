@@ -247,9 +247,11 @@ Route::get('/producto', function () {
 });
 
 Route::get('carrito', 'CartController@shoppingCart');
-Route::get('addtocart', 'CartController@addToCart');
+Route::post('addtocart', 'CartController@addToCart');
 Route::get('removefromcart/{id}', 'CartController@removeToCart');
 Route::get('updatecart/{id}/{qty}', 'CartController@updateCart');
 
 Route::get('clase/{id}', 'CartController@product');
 Route::post('cargo', 'CartController@cargo');
+Route::post('llenar_horarios', 'CartController@llenar_horarios');
+Route::get('llenar_horarios', 'CartController@llenar_horarios2');

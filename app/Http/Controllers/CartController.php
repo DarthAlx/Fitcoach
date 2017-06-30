@@ -16,9 +16,12 @@ use App\Horarios;
 use App\Zona;
 use App\Clases;
 
+
 class CartController extends Controller
 {
     public function product($id){
+      date_default_timezone_set('America/Mexico_City');
+
       $clase=Clases::find($id);
       $user = User::find(Auth::user()->id);
       return view('cart.product',['clase'=>$clase,'user'=>$user]);
@@ -30,13 +33,13 @@ class CartController extends Controller
       $items=Cart::content();
       return view('cart.index',['items'=>$items,'user'=>$user]);
     }
-    public function addToCart()
+    public function addToCart(Request $request)
     {
-      if (Input::get('tipo')=="particular") {
-        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'horario' => Input::get('horario'),'direccion'=>Input::get('direccion')]);
+      if ($request->tipo =="particular") {
+        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'fecha' => $request->fecha,'horario' => $request->horario,'direccion'=>$request->direccion]);
       }
       if (Input::get('tipo')=="fitcoach") {
-        Cart::add(Input::get('id'),Input::get('name'),1,Input::get('price'), ['tipo'=>Input::get('tipo'),'fecha'=>Input::get('fecha'),'zona' => Input::get('zona')]);
+        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'zona' => Input::get('zona')]);
       }
     }
     public function removeToCart($rowId)
@@ -61,10 +64,19 @@ class CartController extends Controller
       $items=Cart::content();
 
       foreach ($items as $product) {
+        $precio = $product->price;
+        $decimales   = '.';
+        $pos = strpos($precio, $decimales);
+        if ($pos === false) {
+            $precio_completo=$precio.".00";
+        }
+        else {
+          $precio_completo=$product->price;
+        }
         if ($product->options->tipo=="particular"){
           $productos[]=array(
             'name' => $product->name,
-            'unit_price' => str_replace('.', '',$product->price),
+            'unit_price' => str_replace('.', '',$precio_completo),
             'quantity' => 1,
             'metadata' => array(
               'tipo' => $product->options->tipo,
@@ -76,11 +88,10 @@ class CartController extends Controller
         if ($product->options->tipo=="fitcoach"){
           $productos[]=array(
             'name' => $product->name,
-            'unit_price' => str_replace('.', '',$product->price),
+            'unit_price' => str_replace('.', '',$precio_completo),
             'quantity' => 1,
             'metadata' => array(
               'tipo' => $product->options->tipo,
-              'fecha' => $product->options->fecha,
               'zona' => $product->options->zona
             )
           );
@@ -133,6 +144,67 @@ class CartController extends Controller
         }
 
 
+
+    }
+
+    public function llenar_horarios(Request $request){
+      ?>
+      <option value="">Selecciona tu horario</option>
+      <?php
+        $options = "";
+  			 $fecha = $request->fecha;
+         list($dia, $mes, $año) = explode("-", $fecha);
+         $datetime1 = date_create($año."-".$mes."-".$dia);
+         $datetime2 =date_create(date("Y")."-".date("m")."-".date("d"));
+         $interval = date_diff($datetime2, $datetime1);
+         $dia_n=date("w", mktime(0, 0, 0, $mes, $dia, $año));
+         $clase=Clases::find($request->clase);
+  			 foreach($clase->horarios as $horario)
+  			 {
+           if (intval($interval->format('%R%a'))>=0) {
+             if ($horario->fecha==$fecha||in_array($dia_n, explode(",",$horario->recurrencia))) {
+               ?>
+      				 <option value="<?=$horario->id ?>"><?=$horario->hora ?> | <?=$horario->user->name ?> | 4.6 ★</option>
+      				 <?php
+             }
+           }
+
+
+
+  			 }
+
+    }
+    public function llenar_horarios2(){
+      ?>
+      <option value="">Selecciona tu horario</option>
+      <?php
+         $options = "";
+  			 $fecha = Input::get('fecha');
+         list($dia, $mes, $año) = explode("-", $fecha);
+         $datetime1 = date_create($año."-".$mes."-".$dia);
+         $datetime2 =date_create(date("Y")."-".date("m")."-".date("d"));
+         $interval = date_diff($datetime2, $datetime1);
+         dd(intval($interval->format('%R%a')));
+
+         $dia_n=date("w", mktime(0, 0, 0, $mes, $dia, $año));
+         $clase=Clases::find(Input::get('clase'));
+  			 foreach($clase->horarios as $horario)
+  			 {
+           if($horario->fecha!=""){
+             list($dia_h, $mes_h, $año_h) = explode("-", $horario->fecha);
+             $datetime2 = date_create($año_h."-".$mes_h."-".$dia_h);
+             $interval = date_diff($datetime2, $datetime1);
+           }
+
+
+
+           if ($horario->fecha==$fecha||in_array($dia_n, explode(",",$horario->recurrencia))) {
+             ?>
+    				 <option value="<?=$horario->id ?>"><?=$horario->hora ?> | <?=$horario->user->name ?> | 4.6 ★</option>
+    				 <?php
+           }
+
+  			 }
 
     }
 

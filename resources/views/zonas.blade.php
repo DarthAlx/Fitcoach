@@ -50,6 +50,14 @@
                                      </div>
                                    </div>
                                    <div class="form-group">
+                                     <label class="col-sm-3 control-label" for="card-number">Fecha</label>
+                                     <div class="col-sm-9">
+                                       <div class="input-group">
+                                       <input id="fecha{{ $zona->id }}" class="form-control datepicker" type="text" value="{{ $zona->fecha }}" name="fecha" disabled required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                     </div>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
                                      <label class="col-sm-3 control-label" for="card-number">Horario</label>
                                      <div class="col-sm-9">
                                        <div class="input-group bootstrap-timepicker timepicker">
@@ -61,6 +69,12 @@
                                      <label class="col-sm-3 control-label">Instructor</label>
                                      <div class="col-sm-9">
                                        <textarea id="coach{{ $zona->id }}" class="form-control" name="coach" disabled required>{{ $zona->coach }}</textarea>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Precio</label>
+                                     <div class="col-sm-9">
+                                       <input type="text" id="precio{{ $zona->id }}" class="form-control" name="precio_zona" value="{{ $zona->precio_zona }}" disabled required>
                                      </div>
                                    </div>
                                    <div class="form-group">
@@ -140,6 +154,14 @@
                          </div>
                        </div>
                        <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-number">Fecha</label>
+                        <div class="col-sm-9">
+                          <div class="input-group">
+                          <input class="form-control datepicker" type="text" value="{{ old('fecha') }}" name="fecha" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                        </div>
+                      </div>
+                       <div class="form-group">
                          <label class="col-sm-3 control-label" for="card-number">Horario</label>
                          <div class="col-sm-9">
                            <div class="input-group bootstrap-timepicker timepicker">
@@ -163,6 +185,12 @@
                                <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
                              @endforeach
                            </select>
+                         </div>
+                       </div>
+                       <div class="form-group">
+                         <label class="col-sm-3 control-label">Precio</label>
+                         <div class="col-sm-9">
+                           <input type="text" id="precioNuevo" class="form-control" name="precio_zona" value="{{ old('precio_zona') }}" required>
                          </div>
                        </div>
                           {!! csrf_field() !!}
@@ -194,6 +222,8 @@
     document.getElementById('identificador'+valor).disabled=false;
     document.getElementById('direccion'+valor).disabled=false;
     document.getElementById('coach'+valor).disabled=false;
+    document.getElementById('fecha'+valor).disabled=false;
+    document.getElementById('precio'+valor).disabled=false;
     document.getElementById('clases_id'+valor).disabled=false;
     document.getElementById('botonguardar'+valor).style.display="inline-block";
     document.getElementById('botoneditar'+valor).style.display="none";
