@@ -28,7 +28,7 @@
 						<input type="hidden"  name="_token" id="token" value="{{csrf_token()}}">
 						<input type="hidden" name="clase_id" id="clase_id" value="{{$clase->id}}">
 						<br>
-						<strong>Buscar horario</strong>
+						<strong>Buscar fecha</strong>
 						<div class="input-group">
 						<input type="text" class="datepicker form-control" name="fecha" id="fecha" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
 					</div>
@@ -75,7 +75,20 @@
 							<select class="selector-horario form-control" name="zona" id="zona" required>
 								<option value="">selecciona</option>
 								@foreach ($clase->zonas as $zona)
-									<option value="{{$zona->id}}">{{$zona->identificador}} - {{$zona->fecha}}</option>
+									<?php
+									 $fecha = $zona->fecha;
+									 list($dia, $mes, $año) = explode("-", $fecha);
+									 $datetime1 = date_create($año."-".$mes."-".$dia);
+									 $datetime2 =date_create(date("Y")."-".date("m")."-".date("d"));
+									 $interval = date_diff($datetime2, $datetime1);
+									 if (intval($interval->format('%R%a'))>=0) {
+										 ?>
+										 		<option value="{{$zona->id}}">{{$zona->identificador}} - {{$zona->fecha}}</option>
+										 <?php
+									 }?>
+
+
+
 								@endforeach
 							</select>
 
@@ -91,7 +104,7 @@
 
 
 							<input type="hidden" name="nombre" value="{{$clase->nombre}}">
-							<input type="hidden" name="precio" id="precio_zona">
+							<input type="hidden" name="precio" value="{{$zona->precio_zona}}" id="precio_zona">
 
 							<input type="hidden" name="tipo" value="fitcoach">
 							<p>&nbsp;</p>
@@ -125,13 +138,8 @@
 						$("#horario").html(data);
 					});
 				}
-
-
-
-
-
-
 			});
+
 			$("#zona").on("change paste keyup", function() {
 				valor=$("#zona").val();
 				precio=$('#zona'+valor+ " .preciozona").html();

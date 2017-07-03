@@ -31,6 +31,19 @@
       <div class="ourTeam">
     <div class="blockTitle">clases deportivas</div>
     <div class="teamItemWrap clear">
+
+      @foreach ($clases as $clase)
+        <div class="teamItem">
+          <a href="{{url('clase')}}/{{$clase->id}}"><img src="{{url('uploads/clases')}}/{{$clase->imagen}}" alt=""></a>
+          <div class="overlay">
+            <div class="teamItemNameWrap">
+              <a style="text-decoration:none;" href="{{url('clase')}}/{{$clase->id}}"><h3>{{ucfirst($clase->nombre)}}</h3></a>
+            </div>
+            <p>Formativa</p>
+          </div>
+        </div>
+
+      @endforeach
       <div class="teamItem">
         <img src="images/content/clases/deportivas/tenisa.jpg" alt="">
         <div class="overlay">

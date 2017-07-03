@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('pagecontent')
-  @include('content_holders.auth', ['role'=>'superadmin'])
+  @include('content_holders.doubleauth', ['role'=>'superadmin','role2'=>'admin'])
 <div class="container-bootstrap">
   @include('content_holders.notificaciones')
   <div class="topclear">
@@ -58,8 +58,9 @@
                                         <div class="form-group">
                  													<div class="col-sm-12 text-right">
                  														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $slide->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $slide->id }}" onclick="habilitar({{ $slide->id }})">Editar</a> &nbsp;
-
+                                            @if (Auth::user()->role=="superadmin")
                                             <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $slide->id }}').click();">Borrar</a>
+                                            @endif
                  													</div>
                  												</div>
 

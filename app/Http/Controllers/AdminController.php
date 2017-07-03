@@ -393,20 +393,22 @@ class AdminController extends Controller
       $guardar->save();
       Session::flash('mensaje', 'Zona guardada!');
       Session::flash('class', 'success');
-      return redirect()->intended(url('/zonas'));
+      return redirect()->intended(url('/eventos'));
     }
     public function updateZona(Request $request, $id)
     {
         $zona = Zona::find($id);
         $zona->identificador = $request->identificador;
         $zona->direccion = $request->direccion;
+        $zona->fecha = $request->fecha;
         $zona->horario = $request->horario;
         $zona->coach = $request->coach;
+        $zona->precio_zona = $request->precio_zona;
         $zona->clases_id = $request->clases_id;
         $zona->save();
         Session::flash('mensaje', 'Zona actualizada!');
         Session::flash('class', 'success');
-        return redirect()->intended(url('/zonas'));
+        return redirect()->intended(url('/eventos'));
     }
 
     public function destroyZona(Request $request, $id)
@@ -415,6 +417,6 @@ class AdminController extends Controller
         $zona->delete();
         Session::flash('mensaje', 'Zona eliminada correctamente!');
         Session::flash('class', 'success');
-        return redirect()->intended(url('/zonas'));
+        return redirect()->intended(url('/eventos'));
     }
 }

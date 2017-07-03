@@ -75,10 +75,13 @@ class AuthController extends Controller
       if (Auth::user()->role=="superadmin") {
         return url('/clases');
       }
+      if (Auth::user()->role=="admin") {
+        return url('/clases');
+      }
       if (Auth::user()->role=="instructor") {
         return url('/perfil');
       }
-      if ($usuario->detalles&&$usuario->role=="cliente") {
+      if ($usuario->direcciones&&$usuario->detalles&&$usuario->role=="cliente") {
         return url('/perfil');
       }
       else {

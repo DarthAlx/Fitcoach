@@ -28,7 +28,8 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 Route::get('/clasesdeportivas', function () {
-    return view('clasesdeportivas');
+  $clases = App\Clases::where('tipo', 'Deportiva')->get();
+    return view('clasesdeportivas', ['clases'=>$clases]);
 });
 
 Route::get('/aviso', function () {
@@ -225,7 +226,7 @@ Route::any('actualizar-slide/{id}', 'AdminController@updateSlide');
 Route::any('eliminar-slide/{id}', 'AdminController@destroySlide');
 
 
-Route::get('/zonas', function () {
+Route::get('/eventos', function () {
   if (Auth::guest()){
     return redirect()->intended(url('/entrar'));
   }

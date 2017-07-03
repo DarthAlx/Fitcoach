@@ -82,6 +82,7 @@ class CartController extends Controller
             'quantity' => 1,
             'metadata' => array(
               'tipo' => $product->options->tipo,
+              'fecha' => $product->options->fecha,
               'horario' => $product->options->horario,
               'direccion' => $product->options->direccion
             )

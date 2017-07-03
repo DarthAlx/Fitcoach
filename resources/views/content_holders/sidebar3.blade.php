@@ -38,6 +38,11 @@
           <i class="fa fa-picture-o" aria-hidden="true"></i>
           Slides </a>
         </li>
+        <li id="eventosmenu">
+          <a href="{{ url('/eventos') }}">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          Eventos </a>
+        </li>
       </ul>
     </div>
 

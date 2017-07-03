@@ -60,7 +60,7 @@
                                      <label class="col-sm-3 control-label" for="card-number">Fecha disponible</label>
                                      <div class="col-sm-9">
                                        <div class="input-group">
-                                       <input id="fecha{{ $horario->id }}" class="form-control datepicker" type="text" value="{{ $horario->fecha }}" name="fecha" disabled required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                       <input id="fecha{{ $horario->id }}" class="form-control datepicker" placeholder="Si no es recurrente" type="text" value="{{ $horario->fecha }}" name="fecha" disabled><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                      </div>
                                      </div>
                                    </div>
@@ -165,7 +165,7 @@
      											<label class="col-sm-3 control-label" for="card-number">Fecha disponible</label>
      											<div class="col-sm-9">
      												<div class="input-group">
-     												<input class="form-control datepicker" type="text" value="{{ old('fecha') }}" name="fecha" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+     												<input class="form-control datepicker" type="text" placeholder="Si no es recurrente" value="{{ old('fecha') }}" name="fecha"><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
      											</div>
      											</div>
      										</div>

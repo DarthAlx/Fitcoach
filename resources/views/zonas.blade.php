@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('pagecontent')
-  @include('content_holders.auth', ['role'=>'superadmin'])
+  @include('content_holders.doubleauth', ['role'=>'superadmin','role2'=>'admin'])
 <div class="container-bootstrap">
   @include('content_holders.notificaciones')
   <div class="topclear">
@@ -17,7 +17,7 @@
 		<div class="col-md-9">
             <div class="profile-content">
               <!-- zonas -->
-              <h2>Zonas</h2>
+              <h2>Eventos</h2>
               @if (!$zonas->isEmpty())
                    <div class="panel-group" id="zonas" role="tablist" aria-multiselectable="true">
                      @foreach ($zonas as $zona)
@@ -68,8 +68,17 @@
                                    <div class="form-group">
                                      <label class="col-sm-3 control-label">Instructor</label>
                                      <div class="col-sm-9">
-                                       <textarea id="coach{{ $zona->id }}" class="form-control" name="coach" disabled required>{{ $zona->coach }}</textarea>
+                                       <select class="form-control"  name="coach" id="coach{{ $zona->id }}" disabled required>
+                                         <option value="">Selecciona una opción</option>
+                                         @foreach ($coaches as $coach)
+                                           <option value="{{ $coach->id }}">{{ $coach->name }}</option>
+                                         @endforeach
+                                       </select>
+                                       <script type="text/javascript">
+                                         if (document.getElementById('coach{{ $zona->id }}') != null) document.getElementById('coach{{ $zona->id }}').value = '{!! $zona->coach !!}';
+                                       </script>
                                      </div>
+
                                    </div>
                                    <div class="form-group">
                                      <label class="col-sm-3 control-label">Precio</label>
@@ -95,8 +104,9 @@
                												<div class="form-group">
                													<div class="col-sm-12 text-right">
                														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $zona->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $zona->id }}" onclick="habilitar({{ $zona->id }})">Editar</a> &nbsp;
-
+                                          @if (Auth::user()->role=="superadmin")
                                           <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $zona->id }}').click();">Borrar</a>
+                                          @endif
                													</div>
                												</div>
                									</form>
@@ -122,13 +132,13 @@
                    </div>
 
            @else
-             <p>No tienes zonas</p>
+             <p>No tienes eventos</p>
            @endif
            <div class="panel panel-default">
              <div class="panel-heading" role="tab" id="headingNuevo">
                <h4 class="panel-title" data-toggle="collapse" data-parent="#zonas" href="#collapseNuevo" aria-expanded="false" aria-controls="collapseNuevo">
                  <a role="button">
-                   Agregar zona
+                   Agregar evento
                  </a>
                </h4>
              </div>
@@ -229,6 +239,7 @@
     document.getElementById('identificador'+valor).disabled=false;
     document.getElementById('direccion'+valor).disabled=false;
     document.getElementById('coach'+valor).disabled=false;
+    document.getElementById('horario'+valor).disabled=false;
     document.getElementById('fecha'+valor).disabled=false;
     document.getElementById('precio'+valor).disabled=false;
     document.getElementById('clases_id'+valor).disabled=false;

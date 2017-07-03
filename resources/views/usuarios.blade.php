@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('pagecontent')
-  @include('content_holders.auth', ['role'=>'superadmin'])
+  @include('content_holders.doubleauth', ['role'=>'superadmin','role2'=>'admin'])
 <div class="container-bootstrap">
   @include('content_holders.notificaciones')
   <div class="topclear">
@@ -131,8 +131,9 @@
                                         <div class="form-group">
                  													<div class="col-sm-12 text-right">
                  														<input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $usuario->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $usuario->id }}" onclick="habilitar({{ $usuario->id }})">Editar</a> &nbsp;
-
+                                            @if (Auth::user()->role=="superadmin")
                                             <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $usuario->id }}').click();">Borrar</a>
+                                            @endif
                  													</div>
                  												</div>
 
@@ -302,12 +303,12 @@
                                     var valor = $('.rol').val();
                                     if (valor=="instructor") {
                                       $('.permitidascont').show();
-                                      
+
 
                                     }
                                     else {
                                       $('.permitidascont').hide();
-                                      
+
                                     }
                                 });
                             });
@@ -328,7 +329,7 @@
                          </div>
 
 
-                         
+
 
                          <div class="form-group">
                              <label for="password" class="col-sm-3 control-label">Contraseña</label>
