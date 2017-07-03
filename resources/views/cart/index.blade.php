@@ -19,7 +19,7 @@
 				@if (Cart::content()->count()<=0)
 					<div class="col-xs-12">
 						<div class="well">
-							<h3>Su carrito de compras está vacio.</h3>
+							<h3>Su carrito de compras está vacio. <a href="{{url('/clasesdeportivas')}}">Continuar comprando.</a></h3>
 						</div>
 					</div>
 				@else
@@ -61,11 +61,13 @@
 										</small></h4>
 									@endif
 									@if ($product->options->tipo=="fitcoach")
+
 										<h4><small>
 											<?php $zona=App\Zona::find($product->options->zona); ?>
-											<?php $clase=App\Clases::find($zona->clase); ?>
+											<?php $clase=App\Clases::find($zona->clases_id); ?>
 											<?php $coach=App\User::find($zona->coach); ?>
-											Fecha: {{ $product->options->fecha }}<br>
+
+											Fecha: {{ $zona->fecha }}<br>
 											Clase: {{ $clase->nombre }}<br>
 											Coach: {{ $coach->name }}<br>
 											Dirección: {{ $zona->direccion }}<br>
@@ -113,14 +115,10 @@
 						</div>
 						<div class="panel-footer">
 							<div class="row text-center">
-								<div class="col-xs-9">
+								<div class="col-xs-12">
 									<h4 class="text-right">Total <strong>${{Cart::total()}}</strong></h4>
 								</div>
-								<div class="col-xs-3">
-									<a href="#" class="btn btn-success pull-right">
-										Pagar
-									</a>
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -129,7 +127,7 @@
 			</div>
 		</div>
 
-
+@if (Cart::content()->count()>0)
 		<div class="container-bootstrap">
 			<div class="row">
 				<div class="col-md-6">
@@ -167,7 +165,7 @@
 	                                <div class="col-xs-12">
 																		<div class="checkbox">
 															        <label>
-															          <input name="guardar" value="si" type="checkbox" id="guardartarjeta"> Guardar tarjeta
+															          <input name="guardartarjeta" value="si" type="checkbox" id="guardartarjeta"> Guardar tarjeta
 															        </label>
 															      </div>
 	                              </div>
@@ -200,6 +198,7 @@
 
 			</div>
 		</div>
+	@endif
 
 
 

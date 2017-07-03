@@ -233,7 +233,8 @@ Route::get('/zonas', function () {
     $user = App\User::find(Auth::user()->id);
     $clases = App\Clases::all();
     $zonas = App\Zona::all();
-    return view('zonas', ['user'=>$user,'zonas'=>$zonas,'clases'=>$clases]) ;
+    $coaches = App\User::where('role','instructor')->get();
+    return view('zonas', ['user'=>$user,'zonas'=>$zonas,'clases'=>$clases,'coaches'=>$coaches]) ;
   }
 });
 Route::post('agregar-zona', 'AdminController@addZona');

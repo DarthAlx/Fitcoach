@@ -26,7 +26,7 @@
   <div class="alert alert-{{ Session::get('class') }} alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <ul>
-        <li>{{ Session::get('mensaje') }}</li>
+        <li>{!! Session::get('mensaje') !!}</li>
     </ul>
   </div>
 @endif

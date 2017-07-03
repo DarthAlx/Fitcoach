@@ -15,6 +15,7 @@ use App\User;
 use App\Horarios;
 use App\Zona;
 use App\Clases;
+use App\Tarjetas;
 
 
 class CartController extends Controller
@@ -38,9 +39,10 @@ class CartController extends Controller
       if ($request->tipo =="particular") {
         Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'fecha' => $request->fecha,'horario' => $request->horario,'direccion'=>$request->direccion]);
       }
-      if (Input::get('tipo')=="fitcoach") {
-        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'zona' => Input::get('zona')]);
+      if ($request->tipo=="fitcoach") {
+        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'zona' => $request->zona]);
       }
+      return redirect()->intended(url('/carrito'));
     }
     public function removeToCart($rowId)
     {
@@ -119,6 +121,16 @@ class CartController extends Controller
             )
           )
         ));
+        if ($request->identificador) {
+          $tarjeta = new Tarjetas();
+          $tarjeta->identificador = $request->identificador;
+          $tarjeta->num= $request->numero;
+          $tarjeta->nombre = $request->nombre;
+          $tarjeta->mes = $request->mes;
+          $tarjeta->año = $request->año;
+          $tarjeta->user_id = $request->user_id;
+          $tarjeta->save();
+        }
 
         foreach ($productos as $producto) {
           $guardar = new Orden();
@@ -131,7 +143,7 @@ class CartController extends Controller
         }
         Cart::destroy();
 
-        Session::flash('mensaje', 'Orden completada!');
+        Session::flash('mensaje', "Orden completada! revisa <a class='alert-link' href='".url('/mis-ordenes')."'>tus ordenes.</a>");
         Session::flash('class', 'success');
         return redirect()->intended(url('/carrito'));
 

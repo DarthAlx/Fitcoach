@@ -20,7 +20,7 @@ class Ordenes extends Migration
           $table->string('unit_price');
           $table->string('metadata');
           $table->timestamps();
-          $table->primary('id');
+          
       });
     }
 

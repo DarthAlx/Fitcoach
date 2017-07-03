@@ -154,25 +154,32 @@
                          </div>
                        </div>
                        <div class="form-group">
-                        <label class="col-sm-3 control-label" for="card-number">Fecha</label>
+                        <label class="col-sm-3 control-label">Fecha</label>
                         <div class="col-sm-9">
                           <div class="input-group">
                           <input class="form-control datepicker" type="text" value="{{ old('fecha') }}" name="fecha" required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                         </div>
                         </div>
                       </div>
+
                        <div class="form-group">
-                         <label class="col-sm-3 control-label" for="card-number">Horario</label>
+                         <label class="col-sm-3 control-label">Horario</label>
                          <div class="col-sm-9">
                            <div class="input-group bootstrap-timepicker timepicker">
-                             <input id="horarioNuevo" value="{{ old('horario') }}" class="form-control mitimepicker" type="text" name="horario" disabled required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                             <input id="horarioNuevo" value="{{ old('horario') }}" class="form-control mitimepicker" type="text" name="horario" required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                            </div>
+
                          </div>
                        </div>
                        <div class="form-group">
                          <label class="col-sm-3 control-label">Instructor</label>
                          <div class="col-sm-9">
-                           <textarea id="coachNuevo" class="form-control" name="coach" required>{{ old('coach') }}</textarea>
+                           <select class="form-control"  name="coach" id="coachNuevo" required>
+                             <option value="">Selecciona una opción</option>
+                             @foreach ($coaches as $coach)
+                               <option value="{{ $coach->id }}">{{ $coach->name }}</option>
+                             @endforeach
+                           </select>
                          </div>
                        </div>
 
@@ -229,5 +236,10 @@
     document.getElementById('botoneditar'+valor).style.display="none";
   }
 </script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.mitimepicker').timepicker();
+        });
+    </script>
 
 @endsection
