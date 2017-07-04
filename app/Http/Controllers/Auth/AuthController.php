@@ -81,7 +81,7 @@ class AuthController extends Controller
       if (Auth::user()->role=="instructor") {
         return url('/perfil');
       }
-      if ($usuario->direcciones&&$usuario->detalles&&$usuario->role=="cliente") {
+      if ($usuario->direcciones&&$usuario->detalles&&$usuario->role=="usuario") {
         return url('/perfil');
       }
       else {

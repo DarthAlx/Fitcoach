@@ -100,11 +100,14 @@
 										<?php $coach=App\User::find($zona->coach) ?>
 										Instructor: {{$coach->name}} | 4.6 ★
 									</p>
+									<input type="hidden" name="coachzona" id="coachzona{{$zona->id}}" value="{{$zona->coach}}">
 								@endforeach
 
 
 							<input type="hidden" name="nombre" value="{{$clase->nombre}}">
-							<input type="hidden" name="precio" value="{{$zona->precio_zona}}" id="precio_zona">
+							<input type="hidden" name="precio" id="precio_zona">
+							<input type="hidden" name="coach" id="coachzona">
+
 
 							<input type="hidden" name="tipo" value="fitcoach">
 							<p>&nbsp;</p>
@@ -143,7 +146,9 @@
 			$("#zona").on("change paste keyup", function() {
 				valor=$("#zona").val();
 				precio=$('#zona'+valor+ " .preciozona").html();
+				coach=$("#coachzona"+valor).val();
 				$("#precio_zona").val(precio)
+				$("#coachzona").val(coach)
 				$('.zonas').hide();
 				$('#zona'+valor).show();
 			});

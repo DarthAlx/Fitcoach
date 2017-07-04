@@ -40,7 +40,7 @@ class CartController extends Controller
         Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'fecha' => $request->fecha,'horario' => $request->horario,'direccion'=>$request->direccion]);
       }
       if ($request->tipo=="fitcoach") {
-        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'zona' => $request->zona]);
+        Cart::add($request->clase_id,$request->nombre,1,$request->precio, ['tipo'=>$request->tipo,'zona' => $request->zona,'coach' => $request->coach]);
       }
       return redirect()->intended(url('/carrito'));
     }
@@ -95,7 +95,8 @@ class CartController extends Controller
             'quantity' => 1,
             'metadata' => array(
               'tipo' => $product->options->tipo,
-              'zona' => $product->options->zona
+              'zona' => $product->options->zona,
+              'coach' => $product->options->coach
             )
           );
         }
