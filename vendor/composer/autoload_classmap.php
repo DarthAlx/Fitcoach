@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Clases' => $baseDir . '/database/migrations/2017_06_06_163305_Clases.php',
     'ClasesSeeder' => $baseDir . '/database/seeds/ClasesSeeder.php',
+    'Condominios' => $baseDir . '/database/migrations/2017_07_07_171346_Condominios.php',
     'Conekta\\Address' => $vendorDir . '/conekta/conekta-php/lib/Conekta/Address.php',
     'Conekta\\ApiError' => $vendorDir . '/conekta/conekta-php/lib/Conekta/Exceptions/ApiError.php',
     'Conekta\\AuthenticationError' => $vendorDir . '/conekta/conekta-php/lib/Conekta/Exceptions/AuthenticationError.php',

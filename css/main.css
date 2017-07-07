@@ -197,3 +197,6 @@
 	font-weight: bold;
 	color: #D58628;
 }
+p, form{
+	color: #333 !important;
+}

@@ -287,6 +287,7 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
     public static $classMap = array (
         'Clases' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_163305_Clases.php',
         'ClasesSeeder' => __DIR__ . '/../..' . '/database/seeds/ClasesSeeder.php',
+        'Condominios' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_171346_Condominios.php',
         'Conekta\\Address' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Address.php',
         'Conekta\\ApiError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ApiError.php',
         'Conekta\\AuthenticationError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/AuthenticationError.php',

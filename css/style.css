@@ -101,7 +101,7 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 /* Menu */
 .mainMenu {float: right;margin: 37px 36px 0px 0;-webkit-transition: margin 0.3s ease;-moz-transition: margin 0.3s ease;-o-transition: margin 0.3s ease;transition: margin 0.3s ease;}
 .mainMenu ul {list-style: none;}
-.mainMenu > ul > li {position: relative; float: left;padding-bottom: 36px; margin: 0 0 0 40px;}
+.mainMenu > ul > li {position: relative; float: left;padding-bottom: 20px; margin: 0 0 0 40px;}
 .mainMenu > ul > li:first-child {margin-left: 0;}
 .mainMenu > ul > li a, .mainMenu > ul > li a:visited {display: block;line-height: 16px;padding: 0 5px;white-space: nowrap;word-wrap: normal; color: #333;font-size: 12px;font-family: 'Montserrat', sans-serif;font-weight: bold; text-transform: uppercase;text-decoration: none;-webkit-transition: color 0.3s ease;-moz-transition: color 0.3s ease;-o-transition: color 0.3s ease;transition: color 0.3s ease;}
 .mainMenu > ul > li.current-menu-item a, .mainMenu > ul > li a:hover {color: #D58628;}
@@ -126,7 +126,7 @@ transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease,left 0.
 .mainMenu ul li ul li.menu-item-has-children:hover ul {display: block;}
 
 #header .is-sticky .mainMenu {margin-top: 22px;}
-#header .is-sticky .mainMenu > ul > li {padding-bottom: 21px;}
+#header .is-sticky .mainMenu > ul > li {padding-bottom: 13px;}
 #header .is-sticky .mainMenu ul li a {color: #7f7f7f;}
 #header .is-sticky .mainMenu ul li ul {top: 37px;}
 #header .is-sticky .mainMenu ul li ul li ul {top: -10px;}

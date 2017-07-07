@@ -16,6 +16,7 @@ use App\User;
 use App\Clases;
 use App\Slide;
 use App\Zona;
+use App\Condominio;
 use Validator;
 
 class AdminController extends Controller
@@ -418,5 +419,104 @@ class AdminController extends Controller
         Session::flash('mensaje', 'Zona eliminada correctamente!');
         Session::flash('class', 'success');
         return redirect()->intended(url('/eventos'));
+    }
+
+
+
+    public function addCondominio(Request $request){
+
+      if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+
+
+          $name = $request->identificador ."-". time(). "." . $file->getClientOriginalExtension();
+          $path = base_path('uploads/clases/');
+
+          $file-> move($path, $name);
+
+          $guardar = new Condominio($request->all());
+          $guardar->imagen = $name;
+
+          $guardar->save();
+          Session::flash('mensaje', 'Condominio guardado correctamente!');
+          Session::flash('class', 'success');
+          return redirect()->intended(url('/condominios'));
+        }
+        else{
+          Session::flash('mensaje', 'El archivo no es una imagen valida.');
+          Session::flash('class', 'danger');
+          return redirect()->intended(url('/condominios'));
+        }
+
+      }
+      else{
+        Session::flash('mensaje', 'El archivo no es una imagen valida.');
+        Session::flash('class', 'danger');
+        return redirect()->intended(url('/condominios'));
+      }
+    }
+    public function updateCondominio(Request $request, $id)
+    {
+
+
+      if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        if ($file->getClientOriginalExtension()=="jpg" || $file->getClientOriginalExtension()=="png") {
+          $name = $request->identificador . "-". time()."." . $file->getClientOriginalExtension();
+          $path = base_path('uploads/clases/');
+          $file-> move($path, $name);
+          $condominio = Condominio::find($id);
+          File::delete($path . $condominio->imagen);
+          $condominio->identificador = $request->identificador;
+          $condominio->direccion = $request->direccion;
+          $condominio->fecha = $request->fecha;
+          $condominio->horario = $request->horario;
+          $condominio->coach = $request->coach;
+          $condominio->cupo = $request->cupo;
+          $condominio->imagen = $name;
+          $condominio->precio = $request->precio;
+          $condominio->clases_id = $request->clases_id;
+          $condominio->save();
+
+
+          Session::flash('mensaje', 'Condominio actualizado!');
+          Session::flash('class', 'success');
+          return redirect()->intended(url('/condominios'));
+        }
+        else{
+          Session::flash('mensaje', 'El archivo no es una imagen valida.');
+          Session::flash('class', 'danger');
+          return redirect()->intended(url('/condominios'));
+        }
+
+      }
+      else{
+        $condominio = Condominio::find($id);
+        $condominio->identificador = $request->identificador;
+        $condominio->direccion = $request->direccion;
+        $condominio->fecha = $request->fecha;
+        $condominio->horario = $request->horario;
+        $condominio->coach = $request->coach;
+        $condominio->cupo = $request->cupo;
+        $condominio->imagen = $request->imagen;
+        $condominio->precio = $request->precio;
+        $condominio->clases_id = $request->clases_id;
+        $condominio->save();
+
+
+        Session::flash('mensaje', 'Condominio actualizado!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/condominios'));
+      }
+    }
+
+    public function destroyCondominio(Request $request, $id)
+    {
+        $condominio = Condominio::find($id);
+        $condominio->delete();
+        Session::flash('mensaje', 'Condominio eliminado correctamente!');
+        Session::flash('class', 'success');
+        return redirect()->intended(url('/condominios'));
     }
 }

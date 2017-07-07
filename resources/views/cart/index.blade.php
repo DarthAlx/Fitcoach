@@ -25,7 +25,7 @@
 				@else
 				<div class="col-xs-12">
 					<div class="panel panel-warning" style="border-color: rgba(213, 134, 40, 0.64) !important;">
-						<div class="panel-heading"  style="color: #fff !important; background-color: rgba(213, 134, 40, 0.64) !important; border-color: rgba(213, 134, 40, 0.64) !important;">
+						<div class="panel-heading"  style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
 							<div class="panel-title">
 								<div class="row">
 									<div class="col-xs-6">
@@ -131,8 +131,8 @@
 		<div class="container-bootstrap">
 			<div class="row">
 				<div class="col-md-6">
-					<div class="panel panel-default">
-	                    <div class="panel-heading" role="tab" id="headingTwo">
+					<div class="panel panel-default" style="border-color: rgba(213, 134, 40, 0.64) !important;">
+	                    <div class="panel-heading" role="tab" id="headingTwo"  style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
 	                        <h4 class="panel-title">
 
 	                           Tarjetas de crédito o débito

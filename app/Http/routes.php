@@ -257,3 +257,22 @@ Route::get('clase/{id}', 'CartController@product');
 Route::post('cargo', 'CartController@cargo');
 Route::post('llenar_horarios', 'CartController@llenar_horarios');
 Route::get('llenar_horarios', 'CartController@llenar_horarios2');
+
+
+
+
+Route::get('/condominios', function () {
+  if (Auth::guest()){
+    return redirect()->intended(url('/entrar'));
+  }
+  else {
+    $user = App\User::find(Auth::user()->id);
+    $clases = App\Clases::all();
+    $condominios = App\Condominio::all();
+    $coaches = App\User::where('role','instructor')->get();
+    return view('condominios', ['user'=>$user,'condominios'=>$condominios,'clases'=>$clases,'coaches'=>$coaches]) ;
+  }
+});
+Route::post('agregar-condominio', 'AdminController@addCondominio');
+Route::any('actualizar-condominio/{id}', 'AdminController@updateCondominio');
+Route::any('eliminar-condominio/{id}', 'AdminController@destroyCondominio');

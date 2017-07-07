@@ -50,7 +50,7 @@
 	</head>
 <body class="home">
 
-   <header id="header"><div class="headerWrap clear">
+   <header id="header"><div class="headerWrap clear is-sticky">
 <a class="logo" id="logo" href="{{ url('/') }}">
         <img src="{{ url('images/logo-black.png') }}" alt="" width="161" height="46" class="logo-white">
         <img class="logo-black" src="{{ url('images/logo-black.png') }}" width="117" height="34" alt="">

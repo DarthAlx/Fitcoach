@@ -16,9 +16,9 @@
        </div>
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info"  style="border-color: rgba(213, 134, 40, 0.64) !important;">
-                    <div class="panel-heading" style="color: #fff !important; background-color: rgba(213, 134, 40, 0.64) !important; border-color: rgba(213, 134, 40, 0.64) !important;">
-                        <div class="panel-title"><h3>Iniciar Sesión</h3></div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="{{ url('password/email') }}" style="color: #fff;">¿Olvidaste tu contraseña?</a></div>
+                    <div class="panel-heading" style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
+                        <div class="panel-title text-center"><h3>INICIAR SESIÓN</h3></div>
+
                     </div>
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -39,7 +39,7 @@
 
 
 
-                            <div class="input-group">
+                            <div class="input-group text-center" style="display: block;">
                                       <div class="checkbox">
                                         <label>
                                           <input id="login-remember" type="checkbox" name="remember" > Recordarme
@@ -48,25 +48,28 @@
                                     </div>
 
 
-                                <div style="margin-top:10px" class="form-group">
+                                <div style="margin-top:10px" class="form-group text-center">
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <input id="btn-login" type="submit" class="btn btn-success" value="Entrar" style="color: #fff !important; background-color: rgba(213, 134, 40, 0.64) !important; border-color: rgba(213, 134, 40, 0.64) !important;">
+                                      <input id="btn-login" type="submit" class="btn btn-success" value="Entrar" style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
 
 
                                     </div>
                                 </div>
 
 
-                                <div class="form-group">
-                                    <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                            ¿No tienes una cuenta?
-                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                <div class="form-group" style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                    <div class="col-md-6 control">
+                                        <div  >
+                                            ¿No tienes una cuenta?<br>
+                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()" style="color: #7f7f7f">
                                             Registrate aquí!
                                         </a>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6 control">
+                                        <div style="float:right;"><a href="{{ url('password/email') }}"  style="color: #7f7f7f">¿Olvidaste tu contraseña?</a></div>
                                     </div>
                                 </div>
                             </form>
@@ -78,8 +81,8 @@
         </div>
         <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-info" style="border-color: rgba(213, 134, 40, 0.64) !important;">
-                        <div class="panel-heading" style="color: #fff !important; background-color: rgba(213, 134, 40, 0.64) !important; border-color: rgba(213, 134, 40, 0.64) !important;">
-                            <div class="panel-title"><h3>Registrarse</h3></div>
+                        <div class="panel-heading" style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
+                            <div class="panel-title text-center"><h3>Registrarse</h3></div>
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()" style="color: #fff;">Iniciar sesión</a></div>
                         </div>
                         <div class="panel-body" >
@@ -115,8 +118,8 @@
 
                                 <div class="form-group">
                                     <!-- Button -->
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <input id="btn-signup" type="submit" class="btn btn-info" value="Registrar" style="color: #fff !important; background-color: rgba(213, 134, 40, 0.64) !important; border-color: rgba(213, 134, 40, 0.64) !important;">
+                                    <div class="col-md-12 text-center">
+                                        <input id="btn-signup" type="submit" class="btn btn-info" value="Registrar" style="color: #fff !important; background-color: #D58628 !important; border-color: rgba(213, 134, 40, 0.64) !important;">
 
                                     </div>
                                 </div>

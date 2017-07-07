@@ -22,17 +22,26 @@ class CartController extends Controller
 {
     public function product($id){
       date_default_timezone_set('America/Mexico_City');
-
+      if (Auth::guest()){
+        return redirect()->intended(url('/entrar'));
+      }
+      else {
       $clase=Clases::find($id);
       $user = User::find(Auth::user()->id);
       return view('cart.product',['clase'=>$clase,'user'=>$user]);
+      }
     }
 
     public function shoppingCart()
     {
+      if (Auth::guest()){
+        return redirect()->intended(url('/entrar'));
+      }
+      else {
       $user = User::find(Auth::user()->id);
       $items=Cart::content();
       return view('cart.index',['items'=>$items,'user'=>$user]);
+      }
     }
     public function addToCart(Request $request)
     {
@@ -62,6 +71,9 @@ class CartController extends Controller
 
     public function cargo(Request $request)
     {
+      if (Auth::guest()){
+        return redirect()->intended(url('/entrar'));
+      }
       \Conekta\Conekta::setApiKey("key_fr9YE9Y98jxYQ9NJrJTZXw");
       $items=Cart::content();
 

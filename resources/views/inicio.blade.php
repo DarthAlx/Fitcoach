@@ -18,5 +18,5 @@
 			</div>
 			@include('content_holders.notificaciones')
 
-		</div>
+		</section>
 @endsection
