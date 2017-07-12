@@ -126,6 +126,8 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'Horarios' => $baseDir . '/database/migrations/2017_06_06_163315_Horarios.php',
+    'HorariosCondominio' => $baseDir . '/database/migrations/2017_07_12_190313_HorariosCondominio.php',
+    'Horarios_condominios' => $baseDir . '/database/migrations/2017_07_07_171346_Horario_condominios.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'Ordenes' => $baseDir . '/database/migrations/2017_06_28_173156_ordenes.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',

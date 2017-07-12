@@ -405,6 +405,8 @@ class ComposerStaticInit7d73a3b9f373311e3f9df3e54695c0c1
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'Horarios' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_163315_Horarios.php',
+        'HorariosCondominio' => __DIR__ . '/../..' . '/database/migrations/2017_07_12_190313_HorariosCondominio.php',
+        'Horarios_condominios' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_171346_Horario_condominios.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'Ordenes' => __DIR__ . '/../..' . '/database/migrations/2017_06_28_173156_ordenes.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',

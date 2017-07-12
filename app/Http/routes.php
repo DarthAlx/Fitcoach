@@ -146,7 +146,6 @@ Route::get('/horarios', function () {
   else {
     $user = App\User::find(Auth::user()->id);
     $permitidas = explode(",",$user->clases);
-
     $clases = App\Clases::whereIn('id', $permitidas)->get();;
     return view('horarios', ['user'=>$user,'clases'=>$clases]) ;
   }
@@ -270,9 +269,26 @@ Route::get('/condominios', function () {
     $clases = App\Clases::all();
     $condominios = App\Condominio::all();
     $coaches = App\User::where('role','instructor')->get();
-    return view('condominios', ['user'=>$user,'condominios'=>$condominios,'clases'=>$clases,'coaches'=>$coaches]) ;
+    $horarios= App\Horario_condominio::all();
+    return view('condominios', ['user'=>$user,'condominios'=>$condominios,'clases'=>$clases,'coaches'=>$coaches,'horarios'=>$horarios]) ;
   }
 });
+
 Route::post('agregar-condominio', 'AdminController@addCondominio');
 Route::any('actualizar-condominio/{id}', 'AdminController@updateCondominio');
 Route::any('eliminar-condominio/{id}', 'AdminController@destroyCondominio');
+
+Route::post('agregar-horario-condominio', 'AdminController@addHorarioCondominio');
+Route::any('actualizar-horario-condominio/{id}', 'AdminController@updateHorarioCondominio');
+Route::any('eliminar-horario-condominio/{id}', 'AdminController@destroyHorarioCondominio');
+
+Route::get('/residenciales', function () {
+  $condominios = App\Condominio::all();
+    return view('residenciales', ['condominios'=>$condominios]);
+});
+Route::get('/residenciales/{id}', function () {
+  $clases = App\Clases::all();
+  $condominio = App\Condominio::find($id);
+  $coaches = App\User::where('role','instructor')->get();
+  return view('residenciales_horarios', ['condominios'=>$condominios,'clases'=>$clases,'coaches'=>$coaches]);
+});

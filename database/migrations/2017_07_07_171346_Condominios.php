@@ -16,13 +16,7 @@ class Condominios extends Migration
           $table->increments('id');
           $table->string('identificador');
           $table->string('direccion');
-          $table->string('fecha');
-          $table->string('horario');
-          $table->string('coach');
-          $table->string('precio');
-          $table->string('cupo');
           $table->string('imagen');
-          $table->string('clases_id');
           $table->timestamps();
       });
     }

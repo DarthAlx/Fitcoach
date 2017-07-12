@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Condominio extends Model
 {
   protected $table = 'condominios';
-  protected $fillable = ['identificador', 'direccion','imagen','fecha','horario', 'coach','precio','cupo', 'clases_id'];
-  public function clase()
+  protected $fillable = ['identificador', 'direccion','imagen'];
+  public function horarios()
      {
-       return $this->belongsTo('App\Clases');
+       return $this->hasMany('App\Horario_condominio');
      }
 }

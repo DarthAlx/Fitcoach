@@ -55,63 +55,11 @@
                                        <textarea id="direccion{{ $condominio->id }}" class="form-control" name="direccion" disabled required>{{ $condominio->direccion }}</textarea>
                                      </div>
                                    </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label" for="card-number">Fecha</label>
-                                     <div class="col-sm-9">
-                                       <div class="input-group">
-                                       <input id="fecha{{ $condominio->id }}" class="form-control datepicker" type="text" value="{{ $condominio->fecha }}" name="fecha" disabled required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                     </div>
-                                     </div>
-                                   </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label" for="card-number">Horario</label>
-                                     <div class="col-sm-9">
-                                       <div class="input-group bootstrap-timepicker timepicker">
-                                         <input id="horario{{ $condominio->id }}" value="{{ $condominio->horario }}" class="form-control mitimepicker" type="text" name="horario" disabled required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                       </div>
-                                     </div>
-                                   </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label">Instructor</label>
-                                     <div class="col-sm-9">
-                                       <select class="form-control"  name="coach" id="coach{{ $condominio->id }}" disabled required>
-                                         <option value="">Selecciona una opción</option>
-                                         @foreach ($coaches as $coach)
-                                           <option value="{{ $coach->id }}">{{ $coach->name }}</option>
-                                         @endforeach
-                                       </select>
-                                       <script type="text/javascript">
-                                         if (document.getElementById('coach{{ $condominio->id }}') != null) document.getElementById('coach{{ $condominio->id }}').value = '{!! $condominio->coach !!}';
-                                       </script>
-                                     </div>
 
-                                   </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label">Cupo</label>
-                                     <div class="col-sm-9">
-                                       <input type="text" id="cupo{{ $condominio->id }}" class="form-control" name="cupo" value="{{ $condominio->cupo }}" disabled required>
-                                     </div>
-                                   </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label">Precio</label>
-                                     <div class="col-sm-9">
-                                       <input type="text" id="precio{{ $condominio->id }}" class="form-control" name="precio" value="{{ $condominio->precio }}" disabled required>
-                                     </div>
-                                   </div>
-                                   <div class="form-group">
-                                     <label class="col-sm-3 control-label">Clase</label>
-                                     <div class="col-sm-9">
-                                       <select class="form-control"  name="clases_id" disabled id="clases_id{{ $condominio->id }}" required>
-                                         <option value="">Selecciona una opción</option>
-                                         @foreach ($clases as $clase)
-                                           <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
-                                         @endforeach
-                                       </select>
-                                     </div>
-                                   </div>
-                                   <script type="text/javascript">
-                                     if (document.getElementById('clases_id{{ $condominio->id }}') != null) document.getElementById('clases_id{{ $condominio->id }}').value = '{!! $condominio->clases_id !!}';
-                                   </script>
+
+
+
+
                												{!! csrf_field() !!}
                												<div class="form-group">
                													<div class="col-sm-12 text-right">
@@ -144,13 +92,13 @@
                    </div>
 
            @else
-             <p>No tienes eventos</p>
+             <p>No tienes condominios</p>
            @endif
            <div class="panel panel-default">
              <div class="panel-heading" role="tab" id="headingNuevo">
                <h4 class="panel-title" data-toggle="collapse" data-parent="#condominios" href="#collapseNuevo" aria-expanded="false" aria-controls="collapseNuevo">
                  <a role="button">
-                   Agregar evento
+                   Agregar condominio
                  </a>
                </h4>
              </div>
@@ -181,6 +129,179 @@
                            <textarea id="direccionNuevo" class="form-control" name="direccion" required>{{ old('direccion') }}</textarea>
                          </div>
                        </div>
+
+
+
+                          {!! csrf_field() !!}
+                          <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                              <input class="btn btn-success" type="submit" value="Guardar" id="botonguardarNuevo">
+                            </div>
+                          </div>
+                    </form>
+                  </div>
+              </div>
+                   </div>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!--termina condominios -->
+
+
+            </div>
+
+            <!--horario condominios -->
+            <div class="profile-content">
+              <h2>Horarios</h2>
+              @if (!$horarios->isEmpty())
+                   <div class="panel-group" id="horario_condominios" role="tablist" aria-multiselectable="true">
+                     @foreach ($horarios as $horario_condominio)
+                       <div class="panel panel-default">
+                         <div class="panel-heading" role="tab" id="heading{{ $horario_condominio->id }}">
+                           <h4 class="panel-title" data-toggle="collapse" data-parent="#horario_condominios" href="#collapse{{ $horario_condominio->id }}" aria-expanded="false" aria-controls="collapse{{ $horario_condominio->id }}">
+                             <a role="button">
+                                   {{ Ucfirst($horario_condominio->fecha) }} - {{ Ucfirst($horario_condominio->horario) }}
+                             </a>
+                           </h4>
+                         </div>
+                         <div id="collapse{{ $horario_condominio->id }}" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading{{ $horario_condominio->id }}">
+                           <div class="panel-body">
+                             <div class="horario_condominio">
+                               <div class="editar">
+                                 <div class="col-md-12">
+                                      <br/>
+                                     <div class="form-horizontal">
+                                 <form action="{{ url('/actualizar-horario-condominio') }}/{{ $horario_condominio->id }}" method="post"  enctype="multipart/form-data">
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label" for="card-number">Fecha</label>
+                                     <div class="col-sm-9">
+                                       <div class="input-group">
+                                       <input id="fecha{{ $horario_condominio->id }}" class="form-control datepicker" type="text" value="{{ $horario_condominio->fecha }}" name="fecha" disabled required><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                     </div>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label" for="card-number">Horario</label>
+                                     <div class="col-sm-9">
+                                       <div class="input-group bootstrap-timepicker timepicker">
+                                         <input id="horario{{ $horario_condominio->id }}" value="{{ $horario_condominio->horario }}" class="form-control mitimepicker" type="text" name="horario" disabled required/><span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                       </div>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Instructor</label>
+                                     <div class="col-sm-9">
+                                       <select class="form-control"  name="coach" id="coach{{ $horario_condominio->id }}" disabled required>
+                                         <option value="">Selecciona una opción</option>
+                                         @foreach ($coaches as $coach)
+                                           <option value="{{ $coach->id }}">{{ $coach->name }}</option>
+                                         @endforeach
+                                       </select>
+                                       <script type="text/javascript">
+                                         if (document.getElementById('coach{{ $horario_condominio->id }}') != null) document.getElementById('coach{{ $horario_condominio->id }}').value = '{!! $horario_condominio->coach !!}';
+                                       </script>
+                                     </div>
+
+                                   </div>
+
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Condominio</label>
+                                     <div class="col-sm-9">
+                                       <select class="form-control"  name="condominio" id="condominio{{ $horario_condominio->id }}" disabled required>
+                                         <option value="">Selecciona una opción</option>
+                                         @foreach ($condominios as $condominio)
+                                           <option value="{{ $condominio->id }}">{{ $condominio->identificador }}</option>
+                                         @endforeach
+                                       </select>
+                                       <script type="text/javascript">
+                                         if (document.getElementById('condominio{{ $horario_condominio->id }}') != null) document.getElementById('condominio{{ $horario_condominio->id }}').value = '{!! $horario_condominio->condominio !!}';
+                                       </script>
+                                     </div>
+
+                                   </div>
+
+
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Cupo</label>
+                                     <div class="col-sm-9">
+                                       <input type="text" id="cupo{{ $horario_condominio->id }}" class="form-control" name="cupo" value="{{ $horario_condominio->cupo }}" disabled required>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Precio</label>
+                                     <div class="col-sm-9">
+                                       <input type="text" id="precio{{ $horario_condominio->id }}" class="form-control" name="precio" value="{{ $horario_condominio->precio }}" disabled required>
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
+                                     <label class="col-sm-3 control-label">Clase</label>
+                                     <div class="col-sm-9">
+                                       <select class="form-control"  name="clases_id" disabled id="clases_id{{ $horario_condominio->id }}" required>
+                                         <option value="">Selecciona una opción</option>
+                                         @foreach ($clases as $clase)
+                                           <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
+                                         @endforeach
+                                       </select>
+                                     </div>
+                                   </div>
+                                   <script type="text/javascript">
+                                     if (document.getElementById('clases_id{{ $horario_condominio->id }}') != null) document.getElementById('clases_id{{ $horario_condominio->id }}').value = '{!! $horario_condominio->clases_id !!}';
+                                   </script>
+                                      {!! csrf_field() !!}
+                                      <div class="form-group">
+                                        <div class="col-sm-12 text-right">
+                                          <input class="btn btn-success" type="submit" value="Guardar" style="display: none" id="botonguardar{{ $horario_condominio->id }}"><a href="#" class="btn btn-primary"  id="botoneditar{{ $horario_condominio->id }}" onclick="habilitar({{ $horario_condominio->id }})">Editar</a> &nbsp;
+                                          @if (Auth::user()->role=="superadmin")
+                                          <a href="#" class="btn btn-danger" onclick="javascript: document.getElementById('botoneliminar{{ $horario_condominio->id }}').click();">Borrar</a>
+                                          @endif
+                                        </div>
+                                      </div>
+                                </form>
+                                <form style="display: none;" action="{{ url('/eliminar-horario-condominio') }}/{{ $horario_condominio->id }}" method="post">
+                                  {!! csrf_field() !!}
+                                  <input type="submit" id="botoneliminar{{ $horario_condominio->id }}">
+                                </form>
+
+                              </div>
+
+                          </div>
+                               </div>
+                               <div class="text-right">
+
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                     @endforeach
+
+                   </div>
+
+            @else
+             <p>No tienes eventos</p>
+            @endif
+            <div class="panel panel-default">
+             <div class="panel-heading" role="tab" id="headingNuevo">
+               <h4 class="panel-title" data-toggle="collapse" data-parent="#horario_condominios" href="#collapseNuevo" aria-expanded="false" aria-controls="collapseNuevo">
+                 <a role="button">
+                   Agregar evento
+                 </a>
+               </h4>
+             </div>
+             <div id="collapseNuevo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNuevo">
+               <div class="panel-body">
+                 <div class="horario_condominio">
+                   <div class="editar">
+                     <div class="col-md-12">
+                          <br/>
+                         <div class="form-horizontal">
+                     <form action="{{ url('/agregar-horario-condominio') }}" method="post"  enctype="multipart/form-data">
+
+
                        <div class="form-group">
                         <label class="col-sm-3 control-label">Fecha</label>
                         <div class="col-sm-9">
@@ -206,6 +327,18 @@
                              <option value="">Selecciona una opción</option>
                              @foreach ($coaches as $coach)
                                <option value="{{ $coach->id }}">{{ $coach->name }}</option>
+                             @endforeach
+                           </select>
+                         </div>
+                       </div>
+
+                       <div class="form-group">
+                         <label class="col-sm-3 control-label">Condominio</label>
+                         <div class="col-sm-9">
+                           <select class="form-control"  name="coach" id="coachNuevo" required>
+                             <option value="">Selecciona una opción</option>
+                             @foreach ($condominios as $condominio)
+                               <option value="{{ $condominio->id }}">{{ $condominio->identificador }}</option>
                              @endforeach
                            </select>
                          </div>
@@ -248,12 +381,9 @@
                  </div>
                </div>
              </div>
-           </div>
-
-           <!--termina condominios -->
-
-
             </div>
+            </div>
+            <!--termina horario condominios -->
 		</div>
 	</div>
 </div>
@@ -262,15 +392,20 @@
   function habilitar(valor){
     document.getElementById('identificador'+valor).disabled=false;
     document.getElementById('direccion'+valor).disabled=false;
+    document.getElementById('imagen'+valor).disabled=false;
+    document.getElementById('botonguardar'+valor).style.display="inline-block";
+    document.getElementById('botoneditar'+valor).style.display="none";
+  }
+  function habilitar2(valor){
     document.getElementById('coach'+valor).disabled=false;
     document.getElementById('horario'+valor).disabled=false;
     document.getElementById('fecha'+valor).disabled=false;
     document.getElementById('cupo'+valor).disabled=false;
-    document.getElementById('imagen'+valor).disabled=false;
     document.getElementById('precio'+valor).disabled=false;
+    document.getElementById('condominio_id'+valor).disabled=false;
     document.getElementById('clases_id'+valor).disabled=false;
-    document.getElementById('botonguardar'+valor).style.display="inline-block";
-    document.getElementById('botoneditar'+valor).style.display="none";
+    document.getElementById('botonguardar2'+valor).style.display="inline-block";
+    document.getElementById('botoneditar2'+valor).style.display="none";
   }
 </script>
 <script type="text/javascript">
